@@ -1,0 +1,113 @@
+import { Link } from "@tanstack/react-router";
+import { Instagram, Youtube, Facebook } from "lucide-react";
+
+export function SiteHeader() {
+  const nav = [
+    { to: "/", label: "Inicio" },
+    { to: "/banda", label: "Banda" },
+    { to: "/setlist", label: "Setlist" },
+    { to: "/galeria", label: "Galería" },
+    { to: "/gira", label: "Gira" },
+    { to: "/magia", label: "Magia" },
+    { to: "/contacto", label: "Contacto" },
+  ];
+  return (
+    <header className="absolute top-0 left-0 right-0 z-30">
+      <div className="container-page flex items-center justify-between py-6">
+        <Link to="/" className="flex items-center gap-2">
+          <div className="h-10 w-10 rounded-full border-2 border-primary/70 flex items-center justify-center text-primary font-display italic text-lg">
+            NP
+          </div>
+          <span className="font-display italic text-primary text-sm tracking-wider">
+            NIÑOS PERDIDOS
+          </span>
+        </Link>
+        <nav className="hidden md:flex items-center gap-7">
+          {nav.map((n) => (
+            <Link
+              key={n.to}
+              to={n.to}
+              className="text-xs uppercase tracking-[0.18em] text-foreground/80 hover:text-primary transition-colors"
+              activeProps={{ className: "text-primary" }}
+              activeOptions={{ exact: n.to === "/" }}
+            >
+              {n.label}
+            </Link>
+          ))}
+        </nav>
+      </div>
+    </header>
+  );
+}
+
+export function SiteFooter() {
+  return (
+    <footer className="border-t border-border/40 bg-surface mt-24">
+      <div className="container-page py-14 grid gap-10 md:grid-cols-3">
+        <div>
+          <div className="flex items-center gap-2 mb-4">
+            <div className="h-10 w-10 rounded-full border-2 border-primary/70 flex items-center justify-center text-primary font-display italic">
+              NP
+            </div>
+            <span className="font-display italic text-primary tracking-wider">
+              NIÑOS PERDIDOS
+            </span>
+          </div>
+          <p className="text-sm text-muted-foreground max-w-xs">
+            Disney · Animación · Nostalgia · Rock. La banda madrileña que
+            convierte las canciones de tu infancia en himnos del rock ⚡
+          </p>
+          <div className="flex gap-3 mt-5 text-muted-foreground">
+            <a href="#" aria-label="Instagram" className="hover:text-primary transition-colors"><Instagram className="h-4 w-4" /></a>
+            <a href="#" aria-label="YouTube" className="hover:text-primary transition-colors"><Youtube className="h-4 w-4" /></a>
+            <a href="#" aria-label="Facebook" className="hover:text-primary transition-colors"><Facebook className="h-4 w-4" /></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 className="text-primary text-xs uppercase tracking-[0.2em] mb-4 not-italic font-sans font-semibold">
+            Navegación
+          </h4>
+          <ul className="space-y-2 text-sm text-foreground/80">
+            {["Inicio","La Banda","Setlist","Galería","Gira","Magia","Contacto"].map((l,i) => {
+              const to = ["/", "/banda","/setlist","/galeria","/gira","/magia","/contacto"][i];
+              return (
+                <li key={l}>
+                  <Link to={to} className="hover:text-primary transition-colors">{l}</Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="text-primary text-xs uppercase tracking-[0.2em] mb-4 not-italic font-sans font-semibold">
+            Contrátanos
+          </h4>
+          <p className="text-sm text-foreground/80 mb-4">
+            Bodas · Fiestas patronales · Festivales · Salas de conciertos
+          </p>
+          <Link
+            to="/contacto"
+            className="inline-flex items-center gap-2 border border-primary text-primary px-4 py-2 text-xs uppercase tracking-[0.2em] hover:bg-primary hover:text-primary-foreground transition-colors"
+          >
+            Habla con nosotros →
+          </Link>
+          <div className="mt-6">
+            <p className="text-primary text-xs uppercase tracking-[0.2em] font-sans font-semibold mb-2">
+              Próximo concierto
+            </p>
+            <p className="text-sm">06 Abr 2026 · Madrid</p>
+            <p className="text-xs text-muted-foreground">Sala Caelius Solitaria</p>
+          </div>
+        </div>
+      </div>
+      <div className="border-t border-border/40">
+        <div className="container-page py-4 flex flex-wrap items-center justify-between text-xs text-muted-foreground">
+          <p>© 2026 Niños Perdidos · Todos los derechos reservados</p>
+          <p className="tracking-[0.2em]">NUNCA JAMÁS LLAMA HOY</p>
+        </div>
+      </div>
+    </footer>
+  );
+}

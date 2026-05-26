@@ -9,8 +9,44 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SetlistRouteImport } from './routes/setlist'
+import { Route as MagiaRouteImport } from './routes/magia'
+import { Route as GiraRouteImport } from './routes/gira'
+import { Route as GaleriaRouteImport } from './routes/galeria'
+import { Route as ContactoRouteImport } from './routes/contacto'
+import { Route as BandaRouteImport } from './routes/banda'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SetlistRoute = SetlistRouteImport.update({
+  id: '/setlist',
+  path: '/setlist',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MagiaRoute = MagiaRouteImport.update({
+  id: '/magia',
+  path: '/magia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GiraRoute = GiraRouteImport.update({
+  id: '/gira',
+  path: '/gira',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GaleriaRoute = GaleriaRouteImport.update({
+  id: '/galeria',
+  path: '/galeria',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactoRoute = ContactoRouteImport.update({
+  id: '/contacto',
+  path: '/contacto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BandaRoute = BandaRouteImport.update({
+  id: '/banda',
+  path: '/banda',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +55,116 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/banda': typeof BandaRoute
+  '/contacto': typeof ContactoRoute
+  '/galeria': typeof GaleriaRoute
+  '/gira': typeof GiraRoute
+  '/magia': typeof MagiaRoute
+  '/setlist': typeof SetlistRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/banda': typeof BandaRoute
+  '/contacto': typeof ContactoRoute
+  '/galeria': typeof GaleriaRoute
+  '/gira': typeof GiraRoute
+  '/magia': typeof MagiaRoute
+  '/setlist': typeof SetlistRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/banda': typeof BandaRoute
+  '/contacto': typeof ContactoRoute
+  '/galeria': typeof GaleriaRoute
+  '/gira': typeof GiraRoute
+  '/magia': typeof MagiaRoute
+  '/setlist': typeof SetlistRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/banda'
+    | '/contacto'
+    | '/galeria'
+    | '/gira'
+    | '/magia'
+    | '/setlist'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/banda'
+    | '/contacto'
+    | '/galeria'
+    | '/gira'
+    | '/magia'
+    | '/setlist'
+  id:
+    | '__root__'
+    | '/'
+    | '/banda'
+    | '/contacto'
+    | '/galeria'
+    | '/gira'
+    | '/magia'
+    | '/setlist'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BandaRoute: typeof BandaRoute
+  ContactoRoute: typeof ContactoRoute
+  GaleriaRoute: typeof GaleriaRoute
+  GiraRoute: typeof GiraRoute
+  MagiaRoute: typeof MagiaRoute
+  SetlistRoute: typeof SetlistRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/setlist': {
+      id: '/setlist'
+      path: '/setlist'
+      fullPath: '/setlist'
+      preLoaderRoute: typeof SetlistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/magia': {
+      id: '/magia'
+      path: '/magia'
+      fullPath: '/magia'
+      preLoaderRoute: typeof MagiaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gira': {
+      id: '/gira'
+      path: '/gira'
+      fullPath: '/gira'
+      preLoaderRoute: typeof GiraRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/galeria': {
+      id: '/galeria'
+      path: '/galeria'
+      fullPath: '/galeria'
+      preLoaderRoute: typeof GaleriaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contacto': {
+      id: '/contacto'
+      path: '/contacto'
+      fullPath: '/contacto'
+      preLoaderRoute: typeof ContactoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/banda': {
+      id: '/banda'
+      path: '/banda'
+      fullPath: '/banda'
+      preLoaderRoute: typeof BandaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +177,13 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BandaRoute: BandaRoute,
+  ContactoRoute: ContactoRoute,
+  GaleriaRoute: GaleriaRoute,
+  GiraRoute: GiraRoute,
+  MagiaRoute: MagiaRoute,
+  SetlistRoute: SetlistRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
