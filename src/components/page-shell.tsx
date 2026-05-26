@@ -1,11 +1,29 @@
 import { ReactNode } from "react";
 import { SiteHeader, SiteFooter } from "./site-chrome";
+import logoIso from "@/assets/logo-iso.png";
 
-export function PageShell({ children }: { children: ReactNode }) {
+export function PageShell({
+  children,
+  backgroundImage,
+  backgroundOverlay = "linear-gradient(to bottom, oklch(0.12 0.02 180 / 0.55), oklch(0.12 0.02 180 / 0.92))",
+}: {
+  children: ReactNode;
+  backgroundImage?: string;
+  backgroundOverlay?: string;
+}) {
   return (
-    <div className="min-h-screen bg-night flex flex-col">
+    <div className="relative min-h-screen flex flex-col bg-night">
+      {backgroundImage && (
+        <div
+          aria-hidden
+          className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `${backgroundOverlay ? `${backgroundOverlay}, ` : ""}url(${backgroundImage})`,
+          }}
+        />
+      )}
       <SiteHeader />
-      <main className="flex-1">{children}</main>
+      <main className="flex-1 relative">{children}</main>
       <SiteFooter />
     </div>
   );
@@ -23,12 +41,13 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="relative pt-40 pb-20 overflow-hidden">
-      <div className="absolute inset-0 -z-10 opacity-30 bg-[radial-gradient(circle_at_30%_20%,oklch(0.35_0.05_180),transparent_60%),radial-gradient(circle_at_80%_60%,oklch(0.3_0.06_60/.4),transparent_60%)]" />
+    <section className="relative pt-36 pb-16 overflow-hidden">
       <div className="container-page text-center">
-        <div className="inline-flex h-14 w-14 rounded-full border-2 border-primary/70 mb-6 items-center justify-center text-primary font-display italic">
-          NP
-        </div>
+        <img
+          src={logoIso}
+          alt=""
+          className="mx-auto h-20 w-20 object-contain mb-5 drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)]"
+        />
         <h1 className="font-display italic text-5xl md:text-7xl text-foreground text-glow-orange">
           {title}
         </h1>

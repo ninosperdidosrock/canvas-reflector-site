@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, PageHero } from "@/components/page-shell";
+import bgSetlist from "@/assets/bg-setlist.png";
 
 export const Route = createFileRoute("/setlist")({
   head: () => ({
@@ -19,7 +20,7 @@ const songs = [
 
 export default function Setlist() {
   return (
-    <PageShell>
+    <PageShell backgroundImage={bgSetlist}>
       <PageHero title="SETLIST" />
       <section className="pb-24">
         <div className="container-page grid md:grid-cols-[1fr_1.1fr] gap-12 items-start">

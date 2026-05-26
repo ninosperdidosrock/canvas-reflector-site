@@ -1,5 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Youtube, Facebook } from "lucide-react";
+import logoText from "@/assets/logo-text.png";
+import logoIso from "@/assets/logo-iso.png";
 
 export function SiteHeader() {
   const nav = [
@@ -13,21 +15,17 @@ export function SiteHeader() {
   ];
   return (
     <header className="absolute top-0 left-0 right-0 z-30">
-      <div className="container-page flex items-center justify-between py-6">
-        <Link to="/" className="flex items-center gap-2">
-          <div className="h-10 w-10 rounded-full border-2 border-primary/70 flex items-center justify-center text-primary font-display italic text-lg">
-            NP
-          </div>
-          <span className="font-display italic text-primary text-sm tracking-wider">
-            NIÑOS PERDIDOS
-          </span>
+      <div className="container-page flex items-center justify-between py-5">
+        <Link to="/" className="flex items-center gap-3">
+          <img src={logoIso} alt="" className="h-11 w-11 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" />
+          <img src={logoText} alt="Niños Perdidos" className="hidden sm:block h-7 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" />
         </Link>
         <nav className="hidden md:flex items-center gap-7">
           {nav.map((n) => (
             <Link
               key={n.to}
               to={n.to}
-              className="text-xs uppercase tracking-[0.18em] text-foreground/80 hover:text-primary transition-colors"
+              className="text-xs uppercase tracking-[0.18em] text-foreground/85 hover:text-primary transition-colors drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]"
               activeProps={{ className: "text-primary" }}
               activeOptions={{ exact: n.to === "/" }}
             >
@@ -42,16 +40,12 @@ export function SiteHeader() {
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border/40 bg-surface mt-24">
+    <footer className="border-t border-border/40 bg-surface/80 backdrop-blur mt-24 relative z-10">
       <div className="container-page py-14 grid gap-10 md:grid-cols-3">
         <div>
-          <div className="flex items-center gap-2 mb-4">
-            <div className="h-10 w-10 rounded-full border-2 border-primary/70 flex items-center justify-center text-primary font-display italic">
-              NP
-            </div>
-            <span className="font-display italic text-primary tracking-wider">
-              NIÑOS PERDIDOS
-            </span>
+          <div className="flex items-center gap-3 mb-4">
+            <img src={logoIso} alt="" className="h-12 w-12 object-contain" />
+            <img src={logoText} alt="Niños Perdidos" className="h-7 object-contain" />
           </div>
           <p className="text-sm text-muted-foreground max-w-xs">
             Disney · Animación · Nostalgia · Rock. La banda madrileña que
