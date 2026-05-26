@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, PageHero } from "@/components/page-shell";
 import { MapPin } from "lucide-react";
+import bgGira from "@/assets/bg-gira.png";
 
 export const Route = createFileRoute("/gira")({
   head: () => ({
