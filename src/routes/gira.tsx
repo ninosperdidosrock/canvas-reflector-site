@@ -25,7 +25,7 @@ const past = ["29 OCT 2025", "12 OCT 2025", "06 SEP 2025", "23 AGO 2025", "12 JU
 
 export default function Gira() {
   return (
-    <PageShell>
+    <PageShell backgroundImage={bgGira}>
       <PageHero title="GIRA" eyebrow="Rumbo a Nunca Jamás" />
       <section className="pb-16">
         <div className="container-page max-w-4xl">
