@@ -49,9 +49,9 @@
   --popover: oklch(0.21 0.025 180);
   --popover-foreground: oklch(0.94 0.02 80);
 
-  /* Warm orange accent */
-  --primary: oklch(0.68 0.17 50);
-  --primary-foreground: oklch(0.15 0.02 60);
+  /* Warm logo brown accent */
+  --primary: oklch(0.56 0.07 45);
+  --primary-foreground: oklch(0.97 0.01 85);
 
   --secondary: oklch(0.27 0.03 180);
   --secondary-foreground: oklch(0.94 0.02 80);
@@ -59,15 +59,15 @@
   --muted: oklch(0.24 0.025 180);
   --muted-foreground: oklch(0.7 0.03 80);
 
-  --accent: oklch(0.68 0.17 50);
-  --accent-foreground: oklch(0.15 0.02 60);
+  --accent: oklch(0.56 0.07 45);
+  --accent-foreground: oklch(0.97 0.01 85);
 
   --destructive: oklch(0.55 0.22 27);
   --destructive-foreground: oklch(0.98 0.003 80);
 
   --border: oklch(0.3 0.025 180 / 60%);
   --input: oklch(0.25 0.025 180);
-  --ring: oklch(0.68 0.17 50);
+  --ring: oklch(0.56 0.07 45);
 }
 
 .dark {
@@ -99,7 +99,7 @@
 }
 
 @utility text-glow-orange {
-  text-shadow: 0 0 30px oklch(0.68 0.17 50 / 0.4);
+  text-shadow: 0 0 30px oklch(0.56 0.07 45 / 0.42);
 }
 
 @utility bg-night {
