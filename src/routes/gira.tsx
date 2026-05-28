@@ -1,7 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { PageShell, PageHero } from "@/components/page-shell";
 import { MapPin } from "lucide-react";
 import bgGira from "@/assets/bg-gira.png";
+import { getTourEvents, type GigEvent } from "@/lib/calendar.functions";
+
+const tourQueryOptions = queryOptions({
+  queryKey: ["tour-events"],
+  queryFn: () => getTourEvents(),
+  staleTime: 60_000,
+  refetchInterval: 5 * 60_000,
+});
 
 export const Route = createFileRoute("/gira")({
   head: () => ({
@@ -10,20 +19,33 @@ export const Route = createFileRoute("/gira")({
       { name: "description", content: "Próximos conciertos y gira de Niños Perdidos por Nunca Jamás." },
     ],
   }),
+  loader: ({ context }) => context.queryClient.ensureQueryData(tourQueryOptions),
   component: Gira,
 });
 
-const upcoming = [
-  { date: "06 ABR 2026", city: "MADRID", venue: "FIESTA EN COLEGIO PÚBLICO DE MADRID", time: "20:00" },
-  { date: "17 MAY 2026", city: "MADRID", venue: "Mercat (Hangman's Tres)", time: "23:00" },
-  { date: "08 JUN 2026", city: "MADRID", venue: "A pilú y palé Fest", time: "20:00" },
-  { date: "12 JUL 2026", city: "MADRID", venue: "Fiestas de Pinguers", time: "23:00" },
-  { date: "23 AGO 2026", city: "MADRID", venue: "Sala Rock-ville", time: "00:00" },
-];
+const MONTHS = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"];
 
-const past = ["29 OCT 2025", "12 OCT 2025", "06 SEP 2025", "23 AGO 2025", "12 JUL 2025"];
+function formatDate(iso: string) {
+  const d = new Date(iso);
+  return `${String(d.getDate()).padStart(2, "0")} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
+}
 
-export default function Gira() {
+function formatTime(iso: string, isAllDay: boolean) {
+  if (isAllDay) return "—";
+  const d = new Date(iso);
+  return `${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`;
+}
+
+function extractCity(location?: string) {
+  if (!location) return "MADRID";
+  const parts = location.split(",").map((p) => p.trim()).filter(Boolean);
+  return (parts[parts.length - 2] ?? parts[0] ?? "").toUpperCase();
+}
+
+function Gira() {
+  const { data } = useSuspenseQuery(tourQueryOptions);
+  const { upcoming, past, error } = data;
+
   return (
     <PageShell backgroundImage={bgGira}>
       <PageHero title="GIRA" eyebrow="Rumbo a Nunca Jamás" />
@@ -34,31 +56,47 @@ export default function Gira() {
             tu boda, las fiestas de tu pueblo o el festival que más te gusta.
           </p>
 
-          <div className="border border-border bg-card/40 backdrop-blur divide-y divide-border">
-            {upcoming.map((u) => (
-              <div key={u.date} className="grid grid-cols-[120px_1fr_auto] gap-6 items-center p-5">
-                <p className="text-primary text-xs uppercase tracking-[0.2em] font-semibold">{u.date}</p>
-                <div>
-                  <p className="flex items-center gap-2 text-foreground"><MapPin className="h-3 w-3 text-primary" /> {u.city}</p>
-                  <p className="text-xs text-muted-foreground mt-0.5">{u.venue}</p>
-                </div>
-                <p className="text-sm tabular-nums text-foreground/80">{u.time}</p>
-              </div>
-            ))}
-          </div>
+          {error && (
+            <div className="mb-6 border border-destructive/40 bg-destructive/10 text-destructive text-xs p-3">
+              No se pudo cargar el calendario en vivo. Revisa la conexión de Google Calendar.
+            </div>
+          )}
 
-          <div className="mt-16">
-            <p className="text-primary text-xs uppercase tracking-[0.3em] font-semibold mb-4">CONCIERTOS ANTERIORES</p>
-            <ul className="grid sm:grid-cols-2 gap-3">
-              {past.map((p) => (
-                <li key={p} className="flex items-center gap-3 text-sm text-muted-foreground">
-                  <span className="h-px flex-1 bg-border" />
-                  <span className="font-mono">{p}</span>
-                  <span className="h-px flex-1 bg-border" />
-                </li>
+          {upcoming.length === 0 ? (
+            <p className="text-sm text-muted-foreground italic">No hay fechas próximas anunciadas.</p>
+          ) : (
+            <div className="border border-border bg-card/40 backdrop-blur divide-y divide-border">
+              {upcoming.map((u: GigEvent) => (
+                <div key={u.id} className="grid grid-cols-[120px_1fr_auto] gap-6 items-center p-5">
+                  <p className="text-primary text-xs uppercase tracking-[0.2em] font-semibold">
+                    {formatDate(u.start)}
+                  </p>
+                  <div>
+                    <p className="flex items-center gap-2 text-foreground">
+                      <MapPin className="h-3 w-3 text-primary" /> {extractCity(u.location)}
+                    </p>
+                    <p className="text-xs text-muted-foreground mt-0.5">{u.summary}</p>
+                  </div>
+                  <p className="text-sm tabular-nums text-foreground/80">{formatTime(u.start, u.isAllDay)}</p>
+                </div>
               ))}
-            </ul>
-          </div>
+            </div>
+          )}
+
+          {past.length > 0 && (
+            <div className="mt-16">
+              <p className="text-primary text-xs uppercase tracking-[0.3em] font-semibold mb-4">CONCIERTOS ANTERIORES</p>
+              <ul className="grid sm:grid-cols-2 gap-3">
+                {past.map((p) => (
+                  <li key={p.id} className="flex items-center gap-3 text-sm text-muted-foreground">
+                    <span className="h-px flex-1 bg-border" />
+                    <span className="font-mono">{formatDate(p.start)}</span>
+                    <span className="h-px flex-1 bg-border" />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </section>
     </PageShell>
