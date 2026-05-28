@@ -12,19 +12,21 @@ export function PageShell({
   backgroundOverlay?: string;
 }) {
   return (
-    <div className="relative min-h-screen flex flex-col bg-night">
+    <div className={`relative min-h-screen flex flex-col ${backgroundImage ? "" : "bg-night"}`}>
       {backgroundImage && (
         <div
           aria-hidden
-          className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
+          className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat pointer-events-none"
           style={{
             backgroundImage: `${backgroundOverlay ? `${backgroundOverlay}, ` : ""}url(${backgroundImage})`,
           }}
         />
       )}
-      <SiteHeader />
-      <main className="flex-1 relative">{children}</main>
-      <SiteFooter />
+      <div className="relative z-10 flex flex-col min-h-screen">
+        <SiteHeader />
+        <main className="flex-1 relative">{children}</main>
+        <SiteFooter />
+      </div>
     </div>
   );
 }
