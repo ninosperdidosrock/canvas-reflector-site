@@ -22,10 +22,11 @@ export function PageShell({
           }}
         />
       )}
-      <SiteHeader />
-      <main className="flex-1 relative">{children}</main>
-      <SiteFooter />
-    </div>
+      <div className="relative z-10 flex flex-col min-h-screen">
+        <SiteHeader />
+        <main className="flex-1 relative">{children}</main>
+        <SiteFooter />
+      </div>
   );
 }
 
