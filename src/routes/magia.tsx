@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { PageShell } from "@/components/page-shell";
 import { Sparkles, Send } from "lucide-react";
+import bgMagia from "@/assets/bg-magia.png";
 
 export const Route = createFileRoute("/magia")({
   head: () => ({
@@ -17,7 +18,7 @@ export default function Magia() {
   const [name, setName] = useState("");
   const [prompt, setPrompt] = useState("");
   return (
-    <PageShell>
+    <PageShell backgroundImage={bgMagia}>
       <section className="relative pt-32 pb-20">
         <div className="container-page">
           <div className="inline-flex items-center gap-2 mb-6">

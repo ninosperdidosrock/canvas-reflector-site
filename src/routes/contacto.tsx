@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/page-shell";
 import { Mail, Phone, Instagram, Send } from "lucide-react";
+import bgContacto from "@/assets/bg-contacto.png";
 
 export const Route = createFileRoute("/contacto")({
   head: () => ({
@@ -14,7 +15,7 @@ export const Route = createFileRoute("/contacto")({
 
 export default function Contacto() {
   return (
-    <PageShell>
+    <PageShell backgroundImage={bgContacto}>
       <section className="relative pt-32 pb-16">
         <div className="container-page">
           <div className="inline-flex items-center gap-2 mb-6">

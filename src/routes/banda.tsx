@@ -5,6 +5,7 @@ import rickImg from "@/assets/banda-rick.jpg";
 import manuImg from "@/assets/banda-manu.jpg";
 import ridruImg from "@/assets/banda-ridru.jpg";
 import hectorImg from "@/assets/banda-hector.jpg";
+import bgBanda from "@/assets/bg-banda.png";
 
 export const Route = createFileRoute("/banda")({
   head: () => ({
@@ -26,7 +27,7 @@ const members = [
 
 export default function Banda() {
   return (
-    <PageShell>
+    <PageShell backgroundImage={bgBanda}>
       <section className="relative pt-32 pb-16">
         <div className="container-page max-w-3xl text-center">
           <p className="font-display italic text-xl md:text-2xl text-foreground leading-relaxed">

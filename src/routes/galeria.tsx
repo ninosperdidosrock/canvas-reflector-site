@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, PageHero } from "@/components/page-shell";
+import bgGaleria from "@/assets/bg-galeria.png";
 
 export const Route = createFileRoute("/galeria")({
   head: () => ({
@@ -14,7 +15,7 @@ export const Route = createFileRoute("/galeria")({
 export default function Galeria() {
   const tiles = Array.from({ length: 8 });
   return (
-    <PageShell>
+    <PageShell backgroundImage={bgGaleria}>
       <PageHero title="GALERÍA" eyebrow="Momentos del escenario" />
       <section className="pb-24">
         <div className="container-page grid grid-cols-2 md:grid-cols-4 gap-3">
