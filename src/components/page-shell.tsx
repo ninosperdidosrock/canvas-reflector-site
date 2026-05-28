@@ -27,6 +27,7 @@ export function PageShell({
         <main className="flex-1 relative">{children}</main>
         <SiteFooter />
       </div>
+    </div>
   );
 }
 
