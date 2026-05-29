@@ -1,7 +1,8 @@
 import { createServerFn } from "@tanstack/react-start";
 
-// Handle del canal de YouTube de Niños Perdidos. Cámbialo aquí si difiere.
-const CHANNEL_HANDLE = "@ninosperdidos.rock";
+// Handle del canal de YouTube de Niños Perdidos.
+const CHANNEL_HANDLE = "@niñosperdidos-rock";
+
 
 export type YTVideo = {
   id: string;
