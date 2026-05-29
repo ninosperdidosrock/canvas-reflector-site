@@ -18,8 +18,6 @@ export default function Contacto() {
     <PageShell backgroundImage={bgContacto}>
       <section className="relative pt-32 pb-16">
         <div className="container-page">
-      <section className="relative pt-32 pb-16">
-        <div className="container-page">
           <h1 className="font-display italic text-6xl md:text-8xl text-glow-orange">CONTACTO</h1>
           <p className="mt-4 text-primary text-xs uppercase tracking-[0.4em] font-semibold">
             Contrataciones & Prensa
@@ -27,7 +25,6 @@ export default function Contacto() {
         </div>
       </section>
 
-      </section>
 
       <section className="pb-24">
         <div className="container-page grid lg:grid-cols-[1fr_1.4fr] gap-12">
