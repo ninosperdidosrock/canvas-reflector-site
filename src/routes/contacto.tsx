@@ -18,16 +18,13 @@ export default function Contacto() {
     <PageShell backgroundImage={bgContacto}>
       <section className="relative pt-32 pb-16">
         <div className="container-page">
-          <div className="inline-flex items-center gap-2 mb-6">
-            <div className="h-10 w-10 rounded-full border-2 border-primary flex items-center justify-center text-primary font-display italic">NP</div>
-            <span className="font-display italic text-primary tracking-wider">NIÑOS PERDIDOS</span>
-          </div>
           <h1 className="font-display italic text-6xl md:text-8xl text-glow-orange">CONTACTO</h1>
           <p className="mt-4 text-primary text-xs uppercase tracking-[0.4em] font-semibold">
             Contrataciones & Prensa
           </p>
         </div>
       </section>
+
 
       <section className="pb-24">
         <div className="container-page grid lg:grid-cols-[1fr_1.4fr] gap-12">
