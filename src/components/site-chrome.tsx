@@ -1,7 +1,6 @@
-import { Link, useMatchRoute } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { Instagram, Youtube } from "lucide-react";
 import logoText from "@/assets/logo-text.png";
-import logoIso from "@/assets/logo-iso.png";
 
 function TikTokIcon({ className }: { className?: string }) {
   return (
