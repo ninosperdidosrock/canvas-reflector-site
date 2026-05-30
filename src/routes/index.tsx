@@ -25,9 +25,9 @@ function Home() {
           <img
             src={logoFull}
             alt="Niños Perdidos"
-            className="mx-auto w-full max-w-[200px] md:max-w-[240px] mb-8 drop-shadow-[0_8px_24px_rgba(0,0,0,0.7)]"
+            className="mx-auto w-full max-w-[300px] md:max-w-[380px] mb-10 drop-shadow-[0_8px_24px_rgba(0,0,0,0.7)]"
           />
-          <h1 className="font-display italic text-6xl md:text-8xl lg:text-9xl leading-[0.95] text-foreground text-glow-orange">
+          <h1 className="font-display italic text-7xl md:text-9xl lg:text-[10rem] leading-[0.95] text-foreground text-glow-orange">
             BIENVENIDO A<br />
             <span className="text-primary">NUNCA JAMÁS</span>
           </h1>

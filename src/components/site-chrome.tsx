@@ -1,7 +1,6 @@
-import { Link, useMatchRoute } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { Instagram, Youtube } from "lucide-react";
 import logoText from "@/assets/logo-text.png";
-import logoIso from "@/assets/logo-iso.png";
 
 function TikTokIcon({ className }: { className?: string }) {
   return (
@@ -17,8 +16,6 @@ function TikTokIcon({ className }: { className?: string }) {
 }
 
 export function SiteHeader() {
-  const matchRoute = useMatchRoute();
-  const isHome = !!matchRoute({ to: "/", fuzzy: false });
   const nav = [
     { to: "/", label: "Inicio" },
     { to: "/banda", label: "Banda" },
@@ -30,27 +27,20 @@ export function SiteHeader() {
   ];
   return (
     <header className="absolute top-0 left-0 right-0 z-30">
-      <div className="container-page flex items-center justify-between py-5">
+      <div className="container-page flex items-center justify-between py-7">
         <Link to="/" className="flex items-center gap-3">
-          {!isHome && (
-            <img
-              src={logoIso}
-              alt=""
-              className="h-11 w-11 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
-            />
-          )}
           <img
             src={logoText}
             alt="Niños Perdidos"
-            className="h-7 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
+            className="h-10 md:h-12 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
           />
         </Link>
-        <nav className="hidden md:flex items-center gap-7">
+        <nav className="hidden md:flex items-center gap-9">
           {nav.map((n) => (
             <Link
               key={n.to}
               to={n.to}
-              className="text-xs uppercase tracking-[0.18em] text-foreground/85 hover:text-primary transition-colors drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]"
+              className="text-sm uppercase tracking-[0.2em] text-foreground/85 hover:text-primary transition-colors drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]"
               activeProps={{ className: "text-primary" }}
               activeOptions={{ exact: n.to === "/" }}
             >
