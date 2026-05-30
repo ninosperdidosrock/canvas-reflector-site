@@ -2,6 +2,15 @@
 @source "../src";
 @import "tw-animate-css";
 
+@font-face {
+  font-family: "Hertical Serif Texture";
+  src: url("/fonts/HerticalSerifTexture.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -31,7 +40,7 @@
   --color-ring-offset-background: var(--background);
   --color-surface: var(--surface);
   --color-surface-foreground: var(--surface-foreground);
-  --font-display: "Alfa Slab One", "Georgia", serif;
+  --font-display: "Hertical Serif Texture", "Georgia", serif;
   --font-sans: "Inter", system-ui, sans-serif;
 }
 
@@ -86,7 +95,7 @@
   }
   h1, h2, h3, h4, .font-display {
     font-family: var(--font-display);
-    font-style: italic;
+    font-style: normal;
     letter-spacing: 0.01em;
   }
 }
