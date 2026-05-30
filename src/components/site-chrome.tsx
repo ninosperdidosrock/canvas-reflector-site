@@ -1,9 +1,24 @@
-import { Link } from "@tanstack/react-router";
-import { Instagram, Youtube, Facebook } from "lucide-react";
+import { Link, useMatchRoute } from "@tanstack/react-router";
+import { Instagram, Youtube } from "lucide-react";
 import logoText from "@/assets/logo-text.png";
 import logoIso from "@/assets/logo-iso.png";
 
+function TikTokIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+      className={className}
+    >
+      <path d="M16.6 5.82a4.28 4.28 0 0 1-3.77-4.06h-3.2v13.6a2.59 2.59 0 1 1-1.83-2.48v-3.27a5.86 5.86 0 1 0 5.03 5.8V8.78a7.49 7.49 0 0 0 4.37 1.4V6.97a4.28 4.28 0 0 1-.6-.02z" />
+    </svg>
+  );
+}
+
 export function SiteHeader() {
+  const matchRoute = useMatchRoute();
+  const isHome = !!matchRoute({ to: "/", fuzzy: false });
   const nav = [
     { to: "/", label: "Inicio" },
     { to: "/banda", label: "Banda" },
@@ -17,8 +32,18 @@ export function SiteHeader() {
     <header className="absolute top-0 left-0 right-0 z-30">
       <div className="container-page flex items-center justify-between py-5">
         <Link to="/" className="flex items-center gap-3">
-          <img src={logoIso} alt="" className="h-11 w-11 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" />
-          <img src={logoText} alt="Niños Perdidos" className="hidden sm:block h-7 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" />
+          {!isHome && (
+            <img
+              src={logoIso}
+              alt=""
+              className="h-11 w-11 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
+            />
+          )}
+          <img
+            src={logoText}
+            alt="Niños Perdidos"
+            className="h-7 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
+          />
         </Link>
         <nav className="hidden md:flex items-center gap-7">
           {nav.map((n) => (
@@ -44,8 +69,7 @@ export function SiteFooter() {
       <div className="container-page py-14 grid gap-10 md:grid-cols-3">
         <div>
           <div className="flex items-center gap-3 mb-4">
-            <img src={logoIso} alt="" className="h-12 w-12 object-contain" />
-            <img src={logoText} alt="Niños Perdidos" className="h-7 object-contain" />
+            <img src={logoText} alt="Niños Perdidos" className="h-8 object-contain" />
           </div>
           <p className="text-sm text-muted-foreground max-w-xs">
             Disney · Animación · Nostalgia · Rock. La banda madrileña que
@@ -54,7 +78,7 @@ export function SiteFooter() {
           <div className="flex gap-3 mt-5 text-muted-foreground">
             <a href="#" aria-label="Instagram" className="hover:text-primary transition-colors"><Instagram className="h-4 w-4" /></a>
             <a href="#" aria-label="YouTube" className="hover:text-primary transition-colors"><Youtube className="h-4 w-4" /></a>
-            <a href="#" aria-label="Facebook" className="hover:text-primary transition-colors"><Facebook className="h-4 w-4" /></a>
+            <a href="#" aria-label="TikTok" className="hover:text-primary transition-colors"><TikTokIcon className="h-4 w-4" /></a>
           </div>
         </div>
 
