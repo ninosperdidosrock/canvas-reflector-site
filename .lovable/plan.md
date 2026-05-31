@@ -1,34 +1,36 @@
-
 ## Cambios
 
-**1. Header (`src/components/site-chrome.tsx` → `SiteHeader`)**
-- Eliminar por completo el isotipo del header en todas las rutas (quitar la lógica `useMatchRoute`/`isHome` y el `<img src={logoIso}>`). Solo se muestra el logo de texto.
-- Aumentar tamaños:
-  - Logo de texto: `h-7` → `h-10` (md: `h-12`).
-  - Padding vertical del header: `py-5` → `py-7`.
-  - Nav: `text-xs` → `text-sm`, `gap-7` → `gap-9`, tracking ligeramente más amplio.
+### 1. Página Gira (`src/routes/gira.tsx` y `src/lib/calendar.functions.ts`)
+- **Isotipo "Rumbo a Nunca Jamás" más grande**: ampliar el `<img>` del `PageHero` (actualmente `h-20 w-20`) — ver punto 4 sobre estandarización. Para esta página concreta aumentar a un tamaño hero (`h-32 md:h-40`) o quitar el `PageHero` genérico y construir un hero propio más rotundo con isotipo grande + eyebrow "RUMBO A NUNCA JAMÁS" debajo del título "GIRA".
+- **Ubicación visible**: hoy se muestra solo la ciudad (extraída del location). Mostrar también la dirección/lugar completo en una segunda línea bajo el título del evento usando `event.location` íntegro.
+- **Botón "Comprar entradas" por concierto**: extender `GigEvent` con `ticketUrl?: string` y `description?: string`. En `calendar.functions.ts`, leer `e.description` del raw event y extraer la primera URL `http(s)://...` que encuentre en la descripción → asignarla a `ticketUrl`. Si existe, mostrar un botón `Comprar entradas →` (estilo `bg-primary text-primary-foreground` pequeño) a la derecha del evento; si no, mostrar la hora actual.
+- Mantener compatibilidad: la query devuelve el campo nuevo y la UI solo lo usa cuando está presente.
 
-**2. Hero de Inicio (`src/routes/index.tsx`)**
-- Imagotipo (`logoFull`): `max-w-[200px] md:max-w-[240px]` → `max-w-[300px] md:max-w-[380px]`.
-- Título "BIENVENIDO A / NUNCA JAMÁS": `text-6xl md:text-8xl lg:text-9xl` → `text-7xl md:text-9xl lg:text-[10rem]`, ajustando `leading` para evitar solapes.
+### 2. Página Banda (`src/routes/banda.tsx`)
+- **Botón "Contrátanos para tu evento →"**: convertir `<a href="#ninos-perdidos">` en `<Link to="/contacto">` de TanStack Router.
+- **Apodos y nombres**: actualizar el array `members`:
+  - Gaia Bravo "Gato" — Voz principal
+  - Ricardo Galán "Rick" — Guitarra rítmica y voz (ya está)
+  - Manuel Alejo "Manu" — Batería (cambiar "Manu Alejo" por "Manuel Alejo \"Manu\"")
+  - Javier Ridruejo "Ridru" — Bajo (ya está)
+  - Héctor Alonso "Mike" — Guitarra principal
+- **Imagen de Gaia**: copiar `user-uploads://DSC09235.jpg` → `src/assets/banda-gaia.jpg` (sobrescribir) para que la importación existente la recoja sin tocar imports.
+- **Centrar Ridru y Manu**: el grid es `sm:grid-cols-2 md:grid-cols-3` con 5 miembros → en la fila inferior quedan 2 sueltos. Forzar que la segunda fila (Ridru + Manu, o las 2 últimas tarjetas) quede centrada usando un wrapper con `justify-items-center` en la segunda fila, o renderizar las 3 primeras en un grid de 3 y las 2 últimas en un grid de 2 centrado (`md:max-w-2xl mx-auto`).
+- **Tipografía de las tarjetas más grande**: rol `text-[10px]` → `text-xs md:text-sm`, nombre `text-xl` → `text-2xl md:text-3xl`.
 
-**3. Color de acento crema (`src/styles.css`)**
-- Sustituir el marrón actual (`--primary: oklch(0.56 0.07 45)`) por el tono crema de la cara del personaje del isotipo adjunto (~`#f5dcb4`, aprox. `oklch(0.9 0.05 80)`).
-- Actualizar también `--accent`, `--ring`, `--text-glow-orange` y `--primary-foreground` (este último a un marrón oscuro para mantener contraste sobre botones crema).
-- El cambio se aplica automáticamente a:
-  - "NUNCA JAMÁS" del hero (`text-primary`).
-  - Todos los títulos secundarios y eyebrows que usan `text-primary`.
-  - Botones primarios (`bg-primary`, `border-primary`).
-
-**4. Footer (`src/components/site-chrome.tsx` → `SiteFooter`)**
-- Convertir el botón "Habla con nosotros →" en `<Link to="/contacto">` (ya lo es, verificar que apunta a `/contacto` correctamente — confirmado en el código actual; sin cambios funcionales, solo verificar).
-
-**5. Actualizar memoria de marca (`mem://design/brand-accent` y `mem://index.md`)**
-- Reflejar que el color de acento ahora es el crema del isotipo, no el marrón.
+### 3. Estandarización de títulos/subtítulos en páginas internas (`src/components/page-shell.tsx`)
+Definir tamaños canónicos en `PageHero` y aplicarlos en todas las páginas internas (banda, gira, galería, magia, setlist, contacto). Inicio queda fuera.
+- **H1 (título de página)**: `text-6xl md:text-8xl` (unificado, ya es el estándar de PageHero).
+- **Eyebrow**: `text-xs uppercase tracking-[0.4em]` (ya está).
+- **Subtítulo / lead**: `text-base md:text-lg text-muted-foreground` (ya razonable).
+- **H2 (secciones internas)**: `text-3xl md:text-5xl` (hoy hay mezcla: `text-4xl md:text-6xl` en banda, `text-6xl md:text-8xl` en contacto sin PageHero, etc.). Unificar.
+- Refactor: `contacto.tsx` actualmente NO usa `PageHero` (tiene su propio `<h1 text-6xl md:text-8xl>`). Migrarlo a `<PageHero title="CONTACTO" eyebrow="Contrataciones & Prensa" />` para que use los tamaños estándar.
+- Verificar `galeria`, `magia`, `setlist` y aplicar el mismo `PageHero` si no lo hacen ya (revisar al implementar; sin cambios si ya son consistentes).
 
 ## Notas técnicas
 
-- El logo de texto en el header ya no necesita lógica condicional por ruta, simplificando `SiteHeader`.
-- Los componentes `PageHero` (`src/components/page-shell.tsx`) siguen mostrando el isotipo dentro del contenido de cada página interna — esto NO se toca, solo se quita del **header superior**.
-- El cambio de `--primary` se propaga vía tokens semánticos sin tocar componentes individuales.
-- `--primary-foreground` pasa a un marrón profundo (`oklch(0.25 0.04 40)`) para que el texto sobre botones crema sea legible.
+- El extractor de URL de descripción debe ser tolerante: regex simple `/(https?:\/\/[^\s<>"]+)/i`. Si el calendario inserta HTML, también captura.
+- El campo `description` se solicita por defecto en Google Calendar v3; no hace falta cambiar params.
+- Para centrar las 2 últimas tarjetas, opción más limpia: dividir `members` en dos arrays (`[0..2]` y `[3..4]`) y renderizar dos grids; el segundo con `sm:grid-cols-2 md:max-w-[66%] mx-auto`.
+- La imagen nueva de Gaia es vertical (1280x1920) — encaja con el aspect `3/4` de las tarjetas.
+- No tocar la página de inicio en este cambio.
