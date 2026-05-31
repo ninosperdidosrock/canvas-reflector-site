@@ -67,21 +67,37 @@ function Gira() {
           ) : (
             <div className="border border-border bg-card/40 backdrop-blur divide-y divide-border">
               {upcoming.map((u: GigEvent) => (
-                <div key={u.id} className="grid grid-cols-[120px_1fr_auto] gap-6 items-center p-5">
+                <div key={u.id} className="grid grid-cols-1 md:grid-cols-[140px_1fr_auto] gap-4 md:gap-6 items-start md:items-center p-5">
                   <p className="text-primary text-xs uppercase tracking-[0.2em] font-semibold">
                     {formatDate(u.start)}
                   </p>
-                  <div>
-                    <p className="flex items-center gap-2 text-foreground">
-                      <MapPin className="h-3 w-3 text-primary" /> {extractCity(u.location)}
-                    </p>
-                    <p className="text-xs text-muted-foreground mt-0.5">{u.summary}</p>
+                  <div className="min-w-0">
+                    <p className="font-display italic text-xl text-foreground">{u.summary}</p>
+                    {u.location && (
+                      <p className="mt-1 flex items-start gap-2 text-sm text-muted-foreground">
+                        <MapPin className="h-3.5 w-3.5 text-primary shrink-0 mt-0.5" />
+                        <span>{u.location}</span>
+                      </p>
+                    )}
                   </div>
-                  <p className="text-sm tabular-nums text-foreground/80">{formatTime(u.start, u.isAllDay)}</p>
+                  <div className="flex items-center gap-4 md:justify-end">
+                    <p className="text-sm tabular-nums text-foreground/80">{formatTime(u.start, u.isAllDay)}</p>
+                    {u.ticketUrl && (
+                      <a
+                        href={u.ticketUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 text-[11px] uppercase tracking-[0.2em] font-semibold hover:brightness-110 transition"
+                      >
+                        Entradas →
+                      </a>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
           )}
+
 
           {past.length > 0 && (
             <div className="mt-16">
