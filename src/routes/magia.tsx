@@ -78,7 +78,7 @@ export default function Magia() {
       <section className="pb-16">
         <div className="container-page max-w-2xl text-center">
           <Sparkles className="mx-auto h-6 w-6 text-primary mb-4" />
-          <h2 className="font-display italic text-3xl md:text-4xl">BAUTISMO DE NIÑO PERDIDO</h2>
+          <h2 className="font-display italic text-3xl md:text-5xl">BAUTISMO DE NIÑO PERDIDO</h2>
           <p className="mt-4 text-sm text-muted-foreground">
             Escribe tu nombre mortal sobre la corteza sagrada y recibe tu identidad
             en Nunca Jamás. El ritual no se puede deshacer.
