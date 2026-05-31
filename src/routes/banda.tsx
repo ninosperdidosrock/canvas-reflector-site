@@ -18,11 +18,11 @@ export const Route = createFileRoute("/banda")({
 });
 
 const members = [
-  { name: "Gaia Bravo", role: "Voz principal", img: gaiaImg },
+  { name: "Gaia Bravo \"Gato\"", role: "Voz principal", img: gaiaImg },
   { name: "Ricardo Galán \"Rick\"", role: "Guitarra rítmica y voz", img: rickImg },
-  { name: "Manu Alejo", role: "Batería", img: manuImg },
+  { name: "Héctor Alonso \"Mike\"", role: "Guitarra principal", img: hectorImg },
   { name: "Javier Ridruejo \"Ridru\"", role: "Bajo", img: ridruImg },
-  { name: "Héctor Alonso", role: "Guitarra principal", img: hectorImg },
+  { name: "Manuel Alejo \"Manu\"", role: "Batería", img: manuImg },
 ];
 
 export default function Banda() {
