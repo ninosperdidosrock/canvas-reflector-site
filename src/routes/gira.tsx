@@ -36,11 +36,8 @@ function formatTime(iso: string, isAllDay: boolean) {
   return `${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`;
 }
 
-function extractCity(location?: string) {
-  if (!location) return "MADRID";
-  const parts = location.split(",").map((p) => p.trim()).filter(Boolean);
-  return (parts[parts.length - 2] ?? parts[0] ?? "").toUpperCase();
-}
+
+
 
 function Gira() {
   const { data } = useSuspenseQuery(tourQueryOptions);
