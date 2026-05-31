@@ -48,11 +48,12 @@ export function PageHero({
         <img
           src={logoIso}
           alt=""
-          className="mx-auto h-20 w-20 object-contain mb-5 drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)]"
+          className="mx-auto h-32 md:h-40 w-auto object-contain mb-6 drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)]"
         />
-        <h1 className="font-display italic text-5xl md:text-7xl text-foreground text-glow-orange">
+        <h1 className="font-display italic text-6xl md:text-8xl text-foreground text-glow-orange">
           {title}
         </h1>
+
         {eyebrow && (
           <p className="mt-4 text-primary text-xs uppercase tracking-[0.4em] font-sans font-semibold not-italic">
             {eyebrow}
