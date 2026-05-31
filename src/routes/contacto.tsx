@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageShell } from "@/components/page-shell";
+import { PageShell, PageHero } from "@/components/page-shell";
 import { Mail, Phone, Instagram, Send } from "lucide-react";
 import bgContacto from "@/assets/bg-contacto.png";
 
