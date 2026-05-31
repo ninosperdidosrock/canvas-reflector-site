@@ -24,7 +24,7 @@ export default function Contacto() {
       <section className="pb-24">
         <div className="container-page grid lg:grid-cols-[1fr_1.4fr] gap-12">
           <div>
-            <h2 className="font-display italic text-2xl md:text-3xl mb-4">
+            <h2 className="font-display italic text-3xl md:text-5xl mb-4">
               SOMOS EL GRUPO PERFECTO PARA TU EVENTO
             </h2>
             <p className="text-sm text-muted-foreground mb-8">
