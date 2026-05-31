@@ -16,14 +16,9 @@ export const Route = createFileRoute("/contacto")({
 export default function Contacto() {
   return (
     <PageShell backgroundImage={bgContacto}>
-      <section className="relative pt-32 pb-16">
-        <div className="container-page">
-          <h1 className="font-display italic text-6xl md:text-8xl text-glow-orange">CONTACTO</h1>
-          <p className="mt-4 text-primary text-xs uppercase tracking-[0.4em] font-semibold">
-            Contrataciones & Prensa
-          </p>
-        </div>
-      </section>
+      <PageHero title="CONTACTO" eyebrow="Contrataciones & Prensa" />
+
+
 
 
       <section className="pb-24">
