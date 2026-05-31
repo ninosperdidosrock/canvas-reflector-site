@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageShell } from "@/components/page-shell";
+import { PageShell, PageHero } from "@/components/page-shell";
 import { Mail, Phone, Instagram, Send } from "lucide-react";
 import bgContacto from "@/assets/bg-contacto.png";
 
@@ -16,20 +16,15 @@ export const Route = createFileRoute("/contacto")({
 export default function Contacto() {
   return (
     <PageShell backgroundImage={bgContacto}>
-      <section className="relative pt-32 pb-16">
-        <div className="container-page">
-          <h1 className="font-display italic text-6xl md:text-8xl text-glow-orange">CONTACTO</h1>
-          <p className="mt-4 text-primary text-xs uppercase tracking-[0.4em] font-semibold">
-            Contrataciones & Prensa
-          </p>
-        </div>
-      </section>
+      <PageHero title="CONTACTO" eyebrow="Contrataciones & Prensa" />
+
+
 
 
       <section className="pb-24">
         <div className="container-page grid lg:grid-cols-[1fr_1.4fr] gap-12">
           <div>
-            <h2 className="font-display italic text-2xl md:text-3xl mb-4">
+            <h2 className="font-display italic text-3xl md:text-5xl mb-4">
               SOMOS EL GRUPO PERFECTO PARA TU EVENTO
             </h2>
             <p className="text-sm text-muted-foreground mb-8">

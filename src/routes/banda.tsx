@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/page-shell";
 import gaiaImg from "@/assets/banda-gaia.jpg";
 import rickImg from "@/assets/banda-rick.jpg";
@@ -18,11 +18,11 @@ export const Route = createFileRoute("/banda")({
 });
 
 const members = [
-  { name: "Gaia Bravo", role: "Voz principal", img: gaiaImg },
+  { name: "Gaia Bravo \"Gato\"", role: "Voz principal", img: gaiaImg },
   { name: "Ricardo Galán \"Rick\"", role: "Guitarra rítmica y voz", img: rickImg },
-  { name: "Manu Alejo", role: "Batería", img: manuImg },
+  { name: "Héctor Alonso \"Mike\"", role: "Guitarra principal", img: hectorImg },
   { name: "Javier Ridruejo \"Ridru\"", role: "Bajo", img: ridruImg },
-  { name: "Héctor Alonso", role: "Guitarra principal", img: hectorImg },
+  { name: "Manuel Alejo \"Manu\"", role: "Batería", img: manuImg },
 ];
 
 export default function Banda() {
@@ -51,12 +51,12 @@ export default function Banda() {
             Disney · Animación · Nostalgia · Rock para toda la familia
           </p>
           <div className="mt-8">
-            <a
-              href="#ninos-perdidos"
+            <Link
+              to="/contacto"
               className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-7 py-3 text-sm uppercase tracking-[0.2em] font-semibold"
             >
               Contrátanos para tu evento →
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -64,30 +64,38 @@ export default function Banda() {
       <section id="ninos-perdidos" className="py-16">
         <div className="container-page">
           <p className="text-primary text-xs uppercase tracking-[0.3em] font-semibold mb-2">La banda</p>
-          <h2 className="font-display italic text-4xl md:text-6xl mb-12">NIÑOS PERDIDOS</h2>
+          <h2 className="font-display italic text-3xl md:text-5xl mb-12">NIÑOS PERDIDOS</h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {members.map((m) => (
-              <article
-                key={m.name}
-                className="relative aspect-[3/4] bg-card border border-border overflow-hidden group"
-              >
-                <img
-                  src={m.img}
-                  alt={m.name}
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/85" />
-                <div className="absolute inset-x-0 bottom-0 p-5">
-                  <p className="text-primary text-[10px] uppercase tracking-[0.3em] font-semibold">{m.role}</p>
-                  <p className="font-display italic text-xl text-foreground">{m.name}</p>
-                </div>
-              </article>
+            {members.slice(0, 3).map((m) => (
+              <MemberCard key={m.name} member={m} />
+            ))}
+          </div>
+          <div className="grid sm:grid-cols-2 gap-6 mt-6 md:max-w-[66%] md:mx-auto">
+            {members.slice(3).map((m) => (
+              <MemberCard key={m.name} member={m} />
             ))}
           </div>
         </div>
       </section>
     </PageShell>
+  );
+}
+
+function MemberCard({ member }: { member: { name: string; role: string; img: string } }) {
+  return (
+    <article className="relative aspect-[3/4] bg-card border border-border overflow-hidden group">
+      <img
+        src={member.img}
+        alt={member.name}
+        className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+        loading="lazy"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/85" />
+      <div className="absolute inset-x-0 bottom-0 p-5">
+        <p className="text-primary text-xs md:text-sm uppercase tracking-[0.3em] font-semibold">{member.role}</p>
+        <p className="font-display italic text-2xl md:text-3xl text-foreground">{member.name}</p>
+      </div>
+    </article>
   );
 }
 

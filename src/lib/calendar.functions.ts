@@ -9,15 +9,24 @@ export type GigEvent = {
   summary: string;
   location?: string;
   isAllDay: boolean;
+  ticketUrl?: string;
+  description?: string;
 };
 
 type RawEvent = {
   id: string;
   summary?: string;
   location?: string;
+  description?: string;
   start?: { dateTime?: string; date?: string };
   end?: { dateTime?: string; date?: string };
 };
+
+function extractUrl(text?: string): string | undefined {
+  if (!text) return undefined;
+  const match = text.match(/https?:\/\/[^\s<>"']+/i);
+  return match?.[0];
+}
 
 async function fetchEvents(params: URLSearchParams): Promise<GigEvent[]> {
   const LOVABLE_API_KEY = process.env.LOVABLE_API_KEY;
@@ -45,12 +54,15 @@ async function fetchEvents(params: URLSearchParams): Promise<GigEvent[]> {
       id: e.id,
       summary: e.summary ?? "(sin título)",
       location: e.location,
+      description: e.description,
+      ticketUrl: extractUrl(e.description),
       start: (e.start?.dateTime ?? e.start?.date) as string,
       end: e.end?.dateTime ?? e.end?.date,
       isAllDay,
     };
   });
 }
+
 
 export const getTourEvents = createServerFn({ method: "GET" }).handler(async () => {
   const now = new Date();

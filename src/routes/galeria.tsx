@@ -51,7 +51,7 @@ export default function Galeria() {
               <p className="text-primary text-xs uppercase tracking-[0.3em] font-semibold mb-2 inline-flex items-center gap-2">
                 <Youtube className="h-4 w-4" /> En directo desde YouTube
               </p>
-              <h2 className="font-display italic text-4xl md:text-5xl">ÚLTIMOS VÍDEOS</h2>
+              <h2 className="font-display italic text-3xl md:text-5xl">ÚLTIMOS VÍDEOS</h2>
             </div>
             {data?.channelUrl && (
               <a
