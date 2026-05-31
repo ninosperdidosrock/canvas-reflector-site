@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/page-shell";
 import gaiaImg from "@/assets/banda-gaia.jpg";
 import rickImg from "@/assets/banda-rick.jpg";
