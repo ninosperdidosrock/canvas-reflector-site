@@ -5,7 +5,7 @@ import rickImg from "@/assets/banda-rick.jpg";
 import manuImg from "@/assets/banda-manu.jpg";
 import ridruImg from "@/assets/banda-ridru.jpg";
 import hectorImg from "@/assets/banda-hector.jpg";
-import bgBanda from "@/assets/bg-banda.png";
+import bgBanda from "@/assets/bg-contacto.png";
 
 export const Route = createFileRoute("/banda")({
   head: () => ({
