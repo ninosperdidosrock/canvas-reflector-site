@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, PageHero } from "@/components/page-shell";
 import bgSetlist from "@/assets/bg-setlist.png";
+import carteAsset from "@/assets/se-busca-garfio.jpg.asset.json";
 
 export const Route = createFileRoute("/setlist")({
   head: () => ({
@@ -40,17 +41,12 @@ export default function Setlist() {
             </ul>
           </div>
 
-          <aside className="border border-primary/40 p-8 bg-card/40 backdrop-blur">
-            <p className="text-primary text-xs uppercase tracking-[0.3em] font-semibold mb-2">SE BUSCA</p>
-            <h3 className="font-display italic text-3xl mb-4">NIÑOS PERDIDOS DEL ROCK</h3>
-            <p className="text-sm text-muted-foreground mb-6">
-              Por delitos de excelencia rockera, robo de corazones, y hacer
-              rugir las canciones de Disney con más actitud de la permitida.
-            </p>
-            <p className="text-primary text-xs uppercase tracking-[0.3em] font-semibold mb-2">RECOMPENSA</p>
-            <p className="text-sm text-muted-foreground">
-              Únete a nuestro Peterpanístamente al cuadrado.
-            </p>
+          <aside className="flex justify-center">
+            <img
+              src={carteAsset.url}
+              alt="Cartel Se busca: Capitán Garfio"
+              className="w-full max-w-md h-auto shadow-2xl"
+            />
           </aside>
         </div>
       </section>
