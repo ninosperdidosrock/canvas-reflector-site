@@ -3,7 +3,8 @@ import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { PageShell } from "@/components/page-shell";
 import { Sparkles, Send, Loader2 } from "lucide-react";
-import bgMagia from "@/assets/bg-magia.png";
+import bgMagiaAsset from "@/assets/bg-magia.png.asset.json";
+const bgMagia = bgMagiaAsset.url;
 import {
   bautizarNinoPerdido,
   consultarOraculo,
