@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, PageHero } from "@/components/page-shell";
 import bgSetlist from "@/assets/bg-setlist.png";
+import carteAsset from "@/assets/se-busca-garfio.jpg.asset.json";
 
 export const Route = createFileRoute("/setlist")({
   head: () => ({
