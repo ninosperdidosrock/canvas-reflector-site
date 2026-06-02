@@ -23,11 +23,6 @@ export const Route = createFileRoute("/setlist")({
   component: Setlist,
 });
 
-const songs = [
-  "El Rey León", "Frozen", "Mulán", "Blancanieves", "Toy Story",
-  "Aladdín", "La Sirenita", "Hércules", "Tarzán", "Mulán",
-  "…y mucho más",
-];
 
 const symbols = [
   { label: "El Rey León", url: iconReyLeon.url },
