@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { PageShell, PageHero } from "@/components/page-shell";
-import { MapPin } from "lucide-react";
+import { MapPin, Ticket } from "lucide-react";
 import bgGira from "@/assets/bg-gira.png";
 import { getTourEvents, type GigEvent } from "@/lib/calendar.functions";
 
@@ -63,35 +63,54 @@ function Gira() {
             <p className="text-sm text-muted-foreground italic">No hay fechas próximas anunciadas.</p>
           ) : (
             <div className="border border-border bg-card/40 backdrop-blur divide-y divide-border">
-              {upcoming.map((u: GigEvent) => (
-                <div key={u.id} className="grid grid-cols-1 md:grid-cols-[140px_1fr_auto] gap-4 md:gap-6 items-start md:items-center p-5">
-                  <p className="text-primary text-xs uppercase tracking-[0.2em] font-semibold">
-                    {formatDate(u.start)}
-                  </p>
-                  <div className="min-w-0">
-                    <p className="font-display italic text-xl text-foreground">{u.summary}</p>
-                    {u.location && (
-                      <p className="mt-1 flex items-start gap-2 text-sm text-muted-foreground">
-                        <MapPin className="h-3.5 w-3.5 text-primary shrink-0 mt-0.5" />
-                        <span>{u.location}</span>
-                      </p>
+              {upcoming.map((u: GigEvent) => {
+                const mapsUrl = u.location
+                  ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(u.location)}`
+                  : undefined;
+                return (
+                  <div
+                    key={u.id}
+                    className="grid grid-cols-1 md:grid-cols-[140px_1fr_auto_auto_auto] gap-4 md:gap-6 items-start md:items-center p-5"
+                  >
+                    <p className="text-primary text-xs uppercase tracking-[0.2em] font-semibold">
+                      {formatDate(u.start)}
+                    </p>
+                    <p className="font-display italic text-xl text-foreground min-w-0 truncate">
+                      {u.summary}
+                    </p>
+                    {mapsUrl ? (
+                      <a
+                        href={mapsUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        title={u.location}
+                        aria-label={`Ver ubicación: ${u.location}`}
+                        className="inline-flex items-center justify-center h-9 w-9 border border-border text-primary hover:bg-primary hover:text-primary-foreground transition"
+                      >
+                        <MapPin className="h-4 w-4" />
+                      </a>
+                    ) : (
+                      <span className="h-9 w-9" />
                     )}
-                  </div>
-                  <div className="flex items-center gap-4 md:justify-end">
-                    <p className="text-sm tabular-nums text-foreground/80">{formatTime(u.start, u.isAllDay)}</p>
-                    {u.ticketUrl && (
+                    {u.ticketUrl ? (
                       <a
                         href={u.ticketUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 text-[11px] uppercase tracking-[0.2em] font-semibold hover:brightness-110 transition"
+                        aria-label="Comprar entradas"
+                        className="inline-flex items-center justify-center h-9 w-9 border border-border text-primary hover:bg-primary hover:text-primary-foreground transition"
                       >
-                        Entradas →
+                        <Ticket className="h-4 w-4" />
                       </a>
+                    ) : (
+                      <span className="h-9 w-9" />
                     )}
+                    <p className="text-sm tabular-nums text-foreground/80 md:text-right">
+                      {formatTime(u.start, u.isAllDay)}
+                    </p>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
 
