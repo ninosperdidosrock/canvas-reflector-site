@@ -27,15 +27,15 @@ export function SiteHeader() {
   ];
   return (
     <header className="absolute top-0 left-0 right-0 z-30">
-      <div className="container-page flex items-center justify-between py-7">
+      <div className="container-page flex items-center py-7">
         <Link to="/" className="flex items-center gap-3">
           <img
             src={logoText}
             alt="Niños Perdidos"
-            className="h-10 md:h-12 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
+            className="h-14 md:h-16 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
           />
         </Link>
-        <nav className="hidden md:flex items-center gap-9">
+        <nav className="hidden md:flex items-center gap-9 ml-auto">
           {nav.map((n) => (
             <Link
               key={n.to}
@@ -50,6 +50,7 @@ export function SiteHeader() {
         </nav>
       </div>
     </header>
+
   );
 }
 
