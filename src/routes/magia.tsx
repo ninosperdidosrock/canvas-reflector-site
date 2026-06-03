@@ -65,16 +65,8 @@ export default function Magia() {
 
   return (
     <PageShell backgroundImage={bgMagia}>
-      <section className="relative pt-32 pb-20">
-        <div className="container-page">
-          <h1 className="font-display italic text-5xl md:text-7xl leading-[0.95] max-w-3xl text-glow-orange">
-            LA MAGIA DE<br />NUNCA JAMÁS
-          </h1>
-          <p className="mt-4 text-primary text-xs uppercase tracking-[0.4em] font-semibold">
-            Inteligencia Artificial
-          </p>
-        </div>
-      </section>
+      <PageHero title="LA MAGIA" eyebrow="Inteligencia Artificial" />
+
 
       <section className="pb-16">
         <div className="container-page max-w-2xl text-center">
