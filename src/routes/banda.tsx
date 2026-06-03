@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { PageShell } from "@/components/page-shell";
+import { PageShell, PageHero } from "@/components/page-shell";
 import gaiaImg from "@/assets/banda-gaia.jpg";
 import rickImg from "@/assets/banda-rick.jpg";
 import manuImg from "@/assets/banda-manu.jpg";
@@ -19,11 +19,12 @@ export const Route = createFileRoute("/banda")({
 
 const members = [
   { name: "Gaia Bravo \"Gato\"", role: "Voz principal", img: gaiaImg },
+  { name: "Manuel Alejo \"Manu\"", role: "Batería", img: manuImg },
+  { name: "Javier Ridruejo \"Ridru\"", role: "Bajo", img: ridruImg },
   { name: "Ricardo Galán \"Rick\"", role: "Guitarra rítmica y voz", img: rickImg },
   { name: "Héctor Alonso \"Mike\"", role: "Guitarra principal", img: hectorImg },
-  { name: "Javier Ridruejo \"Ridru\"", role: "Bajo", img: ridruImg },
-  { name: "Manuel Alejo \"Manu\"", role: "Batería", img: manuImg },
 ];
+
 
 export default function Banda() {
   return (
