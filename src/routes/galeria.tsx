@@ -5,6 +5,14 @@ import { PageShell, PageHero } from "@/components/page-shell";
 import { Youtube, Loader2 } from "lucide-react";
 import bgGaleria from "@/assets/bg-galeria.png";
 import { getYoutubeVideos } from "@/lib/youtube.functions";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+
 
 export const Route = createFileRoute("/galeria")({
   head: () => ({
