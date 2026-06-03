@@ -54,23 +54,10 @@ export default function Galeria() {
 
       <section className="pb-24">
         <div className="container-page">
-          <div className="flex items-end justify-between flex-wrap gap-4 mb-8">
-            <div>
-              <p className="text-primary text-xs uppercase tracking-[0.3em] font-semibold mb-2 inline-flex items-center gap-2">
-                <Youtube className="h-4 w-4" /> En directo desde YouTube
-              </p>
-              <h2 className="font-display italic text-3xl md:text-5xl">ÚLTIMOS VÍDEOS</h2>
-            </div>
-            {data?.channelUrl && (
-              <a
-                href={data.channelUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 border border-primary text-primary px-5 py-2.5 text-xs uppercase tracking-[0.3em] font-semibold hover:bg-primary hover:text-primary-foreground transition"
-              >
-                Ver canal →
-              </a>
-            )}
+          <div className="mb-10">
+            <p className="text-primary text-xs uppercase tracking-[0.3em] font-semibold mb-2 inline-flex items-center gap-2">
+              <Youtube className="h-4 w-4" /> En directo desde YouTube
+            </p>
           </div>
 
           {isLoading ? (
@@ -80,28 +67,79 @@ export default function Galeria() {
               No se han podido cargar los vídeos: {data.error}.
             </p>
           ) : data && data.videos.length > 0 ? (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {data.videos.map((v) => (
-                <article key={v.id} className="border border-border bg-card/40 backdrop-blur overflow-hidden group">
-                  <div className="relative aspect-video">
-                    <iframe
-                      src={`https://www.youtube.com/embed/${v.id}`}
-                      title={v.title}
-                      loading="lazy"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      className="absolute inset-0 w-full h-full"
-                    />
-                  </div>
-                  <div className="p-4">
-                    <p className="text-[10px] text-primary uppercase tracking-[0.3em] font-semibold">
-                      {new Date(v.publishedAt).toLocaleDateString("es-ES", { year: "numeric", month: "long", day: "numeric" })}
-                    </p>
-                    <p className="mt-1 font-display italic text-base text-foreground line-clamp-2">{v.title}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
+            (() => {
+              const aftermovie =
+                data.videos.find((v) => /aftermovie/i.test(v.title)) ?? data.videos[0];
+              const rest = data.videos.filter((v) => v.id !== aftermovie.id);
+              return (
+                <>
+                  <article className="border border-border bg-card/40 backdrop-blur overflow-hidden mb-16">
+                    <div className="relative aspect-video">
+                      <iframe
+                        src={`https://www.youtube.com/embed/${aftermovie.id}`}
+                        title={aftermovie.title}
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        className="absolute inset-0 w-full h-full"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <p className="text-[10px] text-primary uppercase tracking-[0.3em] font-semibold">
+                        Aftermovie · {new Date(aftermovie.publishedAt).toLocaleDateString("es-ES", { year: "numeric", month: "long", day: "numeric" })}
+                      </p>
+                      <p className="mt-2 font-display italic text-2xl md:text-3xl text-foreground">{aftermovie.title}</p>
+                    </div>
+                  </article>
+
+                  {rest.length > 0 && (
+                    <div>
+                      <div className="flex items-end justify-between flex-wrap gap-4 mb-6">
+                        <h2 className="font-display italic text-3xl md:text-5xl">ÚLTIMOS VÍDEOS</h2>
+                        {data.channelUrl && (
+                          <a
+                            href={data.channelUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-2 border border-primary text-primary px-5 py-2.5 text-xs uppercase tracking-[0.3em] font-semibold hover:bg-primary hover:text-primary-foreground transition"
+                          >
+                            Ver canal →
+                          </a>
+                        )}
+                      </div>
+                      <Carousel opts={{ align: "start" }} className="w-full">
+                        <CarouselContent className="-ml-4">
+                          {rest.map((v) => (
+                            <CarouselItem key={v.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                              <article className="border border-border bg-card/40 backdrop-blur overflow-hidden h-full">
+                                <div className="relative aspect-video">
+                                  <iframe
+                                    src={`https://www.youtube.com/embed/${v.id}`}
+                                    title={v.title}
+                                    loading="lazy"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                    className="absolute inset-0 w-full h-full"
+                                  />
+                                </div>
+                                <div className="p-4">
+                                  <p className="text-[10px] text-primary uppercase tracking-[0.3em] font-semibold">
+                                    {new Date(v.publishedAt).toLocaleDateString("es-ES", { year: "numeric", month: "long", day: "numeric" })}
+                                  </p>
+                                  <p className="mt-1 font-display italic text-base text-foreground line-clamp-2">{v.title}</p>
+                                </div>
+                              </article>
+                            </CarouselItem>
+                          ))}
+                        </CarouselContent>
+                        <CarouselPrevious />
+                        <CarouselNext />
+                      </Carousel>
+                    </div>
+                  )}
+                </>
+              );
+            })()
           ) : (
             <p className="text-sm text-muted-foreground">Aún no hay vídeos publicados.</p>
           )}
@@ -110,3 +148,4 @@ export default function Galeria() {
     </PageShell>
   );
 }
+
