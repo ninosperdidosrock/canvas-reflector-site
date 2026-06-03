@@ -29,7 +29,8 @@ const members = [
 export default function Banda() {
   return (
     <PageShell backgroundImage={bgBanda}>
-      <section className="relative pt-32 pb-16">
+      <PageHero title="LA BANDA" eyebrow="Disney · Animación · Nostalgia · Rock" />
+      <section className="pb-16">
         <div className="container-page max-w-3xl text-center">
           <p className="font-display italic text-xl md:text-2xl text-foreground leading-relaxed">
             "Esas canciones que conoce todo el mundo, las que han marcado infancias."
@@ -48,9 +49,6 @@ export default function Banda() {
               Porque el rock también se hereda, y hay melodías que todos llevamos dentro.
             </p>
           </div>
-          <p className="mt-6 text-primary text-xs uppercase tracking-[0.3em] font-sans font-semibold">
-            Disney · Animación · Nostalgia · Rock para toda la familia
-          </p>
           <div className="mt-8">
             <Link
               to="/contacto"
@@ -61,6 +59,7 @@ export default function Banda() {
           </div>
         </div>
       </section>
+
 
       <section id="ninos-perdidos" className="py-16">
         <div className="container-page">
