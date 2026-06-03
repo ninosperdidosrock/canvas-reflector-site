@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { PageShell } from "@/components/page-shell";
+import { PageShell, PageHero } from "@/components/page-shell";
 import gaiaImg from "@/assets/banda-gaia.jpg";
 import rickImg from "@/assets/banda-rick.jpg";
 import manuImg from "@/assets/banda-manu.jpg";
@@ -19,16 +19,18 @@ export const Route = createFileRoute("/banda")({
 
 const members = [
   { name: "Gaia Bravo \"Gato\"", role: "Voz principal", img: gaiaImg },
+  { name: "Manuel Alejo \"Manu\"", role: "Batería", img: manuImg },
+  { name: "Javier Ridruejo \"Ridru\"", role: "Bajo", img: ridruImg },
   { name: "Ricardo Galán \"Rick\"", role: "Guitarra rítmica y voz", img: rickImg },
   { name: "Héctor Alonso \"Mike\"", role: "Guitarra principal", img: hectorImg },
-  { name: "Javier Ridruejo \"Ridru\"", role: "Bajo", img: ridruImg },
-  { name: "Manuel Alejo \"Manu\"", role: "Batería", img: manuImg },
 ];
+
 
 export default function Banda() {
   return (
     <PageShell backgroundImage={bgBanda}>
-      <section className="relative pt-32 pb-16">
+      <PageHero title="LA BANDA" eyebrow="Disney · Animación · Nostalgia · Rock" />
+      <section className="pb-16">
         <div className="container-page max-w-3xl text-center">
           <p className="font-display italic text-xl md:text-2xl text-foreground leading-relaxed">
             "Esas canciones que conoce todo el mundo, las que han marcado infancias."
@@ -47,9 +49,6 @@ export default function Banda() {
               Porque el rock también se hereda, y hay melodías que todos llevamos dentro.
             </p>
           </div>
-          <p className="mt-6 text-primary text-xs uppercase tracking-[0.3em] font-sans font-semibold">
-            Disney · Animación · Nostalgia · Rock para toda la familia
-          </p>
           <div className="mt-8">
             <Link
               to="/contacto"
@@ -60,6 +59,7 @@ export default function Banda() {
           </div>
         </div>
       </section>
+
 
       <section id="ninos-perdidos" className="py-16">
         <div className="container-page">

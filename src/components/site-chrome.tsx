@@ -27,15 +27,15 @@ export function SiteHeader() {
   ];
   return (
     <header className="absolute top-0 left-0 right-0 z-30">
-      <div className="container-page flex items-center justify-between py-7">
+      <div className="container-page flex items-center py-7">
         <Link to="/" className="flex items-center gap-3">
           <img
             src={logoText}
             alt="Niños Perdidos"
-            className="h-10 md:h-12 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
+            className="h-14 md:h-16 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
           />
         </Link>
-        <nav className="hidden md:flex items-center gap-9">
+        <nav className="hidden md:flex items-center gap-9 ml-auto">
           {nav.map((n) => (
             <Link
               key={n.to}
@@ -50,6 +50,7 @@ export function SiteHeader() {
         </nav>
       </div>
     </header>
+
   );
 }
 
@@ -59,17 +60,18 @@ export function SiteFooter() {
       <div className="container-page py-14 grid gap-10 md:grid-cols-3">
         <div>
           <div className="flex items-center gap-3 mb-4">
-            <img src={logoText} alt="Niños Perdidos" className="h-8 object-contain" />
+            <img src={logoText} alt="Niños Perdidos" className="h-12 object-contain" />
           </div>
           <p className="text-sm text-muted-foreground max-w-xs">
             Disney · Animación · Nostalgia · Rock. La banda madrileña que
             convierte las canciones de tu infancia en himnos del rock ⚡
           </p>
           <div className="flex gap-3 mt-5 text-muted-foreground">
-            <a href="#" aria-label="Instagram" className="hover:text-primary transition-colors"><Instagram className="h-4 w-4" /></a>
-            <a href="#" aria-label="YouTube" className="hover:text-primary transition-colors"><Youtube className="h-4 w-4" /></a>
-            <a href="#" aria-label="TikTok" className="hover:text-primary transition-colors"><TikTokIcon className="h-4 w-4" /></a>
+            <a href="https://www.instagram.com/ninosperdidosband" target="_blank" rel="noreferrer" aria-label="Instagram" className="hover:text-primary transition-colors"><Instagram className="h-4 w-4" /></a>
+            <a href="https://www.youtube.com/@ninosperdidosband" target="_blank" rel="noreferrer" aria-label="YouTube" className="hover:text-primary transition-colors"><Youtube className="h-4 w-4" /></a>
+            <a href="https://www.tiktok.com/@ninosperdidosband" target="_blank" rel="noreferrer" aria-label="TikTok" className="hover:text-primary transition-colors"><TikTokIcon className="h-4 w-4" /></a>
           </div>
+
         </div>
 
         <div>
