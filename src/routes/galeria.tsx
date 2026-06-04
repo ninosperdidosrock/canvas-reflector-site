@@ -5,6 +5,14 @@ import { PageShell, PageHero } from "@/components/page-shell";
 import { Youtube, Loader2 } from "lucide-react";
 import bgGaleria from "@/assets/bg-galeria.png";
 import { getYoutubeVideos } from "@/lib/youtube.functions";
+import bandaCompleta from "@/assets/galeria/banda-completa.jpg.asset.json";
+import conPublico from "@/assets/galeria/con-publico.jpg.asset.json";
+import manuDirecto from "@/assets/galeria/manu-directo.jpg.asset.json";
+import ridruDirecto from "@/assets/galeria/ridru-directo.jpg.asset.json";
+import hectorDirecto from "@/assets/galeria/hector-directo.jpg.asset.json";
+import gaiaDirecto from "@/assets/galeria/gaia-directo.jpg.asset.json";
+import rickDirecto from "@/assets/galeria/rick-directo.jpg.asset.json";
+import gaiaManuDirecto from "@/assets/galeria/gaia-manu-directo.jpg.asset.json";
 import {
   Carousel,
   CarouselContent,
