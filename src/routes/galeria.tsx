@@ -5,6 +5,14 @@ import { PageShell, PageHero } from "@/components/page-shell";
 import { Youtube, Loader2 } from "lucide-react";
 import bgGaleria from "@/assets/bg-galeria.png";
 import { getYoutubeVideos } from "@/lib/youtube.functions";
+import bandaCompleta from "@/assets/galeria/banda-completa.jpg.asset.json";
+import conPublico from "@/assets/galeria/con-publico.jpg.asset.json";
+import manuDirecto from "@/assets/galeria/manu-directo.jpg.asset.json";
+import ridruDirecto from "@/assets/galeria/ridru-directo.jpg.asset.json";
+import hectorDirecto from "@/assets/galeria/hector-directo.jpg.asset.json";
+import gaiaDirecto from "@/assets/galeria/gaia-directo.jpg.asset.json";
+import rickDirecto from "@/assets/galeria/rick-directo.jpg.asset.json";
+import gaiaManuDirecto from "@/assets/galeria/gaia-manu-directo.jpg.asset.json";
 import {
   Carousel,
   CarouselContent,
@@ -25,7 +33,6 @@ export const Route = createFileRoute("/galeria")({
 });
 
 export default function Galeria() {
-  const tiles = Array.from({ length: 8 });
   const fetchVideos = useServerFn(getYoutubeVideos);
   const { data, isLoading } = useQuery({
     queryKey: ["yt-videos"],
@@ -34,23 +41,79 @@ export default function Galeria() {
     refetchInterval: 10 * 60_000,
   });
 
+  const photos = [
+    {
+      src: bandaCompleta.url,
+      alt: "Niños Perdidos al completo sobre el escenario",
+      className: "md:col-span-8 md:row-span-2 aspect-[16/9] md:aspect-auto md:min-h-[420px]",
+      position: "object-center",
+    },
+    {
+      src: manuDirecto.url,
+      alt: "Manu cantando y tocando la guitarra en directo",
+      className: "md:col-span-4 md:row-span-2 aspect-[3/4] md:aspect-auto md:min-h-[420px]",
+      position: "object-top",
+    },
+    {
+      src: ridruDirecto.url,
+      alt: "Ridru tocando la guitarra en directo",
+      className: "md:col-span-3 aspect-[3/4]",
+      position: "object-top",
+    },
+    {
+      src: hectorDirecto.url,
+      alt: "Héctor cantando al bajo en directo",
+      className: "md:col-span-3 aspect-[3/4]",
+      position: "object-top",
+    },
+    {
+      src: gaiaDirecto.url,
+      alt: "Gaia cantando en directo",
+      className: "md:col-span-2 aspect-[3/4]",
+      position: "object-top",
+    },
+    {
+      src: rickDirecto.url,
+      alt: "Rick tocando la batería entre haces de luz",
+      className: "md:col-span-4 aspect-[4/5]",
+      position: "object-center",
+    },
+    {
+      src: gaiaManuDirecto.url,
+      alt: "Gaia y Manu cantando juntos en directo",
+      className: "md:col-span-3 aspect-[3/4]",
+      position: "object-top",
+    },
+    {
+      src: conPublico.url,
+      alt: "Niños Perdidos con el público al final del concierto",
+      className: "md:col-span-5 aspect-[16/10]",
+      position: "object-center",
+    },
+  ];
+
   return (
     <PageShell backgroundImage={bgGaleria}>
       <PageHero title="GALERÍA" eyebrow="Momentos del escenario" />
       <section className="pb-16">
-        <div className="container-page grid grid-cols-2 md:grid-cols-4 gap-3">
-          {tiles.map((_, i) => (
-            <div
+        <div className="container-page grid grid-cols-2 md:grid-cols-12 auto-rows-auto gap-3">
+          {photos.map((p, i) => (
+            <figure
               key={i}
-              className={`relative bg-card border border-border overflow-hidden ${
-                i % 5 === 0 ? "row-span-2 aspect-[3/4]" : "aspect-square"
-              }`}
+              className={`group relative bg-card border border-border overflow-hidden ${p.className}`}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-muted via-card to-surface" />
-            </div>
+              <img
+                src={p.src}
+                alt={p.alt}
+                loading="lazy"
+                className={`absolute inset-0 w-full h-full object-cover ${p.position} transition-transform duration-700 group-hover:scale-[1.04]`}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity" />
+            </figure>
           ))}
         </div>
       </section>
+
 
       <section className="pb-24">
         <div className="container-page">
