@@ -49,8 +49,8 @@ export default function Galeria() {
       position: "object-center",
     },
     {
-      src: manuDirecto.url,
-      alt: "Manu cantando y tocando la guitarra en directo",
+      src: gaiaDirecto.url,
+      alt: "Gaia cantando en directo",
       className: "md:col-span-4 md:row-span-2 aspect-[3/4] md:aspect-auto md:min-h-[420px]",
       position: "object-top",
     },
@@ -67,8 +67,8 @@ export default function Galeria() {
       position: "object-top",
     },
     {
-      src: gaiaDirecto.url,
-      alt: "Gaia cantando en directo",
+      src: manuDirecto.url,
+      alt: "Manu cantando y tocando la guitarra en directo",
       className: "md:col-span-2 aspect-[3/4]",
       position: "object-top",
     },
