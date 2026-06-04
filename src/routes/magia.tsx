@@ -65,7 +65,7 @@ export default function Magia() {
 
   return (
     <PageShell backgroundImage={bgMagia}>
-      <PageHero title="LA MAGIA" eyebrow="Inteligencia Artificial" />
+      <PageHero title="LA MAGIA" />
 
 
       <section className="pb-16">
