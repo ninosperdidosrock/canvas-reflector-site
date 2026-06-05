@@ -76,8 +76,7 @@ export default function Setlist() {
 
             <p className="mt-12 max-w-2xl text-base text-muted-foreground leading-relaxed">
               Cogemos los temas que crecieron con nosotros y los convertimos en
-              el disco de rock más enérgico y rebelde que has escuchado. Nunca
-              Jamás es el rock de los niños perdidos de Nunca Jamás.
+              el disco de rock más enérgico y rebelde que has escuchado.
             </p>
           </div>
 
