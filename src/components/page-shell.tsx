@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { SiteHeader, SiteFooter } from "./site-chrome";
+import { WhatsAppFab } from "./whatsapp-fab";
 import logoIso from "@/assets/logo-iso.png";
 
 export function PageShell({
@@ -27,6 +28,7 @@ export function PageShell({
         <main className="flex-1 relative">{children}</main>
         <SiteFooter />
       </div>
+      <WhatsAppFab />
     </div>
   );
 }
