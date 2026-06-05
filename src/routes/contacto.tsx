@@ -1,11 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { useServerFn } from "@tanstack/react-start";
-import { toast } from "sonner";
 import { PageShell, PageHero } from "@/components/page-shell";
-import { Mail, Instagram, Youtube, Send, Loader2 } from "lucide-react";
+import { Mail, Instagram, Youtube } from "lucide-react";
 import bgContacto from "@/assets/bg-banda.png";
-import { submitContactMessage } from "@/lib/contact.functions";
 
 export const Route = createFileRoute("/contacto")({
   head: () => ({
@@ -18,6 +14,8 @@ export const Route = createFileRoute("/contacto")({
 });
 
 const CONTACT_EMAIL = "contacto@niñosperdidos.es";
+const WHATSAPP_NUMBER = "34677760670";
+const WHATSAPP_MESSAGE = "¡Hola Niños Perdidos! Me gustaría hablar con vosotros sobre un evento.";
 
 function TikTokIcon({ className }: { className?: string }) {
   return (
@@ -49,37 +47,7 @@ const SOCIALS = [
 ];
 
 export default function Contacto() {
-  const send = useServerFn(submitContactMessage);
-  const [submitting, setSubmitting] = useState(false);
-
-  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const fd = new FormData(form);
-    const payload = {
-      name: String(fd.get("name") ?? ""),
-      email: String(fd.get("email") ?? ""),
-      phone: String(fd.get("phone") ?? ""),
-      eventType: String(fd.get("eventType") ?? ""),
-      message: String(fd.get("message") ?? ""),
-    };
-
-    if (!payload.name.trim() || !payload.email.trim()) {
-      toast.error("Por favor rellena nombre y email.");
-      return;
-    }
-
-    setSubmitting(true);
-    try {
-      await send({ data: payload });
-      toast.success("¡Mensaje enviado! Te responderemos pronto.");
-      form.reset();
-    } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Error al enviar el mensaje.");
-    } finally {
-      setSubmitting(false);
-    }
-  };
+  const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
   return (
     <PageShell backgroundImage={bgContacto}>
@@ -155,52 +123,34 @@ export default function Contacto() {
             </div>
           </div>
 
-          <form onSubmit={onSubmit} className="border border-border bg-card/40 backdrop-blur p-6 md:p-8 space-y-5">
-            <div className="grid sm:grid-cols-2 gap-5">
-              <div>
-                <label className="text-primary text-[10px] uppercase tracking-[0.3em] font-semibold">Nombre *</label>
-                <input name="name" required maxLength={200} className="mt-2 w-full bg-input/40 border border-border px-3 py-2.5 text-sm focus:outline-none focus:border-primary" placeholder="Tu nombre" />
-              </div>
-              <div>
-                <label className="text-primary text-[10px] uppercase tracking-[0.3em] font-semibold">Email *</label>
-                <input name="email" type="email" required maxLength={320} className="mt-2 w-full bg-input/40 border border-border px-3 py-2.5 text-sm focus:outline-none focus:border-primary" placeholder="tu@email.com" />
-              </div>
-              <div>
-                <label className="text-primary text-[10px] uppercase tracking-[0.3em] font-semibold">Teléfono</label>
-                <input name="phone" maxLength={50} className="mt-2 w-full bg-input/40 border border-border px-3 py-2.5 text-sm focus:outline-none focus:border-primary" placeholder="+34 000 000 000" />
-              </div>
-              <div>
-                <label className="text-primary text-[10px] uppercase tracking-[0.3em] font-semibold">Tipo de evento</label>
-                <select name="eventType" defaultValue="" className="mt-2 w-full bg-input/40 border border-border px-3 py-2.5 text-sm focus:outline-none focus:border-primary">
-                  <option value="">Selecciona…</option>
-                  <option>Boda</option>
-                  <option>Fiestas patronales</option>
-                  <option>Festival</option>
-                  <option>Sala de conciertos</option>
-                  <option>Evento corporativo</option>
-                </select>
-              </div>
+          <a
+            href={waHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex flex-col items-center justify-center gap-6 border border-primary/30 bg-card/50 backdrop-blur p-8 md:p-12 text-center hover:border-primary hover:bg-card/70 transition-all"
+          >
+            <div className="flex items-center justify-center w-20 h-20 rounded-full bg-[#25D366]/20 ring-1 ring-[#25D366]/40">
+              <svg
+                viewBox="0 0 32 32"
+                fill="currentColor"
+                aria-hidden="true"
+                className="h-10 w-10 text-[#25D366]"
+              >
+                <path d="M16.003 3C9.374 3 4 8.373 4 15c0 2.385.696 4.604 1.895 6.475L4 29l7.7-1.864A11.94 11.94 0 0 0 16.003 27C22.632 27 28 21.627 28 15S22.632 3 16.003 3Zm0 21.799a9.81 9.81 0 0 1-4.992-1.365l-.358-.213-4.572 1.107 1.124-4.452-.234-.371A9.74 9.74 0 0 1 6.2 15c0-5.404 4.401-9.799 9.802-9.799S25.8 9.596 25.8 15s-4.398 9.799-9.797 9.799Zm5.376-7.34c-.294-.148-1.74-.86-2.01-.959-.27-.099-.467-.148-.664.149-.196.296-.762.96-.935 1.157-.172.197-.345.222-.639.074-.294-.148-1.243-.458-2.367-1.462-.875-.781-1.466-1.745-1.639-2.041-.172-.296-.018-.456.13-.604.133-.133.294-.345.442-.518.148-.172.197-.296.295-.493.099-.197.05-.37-.025-.518-.074-.148-.664-1.6-.91-2.193-.24-.576-.485-.498-.664-.508l-.566-.01c-.197 0-.518.074-.79.37-.27.296-1.034 1.01-1.034 2.462s1.059 2.855 1.207 3.052c.148.197 2.085 3.184 5.05 4.464.706.305 1.256.487 1.685.624.708.225 1.353.193 1.864.117.569-.085 1.74-.711 1.986-1.397.246-.686.246-1.273.172-1.397-.074-.124-.27-.197-.564-.345Z" />
+              </svg>
             </div>
             <div>
-              <label className="text-primary text-[10px] uppercase tracking-[0.3em] font-semibold">Mensaje</label>
-              <textarea name="message" rows={5} maxLength={5000} className="mt-2 w-full bg-input/40 border border-border px-3 py-2.5 text-sm focus:outline-none focus:border-primary resize-none" placeholder="Cuéntanos sobre tu evento, fecha, lugar…" />
+              <h3 className="font-display italic text-3xl md:text-4xl text-foreground leading-tight">
+                Hablemos de tu próximo gran evento
+              </h3>
+              <p className="mt-3 text-sm text-muted-foreground">
+                Respondemos a cualquier propuesta
+              </p>
             </div>
-            <button
-              type="submit"
-              disabled={submitting}
-              className="w-full inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground py-3 text-xs uppercase tracking-[0.3em] font-semibold hover:brightness-110 transition disabled:opacity-60 disabled:cursor-not-allowed"
-            >
-              {submitting ? (
-                <>
-                  <Loader2 className="h-4 w-4 animate-spin" /> Enviando…
-                </>
-              ) : (
-                <>
-                  <Send className="h-4 w-4" /> Enviar mensaje
-                </>
-              )}
-            </button>
-          </form>
+            <span className="inline-flex items-center gap-2 bg-[#25D366] text-white px-6 py-3 text-xs uppercase tracking-[0.3em] font-semibold hover:brightness-110 transition">
+              Escríbenos por WhatsApp
+            </span>
+          </a>
         </div>
       </section>
     </PageShell>
