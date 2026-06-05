@@ -1,11 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { useServerFn } from "@tanstack/react-start";
-import { toast } from "sonner";
 import { PageShell, PageHero } from "@/components/page-shell";
-import { Mail, Instagram, Youtube, Send, Loader2 } from "lucide-react";
+import { Mail, Instagram, Youtube, MessageCircle } from "lucide-react";
 import bgContacto from "@/assets/bg-banda.png";
-import { submitContactMessage } from "@/lib/contact.functions";
 
 export const Route = createFileRoute("/contacto")({
   head: () => ({
