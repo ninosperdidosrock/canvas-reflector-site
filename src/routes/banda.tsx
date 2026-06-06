@@ -35,7 +35,7 @@ export default function Banda() {
           <p className="font-display italic text-xl md:text-2xl text-foreground leading-relaxed">
             "Esas canciones que conoce todo el mundo, las que han marcado infancias."
           </p>
-          <div className="mt-8 space-y-4 text-muted-foreground text-sm leading-relaxed">
+          <div className="mt-8 space-y-4 text-muted-foreground text-base leading-relaxed">
             <p>
               Una banda madrileña que versiona al rock las canciones más míticas
               de Disney y de las grandes películas de animación de los años 90
