@@ -1,6 +1,14 @@
 import { Link } from "@tanstack/react-router";
+import { useQuery } from "@tanstack/react-query";
 import { Instagram, Youtube } from "lucide-react";
 import logoText from "@/assets/logo-text.png";
+import { tourQueryOptions } from "@/lib/tour-query";
+
+const MONTHS_FOOTER = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"];
+function formatGigDate(iso: string) {
+  const d = new Date(iso);
+  return `${String(d.getDate()).padStart(2, "0")} ${MONTHS_FOOTER[d.getMonth()]} ${d.getFullYear()}`;
+}
 
 function TikTokIcon({ className }: { className?: string }) {
   return (
