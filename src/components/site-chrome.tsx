@@ -63,6 +63,11 @@ export function SiteHeader() {
 }
 
 export function SiteFooter() {
+  const { data } = useQuery(tourQueryOptions);
+  const next = data?.upcoming?.[0];
+  const locationParts = next?.location?.split(",").map((s) => s.trim()).filter(Boolean) ?? [];
+  const city = locationParts[0];
+  const venue = locationParts.slice(1).join(", ");
   return (
     <footer className="border-t border-border/40 bg-surface/80 backdrop-blur mt-24 relative z-10">
       <div className="container-page py-14 grid gap-10 md:grid-cols-3">
