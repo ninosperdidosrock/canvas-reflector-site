@@ -116,13 +116,26 @@ export function SiteFooter() {
           >
             Habla con nosotros →
           </Link>
-          <div className="mt-6">
+          <Link to="/gira" className="mt-6 block group">
             <p className="text-primary text-xs uppercase tracking-[0.2em] font-sans font-semibold mb-2">
               Próximo concierto
             </p>
-            <p className="text-sm">06 Abr 2026 · Madrid</p>
-            <p className="text-xs text-muted-foreground">Sala Caelius Solitaria</p>
-          </div>
+            {next ? (
+              <>
+                <p className="text-sm group-hover:text-primary transition-colors">
+                  {formatGigDate(next.start)}{city ? ` · ${city}` : ""}
+                </p>
+                {venue && (
+                  <p className="text-xs text-muted-foreground">{venue}</p>
+                )}
+              </>
+            ) : (
+              <p className="text-sm text-muted-foreground group-hover:text-primary transition-colors">
+                Sin fechas anunciadas
+              </p>
+            )}
+          </Link>
+
         </div>
       </div>
       <div className="border-t border-border/40">
