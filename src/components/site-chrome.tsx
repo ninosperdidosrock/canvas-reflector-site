@@ -1,6 +1,14 @@
 import { Link } from "@tanstack/react-router";
+import { useQuery } from "@tanstack/react-query";
 import { Instagram, Youtube } from "lucide-react";
 import logoText from "@/assets/logo-text.png";
+import { tourQueryOptions } from "@/lib/tour-query";
+
+const MONTHS_FOOTER = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"];
+function formatGigDate(iso: string) {
+  const d = new Date(iso);
+  return `${String(d.getDate()).padStart(2, "0")} ${MONTHS_FOOTER[d.getMonth()]} ${d.getFullYear()}`;
+}
 
 function TikTokIcon({ className }: { className?: string }) {
   return (
@@ -55,6 +63,11 @@ export function SiteHeader() {
 }
 
 export function SiteFooter() {
+  const { data } = useQuery(tourQueryOptions);
+  const next = data?.upcoming?.[0];
+  const locationParts = next?.location?.split(",").map((s) => s.trim()).filter(Boolean) ?? [];
+  const city = locationParts[0];
+  const venue = locationParts.slice(1).join(", ");
   return (
     <footer className="border-t border-border/40 bg-surface/80 backdrop-blur mt-24 relative z-10">
       <div className="container-page py-14 grid gap-10 md:grid-cols-3">
@@ -103,13 +116,26 @@ export function SiteFooter() {
           >
             Habla con nosotros →
           </Link>
-          <div className="mt-6">
+          <Link to="/gira" className="mt-6 block group">
             <p className="text-primary text-xs uppercase tracking-[0.2em] font-sans font-semibold mb-2">
               Próximo concierto
             </p>
-            <p className="text-sm">06 Abr 2026 · Madrid</p>
-            <p className="text-xs text-muted-foreground">Sala Caelius Solitaria</p>
-          </div>
+            {next ? (
+              <>
+                <p className="text-sm group-hover:text-primary transition-colors">
+                  {formatGigDate(next.start)}{city ? ` · ${city}` : ""}
+                </p>
+                {venue && (
+                  <p className="text-xs text-muted-foreground">{venue}</p>
+                )}
+              </>
+            ) : (
+              <p className="text-sm text-muted-foreground group-hover:text-primary transition-colors">
+                Sin fechas anunciadas
+              </p>
+            )}
+          </Link>
+
         </div>
       </div>
       <div className="border-t border-border/40">

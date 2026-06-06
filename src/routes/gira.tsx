@@ -1,16 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { PageShell, PageHero } from "@/components/page-shell";
 import { MapPin, Ticket } from "lucide-react";
 import bgGira from "@/assets/bg-gira.png";
-import { getTourEvents, type GigEvent } from "@/lib/calendar.functions";
-
-const tourQueryOptions = queryOptions({
-  queryKey: ["tour-events"],
-  queryFn: () => getTourEvents(),
-  staleTime: 60_000,
-  refetchInterval: 5 * 60_000,
-});
+import { type GigEvent } from "@/lib/calendar.functions";
+import { tourQueryOptions } from "@/lib/tour-query";
 
 export const Route = createFileRoute("/gira")({
   head: () => ({
