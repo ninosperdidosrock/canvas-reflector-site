@@ -8,6 +8,12 @@ export const Route = createFileRoute("/contacto")({
     meta: [
       { title: "Contacto · Niños Perdidos" },
       { name: "description", content: "Contrataciones y prensa para Niños Perdidos. Bodas, fiestas patronales, festivales y salas." },
+      { property: "og:title", content: "Contacto · Niños Perdidos" },
+      { property: "og:description", content: "Contrata a Niños Perdidos para tu boda, fiesta patronal, festival o sala. WhatsApp directo." },
+      { property: "og:url", content: "https://canvas-reflector-site.lovable.app/contacto" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://canvas-reflector-site.lovable.app/contacto" },
     ],
   }),
   component: Contacto,
