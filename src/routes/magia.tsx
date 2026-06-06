@@ -15,6 +15,12 @@ export const Route = createFileRoute("/magia")({
     meta: [
       { title: "Magia · Niños Perdidos" },
       { name: "description", content: "La magia de Nunca Jamás: bautismo de niño perdido y el oráculo del Capitán Garfio." },
+      { property: "og:title", content: "Magia · Niños Perdidos" },
+      { property: "og:description", content: "Recibe tu nombre de niño perdido y consulta al oráculo del Capitán Garfio." },
+      { property: "og:url", content: "https://canvas-reflector-site.lovable.app/magia" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://canvas-reflector-site.lovable.app/magia" },
     ],
   }),
   component: Magia,
@@ -77,10 +83,11 @@ export default function Magia() {
             en Nunca Jamás. El ritual no se puede deshacer.
           </p>
           <div className="mt-8 border border-border bg-card/40 backdrop-blur p-6 text-left">
-            <label className="text-primary text-[10px] uppercase tracking-[0.3em] font-semibold">
+            <label htmlFor="bautismo-name" className="text-primary text-[10px] uppercase tracking-[0.3em] font-semibold">
               Tu nombre mortal
             </label>
             <input
+              id="bautismo-name"
               value={name}
               onChange={(e) => setName(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleBautismo()}
@@ -129,7 +136,11 @@ export default function Magia() {
               )}
             </div>
             <div className="flex items-center gap-2 border-t border-border pt-4">
+              <label htmlFor="oraculo-prompt" className="sr-only">
+                Sugerencia para el oráculo
+              </label>
               <input
+                id="oraculo-prompt"
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleOraculo()}
@@ -140,6 +151,7 @@ export default function Magia() {
               <button
                 onClick={handleOraculo}
                 disabled={loadingO || !prompt.trim()}
+                aria-label="Enviar sugerencia al oráculo"
                 className="text-primary p-2 hover:bg-primary/10 transition disabled:opacity-40"
               >
                 <Send className="h-4 w-4" />

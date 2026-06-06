@@ -93,6 +93,26 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Inter:wght@300;400;500;600;700&display=swap",
       },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "MusicGroup",
+          name: "Niños Perdidos",
+          url: "https://canvas-reflector-site.lovable.app",
+          genre: ["Rock", "Disney Covers"],
+          description:
+            "Banda madrileña que versiona al rock las canciones más míticas de Disney y la animación de los 90 y 2000.",
+          foundingLocation: { "@type": "Place", name: "Madrid, España" },
+          sameAs: [
+            "https://www.instagram.com/ninosperdidos.rock",
+            "https://www.youtube.com/@ni%C3%B1osperdidos-rock",
+            "https://www.tiktok.com/@ninosperdidosrock",
+          ],
+        }),
+      },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,

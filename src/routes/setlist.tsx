@@ -18,6 +18,12 @@ export const Route = createFileRoute("/setlist")({
     meta: [
       { title: "Setlist · Niños Perdidos" },
       { name: "description", content: "El setlist de los Niños Perdidos: canciones de Disney pasadas por el filtro del rock." },
+      { property: "og:title", content: "Setlist · Niños Perdidos" },
+      { property: "og:description", content: "Los himnos de Disney y la animación de los 90 y 2000 que tocamos en directo, pasados por el filtro del rock." },
+      { property: "og:url", content: "https://canvas-reflector-site.lovable.app/setlist" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://canvas-reflector-site.lovable.app/setlist" },
     ],
   }),
   component: Setlist,

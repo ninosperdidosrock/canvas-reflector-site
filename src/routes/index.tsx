@@ -9,6 +9,12 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: "Niños Perdidos · Bienvenido a Nunca Jamás" },
       { name: "description", content: "Disney · Animación · Rock · Madrid. La banda que convierte tu infancia en himnos del rock." },
+      { property: "og:title", content: "Niños Perdidos · Bienvenido a Nunca Jamás" },
+      { property: "og:description", content: "Disney · Animación · Rock · Madrid. La banda que convierte tu infancia en himnos del rock." },
+      { property: "og:url", content: "https://canvas-reflector-site.lovable.app/" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://canvas-reflector-site.lovable.app/" },
     ],
   }),
   component: Home,
@@ -25,7 +31,11 @@ function Home() {
           <img
             src={logoFull}
             alt="Niños Perdidos"
-            className="mx-auto w-full max-w-[300px] md:max-w-[380px] mb-10 drop-shadow-[0_8px_24px_rgba(0,0,0,0.7)]"
+            width={760}
+            height={760}
+            fetchPriority="high"
+            decoding="async"
+            className="mx-auto w-full max-w-[300px] md:max-w-[380px] h-auto mb-10 drop-shadow-[0_8px_24px_rgba(0,0,0,0.7)]"
           />
           <h1 className="font-display italic text-7xl md:text-9xl lg:text-[10rem] leading-[0.95] text-foreground text-glow-orange">
             BIENVENIDO A<br />

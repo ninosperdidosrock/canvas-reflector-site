@@ -27,6 +27,12 @@ export const Route = createFileRoute("/galeria")({
     meta: [
       { title: "Galería · Niños Perdidos" },
       { name: "description", content: "Momentos del escenario y vídeos en directo de Niños Perdidos." },
+      { property: "og:title", content: "Galería · Niños Perdidos" },
+      { property: "og:description", content: "Fotos en directo y vídeos en YouTube de los conciertos de Niños Perdidos." },
+      { property: "og:url", content: "https://canvas-reflector-site.lovable.app/galeria" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://canvas-reflector-site.lovable.app/galeria" },
     ],
   }),
   component: Galeria,

@@ -7,12 +7,40 @@ import { type GigEvent } from "@/lib/calendar.functions";
 import { tourQueryOptions } from "@/lib/tour-query";
 
 export const Route = createFileRoute("/gira")({
-  head: () => ({
-    meta: [
-      { title: "Gira · Niños Perdidos" },
-      { name: "description", content: "Próximos conciertos y gira de Niños Perdidos por Nunca Jamás." },
-    ],
-  }),
+  head: ({ loaderData }) => {
+    const upcoming = (loaderData as { upcoming?: GigEvent[] } | undefined)?.upcoming ?? [];
+    const events = upcoming.map((u) => ({
+      "@context": "https://schema.org",
+      "@type": "Event",
+      name: u.summary,
+      startDate: u.start,
+      endDate: u.end ?? u.start,
+      eventStatus: "https://schema.org/EventScheduled",
+      eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+      location: u.location
+        ? { "@type": "Place", name: u.location, address: u.location }
+        : { "@type": "Place", name: "Por anunciar" },
+      performer: { "@type": "MusicGroup", name: "Niños Perdidos" },
+      ...(u.ticketUrl
+        ? { offers: { "@type": "Offer", url: u.ticketUrl, availability: "https://schema.org/InStock" } }
+        : {}),
+    }));
+    return {
+      meta: [
+        { title: "Gira · Niños Perdidos" },
+        { name: "description", content: "Próximos conciertos y gira de Niños Perdidos por Nunca Jamás." },
+        { property: "og:title", content: "Gira · Niños Perdidos" },
+        { property: "og:description", content: "Próximos conciertos y fechas pasadas de Niños Perdidos." },
+        { property: "og:url", content: "https://canvas-reflector-site.lovable.app/gira" },
+      ],
+      links: [
+        { rel: "canonical", href: "https://canvas-reflector-site.lovable.app/gira" },
+      ],
+      scripts: events.length
+        ? [{ type: "application/ld+json", children: JSON.stringify(events) }]
+        : [],
+    };
+  },
   loader: ({ context }) => context.queryClient.ensureQueryData(tourQueryOptions),
   component: Gira,
 });
