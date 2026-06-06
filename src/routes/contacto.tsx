@@ -83,7 +83,7 @@ export default function Contacto() {
             <h2 className="font-display italic text-3xl md:text-5xl mb-4">
               SOMOS EL GRUPO PERFECTO PARA TU EVENTO
             </h2>
-            <p className="text-sm text-muted-foreground mb-8">
+            <p className="text-base text-muted-foreground leading-relaxed mb-8">
               Bodas, fiestas patronales, festivales y salas de conciertos.
               ¿Preparando el viaje a Nunca Jamás? El Capitán responde cuando le
               da la gana — pero responde.

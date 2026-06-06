@@ -42,7 +42,7 @@ function Gira() {
       <PageHero title="GIRA" eyebrow="Rumbo a Nunca Jamás" />
       <section className="pb-16">
         <div className="container-page max-w-4xl">
-          <p className="text-sm text-muted-foreground max-w-xl mb-10">
+          <p className="text-base text-muted-foreground leading-relaxed max-w-2xl mb-10">
             ¡No te pierdas el viaje a Nunca Jamás! Somos el grupo perfecto para
             tu boda, las fiestas de tu pueblo o el festival que más te gusta.
           </p>
