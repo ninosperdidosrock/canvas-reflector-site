@@ -112,14 +112,17 @@ function Gira() {
           {past.length > 0 && (
             <div className="mt-16">
               <p className="text-primary text-xs uppercase tracking-[0.3em] font-semibold mb-4">CONCIERTOS ANTERIORES</p>
-              <ul className="grid sm:grid-cols-2 gap-3">
-                {past.map((p) => (
-                  <li key={p.id} className="flex items-center gap-3 text-sm text-muted-foreground">
-                    <span className="h-px flex-1 bg-border" />
-                    <span className="font-mono">{formatDate(p.start)}</span>
-                    <span className="h-px flex-1 bg-border" />
-                  </li>
-                ))}
+              <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-2">
+                {past.map((p) => {
+                  const city = p.location?.split(",")[0]?.trim();
+                  return (
+                    <li key={p.id} className="flex items-baseline gap-3 text-sm text-muted-foreground border-b border-border/40 py-2">
+                      <span className="font-mono text-xs whitespace-nowrap">{formatDate(p.start)}</span>
+                      <span className="flex-1 truncate text-foreground/70">{p.summary}</span>
+                      {city && <span className="text-xs italic whitespace-nowrap">{city}</span>}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           )}
