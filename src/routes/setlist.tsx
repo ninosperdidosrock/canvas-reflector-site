@@ -75,8 +75,7 @@ export default function Setlist() {
             </ul>
 
             <p className="mt-12 max-w-2xl text-base text-muted-foreground leading-relaxed">
-              Cogemos los temas que crecieron con nosotros y los convertimos en
-              el disco de rock más enérgico y rebelde que has escuchado.
+              Los temas de las películas de animación más reconocidas con el "filtro rockero" que las transforman en más épicas, si cabe.
             </p>
           </div>
 
