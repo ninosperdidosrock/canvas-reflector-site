@@ -1,22 +1,35 @@
 ## Objetivo
-Que el bloque "Próximo concierto" del footer muestre siempre el siguiente evento real de la página Gira (no el texto fijo "06 Abr 2026 · Madrid · Sala Caelius Solitaria") y que sea un enlace a `/gira`.
+Conectar tu cuenta de Google Search Console al proyecto para poder verificar el estado de indexación real del sitio publicado (https://canvas-reflector-site.lovable.app) y cerrar los hallazgos de SEO pendientes que requieren datos de Google.
 
-## Cambios
+## Pasos
 
-1. **`src/components/site-chrome.tsx` (`SiteFooter`)**
-   - Convertir el footer en consumidor de los mismos datos que usa `/gira`.
-   - Usar `useQuery` con las mismas `queryOptions` (`queryKey: ["tour-events"]`, `queryFn: getTourEvents`) que ya definimos en `src/routes/gira.tsx`. Como el footer se monta en todas las páginas, usamos `useQuery` (no `useSuspenseQuery`) para no bloquear renders en páginas que no precargan los datos.
-   - Tomar `data.upcoming[0]` como próximo concierto.
-   - Formatear fecha con el mismo helper `DD MES AAAA` (extraer la ubicación / ciudad del campo `location`, mostrando la primera parte antes de la coma como "ciudad" y la línea siguiente como nombre del sitio si hay segunda parte; si solo hay un valor, mostrarlo tal cual).
-   - Envolver el bloque entero en un `<Link to="/gira">` con estilo hover sutil (color primary al pasar).
-   - Estados:
-     - Cargando o sin datos aún → ocultar el bloque (o mostrar un placeholder discreto "Próximamente").
-     - `upcoming.length === 0` → mostrar "Sin fechas anunciadas" enlazado igualmente a `/gira`.
+1. **Vincular el conector de Google Search Console**
+   - Lanzar el flujo de conexión para que autorices tu cuenta de Google con los permisos de Search Console y Site Verification.
+   - Una vez vinculado, las credenciales quedan disponibles para el agente vía gateway (no se exponen al cliente).
 
-2. **Extracción de `queryOptions` compartido**
-   - Mover `tourQueryOptions` de `src/routes/gira.tsx` a `src/lib/calendar.functions.ts` (o a un nuevo `src/lib/tour-query.ts`) y reexportarlo, para que tanto `gira.tsx` como `site-chrome.tsx` lo importen sin duplicar la definición.
+2. **Verificar la propiedad del sitio publicado**
+   - Pedir a Google un token de verificación tipo META para `https://canvas-reflector-site.lovable.app/`.
+   - Añadir la etiqueta `<meta name="google-site-verification" content="...">` en el `<head>` global (en `src/routes/__root.tsx`).
+   - Publicar el cambio (necesario porque Google fetchea la URL pública, no la preview).
+   - Llamar al endpoint de verificación y, al confirmarse, registrar el sitio en tu Search Console.
+
+3. **Comprobar estado de indexación y SEO**
+   - Listar sitemaps registrados y enviar `https://canvas-reflector-site.lovable.app/sitemap.xml` si no está.
+   - Consultar cobertura: páginas indexadas, errores de rastreo, exclusiones.
+   - Revisar Core Web Vitals y rendimiento reportado por Google.
+
+4. **Resolver hallazgos pendientes**
+   - Revisar la lista actual de findings de SEO.
+   - Aplicar fixes en código para los que sigan fallando (metadatos, structured data, accesibilidad, performance) y marcarlos como corregidos.
+   - Dejar pendientes solo los que dependen de tiempo de re-rastreo de Google.
+
+## Requisitos por tu parte
+- Confirmar que quieres proceder (te aparecerá una tarjeta de autorización de Google).
+- **Publicar el sitio** después de añadir el meta tag de verificación: Google necesita ver la etiqueta en la URL pública, no en la preview.
 
 ## Notas técnicas
-- No se modifica el server function `getTourEvents`.
-- `useQuery` en el footer comparte cache con el loader de `/gira`, así que no hay fetch extra cuando el usuario ya visitó esa página.
-- El footer es SSR-safe: `useQuery` sin datos devuelve `data === undefined` y renderiza el fallback.
+- Conector: `google_search_console` (gateway-backed, no se guardan claves en código).
+- Verificación: método META en `src/routes/__root.tsx` dentro del array `meta` del `head()` root.
+- APIs usadas: `siteVerification/v1/token`, `siteVerification/v1/webResource`, `webmasters/v3/sites`, `webmasters/v3/sitemaps`, `searchanalytics/query`.
+
+¿Procedemos?
