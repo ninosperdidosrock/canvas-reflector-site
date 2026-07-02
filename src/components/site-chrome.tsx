@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { Instagram, Youtube } from "lucide-react";
+import { Instagram, Youtube, Menu } from "lucide-react";
+import { useState } from "react";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import logoText from "@/assets/logo-text.png";
 import { tourQueryOptions } from "@/lib/tour-query";
 
@@ -24,6 +26,7 @@ function TikTokIcon({ className }: { className?: string }) {
 }
 
 export function SiteHeader() {
+  const [open, setOpen] = useState(false);
   const nav = [
     { to: "/", label: "Inicio" },
     { to: "/banda", label: "Banda" },
@@ -35,20 +38,20 @@ export function SiteHeader() {
   ];
   return (
     <header className="absolute top-0 left-0 right-0 z-30">
-      <div className="container-page flex items-center py-7">
-        <Link to="/" className="flex items-center gap-3">
+      <div className="container-page flex items-center justify-between gap-4 py-5 md:py-7">
+        <Link to="/" className="flex items-center gap-3 shrink-0">
           <img
             src={logoText}
             alt="Niños Perdidos"
-            className="h-14 md:h-16 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
+            className="h-12 sm:h-16 md:h-20 lg:h-24 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
           />
         </Link>
-        <nav className="hidden md:flex items-center gap-9 ml-auto">
+        <nav className="hidden lg:flex items-center gap-10 xl:gap-12">
           {nav.map((n) => (
             <Link
               key={n.to}
               to={n.to}
-              className="text-sm uppercase tracking-[0.2em] text-foreground/85 hover:text-primary transition-colors drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]"
+              className="text-base xl:text-lg uppercase tracking-[0.18em] text-foreground/85 hover:text-primary transition-colors drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]"
               activeProps={{ className: "text-primary" }}
               activeOptions={{ exact: n.to === "/" }}
             >
@@ -56,9 +59,38 @@ export function SiteHeader() {
             </Link>
           ))}
         </nav>
+        <Sheet open={open} onOpenChange={setOpen}>
+          <SheetTrigger
+            aria-label="Abrir menú"
+            className="lg:hidden inline-flex items-center justify-center rounded-md p-2 text-foreground hover:text-primary transition-colors drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]"
+          >
+            <Menu className="h-8 w-8" />
+          </SheetTrigger>
+          <SheetContent side="right" className="bg-surface/95 backdrop-blur border-l border-border/40 w-[85vw] sm:w-[380px]">
+            <SheetTitle className="sr-only">Navegación</SheetTitle>
+            <nav className="flex flex-col gap-5 mt-10">
+              {nav.map((n) => (
+                <Link
+                  key={n.to}
+                  to={n.to}
+                  onClick={() => setOpen(false)}
+                  className="text-2xl uppercase tracking-[0.18em] text-foreground/90 hover:text-primary transition-colors"
+                  activeProps={{ className: "text-primary" }}
+                  activeOptions={{ exact: n.to === "/" }}
+                >
+                  {n.label}
+                </Link>
+              ))}
+            </nav>
+            <div className="flex gap-5 mt-12 text-muted-foreground">
+              <a href="https://www.instagram.com/ninosperdidos.rock" target="_blank" rel="noreferrer" aria-label="Instagram" className="hover:text-primary transition-colors"><Instagram className="h-6 w-6" /></a>
+              <a href="https://www.youtube.com/@ni%C3%B1osperdidos-rock" target="_blank" rel="noreferrer" aria-label="YouTube" className="hover:text-primary transition-colors"><Youtube className="h-6 w-6" /></a>
+              <a href="https://www.tiktok.com/@ninosperdidosrock" target="_blank" rel="noreferrer" aria-label="TikTok" className="hover:text-primary transition-colors"><TikTokIcon className="h-6 w-6" /></a>
+            </div>
+          </SheetContent>
+        </Sheet>
       </div>
     </header>
-
   );
 }
 
