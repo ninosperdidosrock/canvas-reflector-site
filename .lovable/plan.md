@@ -1,35 +1,32 @@
-## Objetivo
-Conectar tu cuenta de Google Search Console al proyecto para poder verificar el estado de indexación real del sitio publicado (https://canvas-reflector-site.lovable.app) y cerrar los hallazgos de SEO pendientes que requieren datos de Google.
+## Cambios en `src/components/site-chrome.tsx`
 
-## Pasos
+### 1. Header desktop (≥ md)
+- Mantener el logo a la izquierda y la navegación justificada a la derecha (`ml-auto` ya está; lo refuerzo con `justify-between`).
+- Aumentar tamaño del logo: `h-14 md:h-16` → `h-16 md:h-20 lg:h-24`.
+- Aumentar tamaño de los links: `text-sm` → `text-base lg:text-lg`, con `tracking-[0.18em]` y `gap-10 lg:gap-12`.
+- El breakpoint de navegación pasa de `md` a `lg` para que en tablet también aparezca el menú desplegable (evita apretujar 7 links).
 
-1. **Vincular el conector de Google Search Console**
-   - Lanzar el flujo de conexión para que autorices tu cuenta de Google con los permisos de Search Console y Site Verification.
-   - Una vez vinculado, las credenciales quedan disponibles para el agente vía gateway (no se exponen al cliente).
+### 2. Menú desplegable (móvil + tablet, < lg)
+- Botón hamburguesa visible en `< lg`, alineado a la derecha del header.
+- Usar el componente `Sheet` de shadcn (ya disponible en `@/components/ui/sheet`) que se abre desde la derecha y muestra la lista de enlaces verticalmente con tipografía grande.
+- Cada enlace cierra el sheet al pulsarse (estado `open` controlado con `useState`).
+- Marca la ruta activa con el mismo estilo dorado/crema (`activeProps`).
+- Incluye los iconos sociales (Instagram, YouTube, TikTok) al final del panel.
 
-2. **Verificar la propiedad del sitio publicado**
-   - Pedir a Google un token de verificación tipo META para `https://canvas-reflector-site.lovable.app/`.
-   - Añadir la etiqueta `<meta name="google-site-verification" content="...">` en el `<head>` global (en `src/routes/__root.tsx`).
-   - Publicar el cambio (necesario porque Google fetchea la URL pública, no la preview).
-   - Llamar al endpoint de verificación y, al confirmarse, registrar el sitio en tu Search Console.
+### 3. Responsive del logo
+- En móvil pequeño (`< 380px`) el logo se reduce a `h-12` para no chocar con el botón hamburguesa.
+- El header mantiene padding `py-5 md:py-7` para dar aire.
 
-3. **Comprobar estado de indexación y SEO**
-   - Listar sitemaps registrados y enviar `https://canvas-reflector-site.lovable.app/sitemap.xml` si no está.
-   - Consultar cobertura: páginas indexadas, errores de rastreo, exclusiones.
-   - Revisar Core Web Vitals y rendimiento reportado por Google.
+### 4. Sin cambios en footer
+- El footer ya tiene su propia navegación en grid responsive; no se toca.
 
-4. **Resolver hallazgos pendientes**
-   - Revisar la lista actual de findings de SEO.
-   - Aplicar fixes en código para los que sigan fallando (metadatos, structured data, accesibilidad, performance) y marcarlos como corregidos.
-   - Dejar pendientes solo los que dependen de tiempo de re-rastreo de Google.
+### Aplica a todas las páginas
+`SiteHeader` se renderiza en todas las rutas, así que el desplegable funciona automáticamente en toda la web.
 
-## Requisitos por tu parte
-- Confirmar que quieres proceder (te aparecerá una tarjeta de autorización de Google).
-- **Publicar el sitio** después de añadir el meta tag de verificación: Google necesita ver la etiqueta en la URL pública, no en la preview.
+## Archivos tocados
+- `src/components/site-chrome.tsx` (único cambio)
 
 ## Notas técnicas
-- Conector: `google_search_console` (gateway-backed, no se guardan claves en código).
-- Verificación: método META en `src/routes/__root.tsx` dentro del array `meta` del `head()` root.
-- APIs usadas: `siteVerification/v1/token`, `siteVerification/v1/webResource`, `webmasters/v3/sites`, `webmasters/v3/sitemaps`, `searchanalytics/query`.
-
-¿Procedemos?
+- Reutilizo `Sheet`, `SheetContent`, `SheetTrigger` de shadcn — sin nuevas dependencias.
+- Icono hamburguesa: `Menu` de `lucide-react` (ya instalado).
+- Sin cambios de tokens de color: respeto el cream brand existente.
