@@ -15,6 +15,8 @@ export const Route = createFileRoute("/")({
     ],
     links: [
       { rel: "canonical", href: "https://canvas-reflector-site.lovable.app/" },
+      { rel: "preload", as: "image", href: bgInicio, fetchpriority: "high" },
+      { rel: "preload", as: "image", href: logoFull, fetchpriority: "high" },
     ],
   }),
   component: Home,
