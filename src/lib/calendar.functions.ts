@@ -77,6 +77,7 @@ export const getTourEvents = createServerFn({ method: "GET" }).handler(async () 
     singleEvents: "true",
     orderBy: "startTime",
     maxResults: "50",
+    timeZone: "Europe/Madrid",
   });
   const pastParams = new URLSearchParams({
     timeMin: sixMonthsAgo.toISOString(),
@@ -84,6 +85,7 @@ export const getTourEvents = createServerFn({ method: "GET" }).handler(async () 
     singleEvents: "true",
     orderBy: "startTime",
     maxResults: "50",
+    timeZone: "Europe/Madrid",
   });
 
   try {
