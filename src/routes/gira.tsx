@@ -55,7 +55,12 @@ function formatDate(iso: string) {
 function formatTime(iso: string, isAllDay: boolean) {
   if (isAllDay) return "—";
   const d = new Date(iso);
-  return `${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`;
+  return new Intl.DateTimeFormat("es-ES", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+    timeZone: "Europe/Madrid",
+  }).format(d);
 }
 
 
