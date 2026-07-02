@@ -49,7 +49,16 @@ const MONTHS = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "
 
 function formatDate(iso: string) {
   const d = new Date(iso);
-  return `${String(d.getDate()).padStart(2, "0")} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
+  const parts = new Intl.DateTimeFormat("es-ES", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+    timeZone: "Europe/Madrid",
+  }).formatToParts(d);
+  const day = parts.find((p) => p.type === "day")?.value ?? "";
+  const month = (parts.find((p) => p.type === "month")?.value ?? "").replace(".", "").toUpperCase();
+  const year = parts.find((p) => p.type === "year")?.value ?? "";
+  return `${day} ${month} ${year}`;
 }
 
 function formatTime(iso: string, isAllDay: boolean) {
