@@ -1,13 +1,20 @@
 import { useEffect, useState } from "react";
-import { Instagram, ExternalLink } from "lucide-react";
-import { SiTiktok, SiYoutube } from "@icons-pack/react-simple-icons";
+import { Instagram, Youtube, ExternalLink } from "lucide-react";
 import { testimonials, type TestimonialPlatform } from "@/lib/testimonials";
+
+function TikTokIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className}>
+      <path d="M16.6 5.82a4.28 4.28 0 0 1-3.77-4.06h-3.2v13.6a2.59 2.59 0 1 1-1.83-2.48v-3.27a5.86 5.86 0 1 0 5.03 5.8V8.78a7.49 7.49 0 0 0 4.37 1.4V6.97a4.28 4.28 0 0 1-.6-.02z" />
+    </svg>
+  );
+}
 
 function PlatformIcon({ platform }: { platform: TestimonialPlatform }) {
   const cls = "h-4 w-4";
   if (platform === "instagram") return <Instagram className={cls} />;
-  if (platform === "tiktok") return <SiTiktok className={cls} />;
-  return <SiYoutube className={cls} />;
+  if (platform === "tiktok") return <TikTokIcon className={cls} />;
+  return <Youtube className={cls} />;
 }
 
 export function TestimonialsCarousel() {
