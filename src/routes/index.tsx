@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/page-shell";
+import { TestimonialsCarousel } from "@/components/testimonials-carousel";
 import { ArrowRight } from "lucide-react";
 import logoFull from "@/assets/logo-full.png";
 import bgInicio from "@/assets/bg-inicio.png";
@@ -60,6 +61,7 @@ function Home() {
               La Banda
             </Link>
           </div>
+          <TestimonialsCarousel />
         </div>
       </section>
     </PageShell>
