@@ -15,7 +15,7 @@ export const testimonials: Testimonial[] = [
     url: "https://www.instagram.com/p/DPEBGAyDzY7/?igsh=MTV5aXpsZW9leWJ2Yw==",
   },
   {
-    text: "Espero veros otra vez así como en el manga fest (joder cómo les quedó la intro de Attack on Titan)",
+    text: "Espero veros otra vez así como en el manga fest (j**** cómo les quedó la intro de Attack on Titan)",
     author: "@samux011",
     platform: "instagram",
     url: "https://www.instagram.com/p/DPEBGAyDzY7/?igsh=MTV5aXpsZW9leWJ2Yw==",
