@@ -31,26 +31,12 @@ function TikTokIcon({ className }: { className?: string }) {
   );
 }
 
-const SOCIALS = [
-  {
-    label: "Instagram",
-    handle: "@ninosperdidos.rock",
-    href: "https://www.instagram.com/ninosperdidos.rock",
-    Icon: Instagram,
-  },
-  {
-    label: "YouTube",
-    handle: "@niñosperdidos-rock",
-    href: "https://www.youtube.com/@ni%C3%B1osperdidos-rock",
-    Icon: Youtube,
-  },
-  {
-    label: "TikTok",
-    handle: "@ninosperdidosrock",
-    href: "https://www.tiktok.com/@ninosperdidosrock",
-    Icon: TikTokIcon,
-  },
-];
+const YOUTUBE_CARD = {
+  label: "YouTube",
+  handle: "@niñosperdidos-rock",
+  href: "https://www.youtube.com/@ni%C3%B1osperdidos-rock",
+  Icon: Youtube,
+};
 
 export default function Contacto() {
   const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
@@ -61,24 +47,56 @@ export default function Contacto() {
 
       <section className="pb-12">
         <div className="container-page">
-          <div className="grid sm:grid-cols-3 gap-4">
-            {SOCIALS.map(({ label, handle, href, Icon }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center gap-4 border border-border bg-card/40 backdrop-blur p-5 hover:border-primary hover:bg-card/70 transition-colors"
-              >
-                <Icon className="h-7 w-7 text-primary shrink-0 transition-transform group-hover:scale-110" />
+          <div className="grid sm:grid-cols-2 gap-4">
+            <div className="group flex items-center justify-between gap-4 border border-border bg-card/40 backdrop-blur p-5 hover:border-primary hover:bg-card/70 transition-colors">
+              <div className="flex items-center gap-4 min-w-0">
+                <div className="flex items-center gap-1">
+                  <Instagram className="h-7 w-7 text-primary shrink-0 transition-transform group-hover:scale-110" />
+                  <TikTokIcon className="h-7 w-7 text-primary shrink-0 transition-transform group-hover:scale-110" />
+                </div>
                 <div className="min-w-0">
                   <p className="text-primary text-[10px] uppercase tracking-[0.3em] font-semibold">
-                    {label}
+                    Instagram & TikTok
                   </p>
-                  <p className="text-sm text-foreground/90 truncate">{handle}</p>
+                  <p className="text-sm text-foreground/90 truncate">@ninosperdidos.rock</p>
                 </div>
-              </a>
-            ))}
+              </div>
+              <div className="flex items-center gap-2 shrink-0">
+                <a
+                  href="https://www.instagram.com/ninosperdidos.rock"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  <Instagram className="h-5 w-5" />
+                </a>
+                <a
+                  href="https://www.tiktok.com/@ninosperdidos.rock"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="TikTok"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  <TikTokIcon className="h-5 w-5" />
+                </a>
+              </div>
+            </div>
+
+            <a
+              href={YOUTUBE_CARD.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-4 border border-border bg-card/40 backdrop-blur p-5 hover:border-primary hover:bg-card/70 transition-colors"
+            >
+              <YOUTUBE_CARD.Icon className="h-7 w-7 text-primary shrink-0 transition-transform group-hover:scale-110" />
+              <div className="min-w-0">
+                <p className="text-primary text-[10px] uppercase tracking-[0.3em] font-semibold">
+                  {YOUTUBE_CARD.label}
+                </p>
+                <p className="text-sm text-foreground/90 truncate">{YOUTUBE_CARD.handle}</p>
+              </div>
+            </a>
           </div>
         </div>
       </section>
