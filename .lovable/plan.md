@@ -1,32 +1,29 @@
-## Cambios en `src/components/site-chrome.tsx`
+Objetivo: en la página de Contacto, unificar los cuadros de enlace de Instagram y TikTok en un solo elemento, ya que ambos comparten ahora el usuario @ninosperdidos.rock.
 
-### 1. Header desktop (≥ md)
-- Mantener el logo a la izquierda y la navegación justificada a la derecha (`ml-auto` ya está; lo refuerzo con `justify-between`).
-- Aumentar tamaño del logo: `h-14 md:h-16` → `h-16 md:h-20 lg:h-24`.
-- Aumentar tamaño de los links: `text-sm` → `text-base lg:text-lg`, con `tracking-[0.18em]` y `gap-10 lg:gap-12`.
-- El breakpoint de navegación pasa de `md` a `lg` para que en tablet también aparezca el menú desplegable (evita apretujar 7 links).
+Cambios a realizar en `src/routes/contacto.tsx`:
 
-### 2. Menú desplegable (móvil + tablet, < lg)
-- Botón hamburguesa visible en `< lg`, alineado a la derecha del header.
-- Usar el componente `Sheet` de shadcn (ya disponible en `@/components/ui/sheet`) que se abre desde la derecha y muestra la lista de enlaces verticalmente con tipografía grande.
-- Cada enlace cierra el sheet al pulsarse (estado `open` controlado con `useState`).
-- Marca la ruta activa con el mismo estilo dorado/crema (`activeProps`).
-- Incluye los iconos sociales (Instagram, YouTube, TikTok) al final del panel.
+1. **Actualizar el array de redes sociales**:
+   - Mantener YouTube como tarjeta independiente.
+   - Reemplazar las tarjetas separadas de Instagram y TikTok por una sola tarjeta que represente ambas redes.
 
-### 3. Responsive del logo
-- En móvil pequeño (`< 380px`) el logo se reduce a `h-12` para no chocar con el botón hamburguesa.
-- El header mantiene padding `py-5 md:py-7` para dar aire.
+2. **Estructura de la tarjeta unificada**:
+   - En lugar de un enlace único, usar un contenedor (`div`) con:
+     - Iconos de Instagram y TikTok juntos (por ejemplo, Instagram a la izquierda y TikTok superpuesto ligeramente a la derecha, o ambos lado a lado).
+     - Etiqueta "Instagram / TikTok".
+     - El handle "@ninosperdidos.rock".
+     - Dos enlaces internos (o iconos clickeables) que apunten a:
+       - https://www.instagram.com/ninosperdidos.rock
+       - https://www.tiktok.com/@ninosperdidos.rock
+   - Mantener el estilo visual actual: borde, fondo translúcido, hover, icono primario y tipografía de etiqueta.
 
-### 4. Sin cambios en footer
-- El footer ya tiene su propia navegación en grid responsive; no se toca.
+3. **Ajustar la rejilla**:
+   - La fila de redes sociales actualmente es `grid sm:grid-cols-3 gap-4`.
+   - Cambiar a `grid sm:grid-cols-2 gap-4` para equilibrar las dos tarjetas finales (Instagram+TikTok / YouTube).
 
-### Aplica a todas las páginas
-`SiteHeader` se renderiza en todas las rutas, así que el desplegable funciona automáticamente en toda la web.
+4. **Conservar accesibilidad**:
+   - Asegurar que cada enlace tenga texto o `aria-label` descriptivo.
+   - Mantener `target="_blank"` y `rel="noopener noreferrer"`.
 
-## Archivos tocados
-- `src/components/site-chrome.tsx` (único cambio)
+5. **No modificar otros archivos** salvo que se detecte que el handle antiguo de TikTok aparece en otros lugares y se decida extender el cambio (fuera del alcance inicial).
 
-## Notas técnicas
-- Reutilizo `Sheet`, `SheetContent`, `SheetTrigger` de shadcn — sin nuevas dependencias.
-- Icono hamburguesa: `Menu` de `lucide-react` (ya instalado).
-- Sin cambios de tokens de color: respeto el cream brand existente.
+Archivo a modificar: `src/routes/contacto.tsx`.
