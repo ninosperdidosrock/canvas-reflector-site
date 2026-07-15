@@ -149,3 +149,18 @@
   }
 }
 
+@keyframes marquee-x {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+@utility animate-marquee {
+  animation: marquee-x 45s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation-duration: 120s;
+  }
+}
+
