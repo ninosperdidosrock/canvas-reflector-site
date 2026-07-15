@@ -109,7 +109,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           sameAs: [
             "https://www.instagram.com/ninosperdidos.rock",
             "https://www.youtube.com/@ni%C3%B1osperdidos-rock",
-            "https://www.tiktok.com/@ninosperdidosrock",
+            "https://www.tiktok.com/@ninosperdidos.rock",
           ],
         }),
       },

@@ -85,7 +85,7 @@ export function SiteHeader() {
             <div className="flex gap-5 mt-12 text-muted-foreground">
               <a href="https://www.instagram.com/ninosperdidos.rock" target="_blank" rel="noreferrer" aria-label="Instagram" className="hover:text-primary transition-colors"><Instagram className="h-6 w-6" /></a>
               <a href="https://www.youtube.com/@ni%C3%B1osperdidos-rock" target="_blank" rel="noreferrer" aria-label="YouTube" className="hover:text-primary transition-colors"><Youtube className="h-6 w-6" /></a>
-              <a href="https://www.tiktok.com/@ninosperdidosrock" target="_blank" rel="noreferrer" aria-label="TikTok" className="hover:text-primary transition-colors"><TikTokIcon className="h-6 w-6" /></a>
+              <a href="https://www.tiktok.com/@ninosperdidos.rock" target="_blank" rel="noreferrer" aria-label="TikTok" className="hover:text-primary transition-colors"><TikTokIcon className="h-6 w-6" /></a>
             </div>
           </SheetContent>
         </Sheet>
