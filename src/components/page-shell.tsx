@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useRef } from "react";
+import { ReactNode } from "react";
 import { SiteHeader, SiteFooter } from "./site-chrome";
 import { WhatsAppFab } from "./whatsapp-fab";
 import logoIso from "@/assets/logo-iso.png";
@@ -12,44 +12,20 @@ export function PageShell({
   backgroundImage?: string;
   backgroundOverlay?: string;
 }) {
-  const bgRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    if (!backgroundImage) return;
-    const el = bgRef.current;
-    if (!el) return;
-    const reduce = typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) return;
-
-    let raf = 0;
-    const update = () => {
-      raf = 0;
-      const y = window.scrollY || window.pageYOffset || 0;
-      el.style.transform = `translate3d(0, ${y * 0.4}px, 0) scale(1.15)`;
-    };
-    const onScroll = () => {
-      if (!raf) raf = requestAnimationFrame(update);
-    };
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      if (raf) cancelAnimationFrame(raf);
-    };
-  }, [backgroundImage]);
-
   return (
     <div className={`relative min-h-screen flex flex-col ${backgroundImage ? "" : "bg-night"}`}>
       {backgroundImage && (
         <div
-          ref={bgRef}
           aria-hidden
-          className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat pointer-events-none will-change-transform"
-          style={{
-            backgroundImage: `${backgroundOverlay ? `${backgroundOverlay}, ` : ""}url(${backgroundImage})`,
-            transform: "translate3d(0,0,0) scale(1.15)",
-          }}
-        />
+          className="fixed inset-0 z-0 overflow-hidden pointer-events-none"
+        >
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-ambient"
+            style={{
+              backgroundImage: `${backgroundOverlay ? `${backgroundOverlay}, ` : ""}url(${backgroundImage})`,
+            }}
+          />
+        </div>
       )}
       <div className="relative z-10 flex flex-col min-h-screen">
         <SiteHeader />
