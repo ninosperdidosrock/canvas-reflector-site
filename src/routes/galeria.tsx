@@ -14,6 +14,15 @@ import hectorDirecto from "@/assets/galeria/hector-directo.jpg.asset.json";
 import gaiaDirecto from "@/assets/galeria/gaia-directo.jpg.asset.json";
 import rickDirecto from "@/assets/galeria/rick-directo.jpg.asset.json";
 import gaiaManuDirecto from "@/assets/galeria/gaia-manu-directo.jpg.asset.json";
+import mf643 from "@/assets/galeria/mangafest/P1430643.jpg.asset.json";
+import mf677 from "@/assets/galeria/mangafest/P1430677.jpg.asset.json";
+import mf684 from "@/assets/galeria/mangafest/P1430684.jpg.asset.json";
+import mf732 from "@/assets/galeria/mangafest/P1430732.jpg.asset.json";
+import mf747 from "@/assets/galeria/mangafest/P1430747.jpg.asset.json";
+import mf764 from "@/assets/galeria/mangafest/P1430764.jpg.asset.json";
+import mf776 from "@/assets/galeria/mangafest/P1430776.jpg.asset.json";
+import mf806 from "@/assets/galeria/mangafest/P1430806.jpg.asset.json";
+import mf865 from "@/assets/galeria/mangafest/P1430865.jpg.asset.json";
 import {
   Carousel,
   CarouselContent,
@@ -62,11 +71,21 @@ const FOCUS: Record<string, string> = {
   [rickDirecto.url]: "45% 34%",
   [gaiaManuDirecto.url]: "50% 42%",
   [conPublico.url]: "50% 55%",
+  [mf643.url]: "60% 25%",
+  [mf677.url]: "50% 40%",
+  [mf684.url]: "55% 35%",
+  [mf732.url]: "35% 22%",
+  [mf747.url]: "55% 32%",
+  [mf764.url]: "45% 28%",
+  [mf776.url]: "50% 45%",
+  [mf806.url]: "40% 22%",
+  [mf865.url]: "50% 45%",
 };
 const focusOf = (src: string, override?: string) => override ?? FOCUS[src] ?? "center";
 
 const favorites: Photo[] = [
   { src: bandaCompleta.url, alt: "Niños Perdidos al completo sobre el escenario" },
+  { src: mf684.url, alt: "Manu y Ridru espalda contra espalda sonriendo en Mangafest Sevilla" },
   { src: gaiaDirecto.url, alt: "Gaia cantando en directo" },
   { src: ridruDirecto.url, alt: "Ridru tocando la guitarra en directo" },
   { src: hectorDirecto.url, alt: "Héctor cantando al bajo en directo" },
@@ -105,11 +124,18 @@ const concerts: Concert[] = [
     name: "Mangafest Sevilla",
     date: "21 · 06 · 2026",
     isoDate: "2026-06-21",
-    cover: gaiaManuDirecto.url,
+    cover: mf677.url,
+    coverFocus: "50% 42%",
     photos: [
-      { src: gaiaDirecto.url, alt: "Gaia en Mangafest Sevilla" },
-      { src: rickDirecto.url, alt: "Rick en Mangafest Sevilla" },
-      { src: gaiaManuDirecto.url, alt: "Gaia y Manu en Mangafest Sevilla" },
+      { src: mf677.url, alt: "Niños Perdidos al completo en el escenario del Mangafest Sevilla" },
+      { src: mf684.url, alt: "Manu y Ridru espalda contra espalda en Mangafest Sevilla" },
+      { src: mf776.url, alt: "La banda desde el escenario frente al público del Mangafest Sevilla" },
+      { src: mf865.url, alt: "Foto de familia con el público al final del concierto en Mangafest Sevilla" },
+      { src: mf732.url, alt: "Manu con la guitarra bajo luz azul en Mangafest Sevilla" },
+      { src: mf764.url, alt: "Ridru al bajo en Mangafest Sevilla" },
+      { src: mf747.url, alt: "Rick a la batería en Mangafest Sevilla" },
+      { src: mf643.url, alt: "Rick tocando la batería en Mangafest Sevilla" },
+      { src: mf806.url, alt: "Héctor a la guitarra en Mangafest Sevilla" },
     ],
   },
 ];
