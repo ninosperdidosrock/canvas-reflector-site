@@ -14,6 +14,15 @@ import hectorDirecto from "@/assets/galeria/hector-directo.jpg.asset.json";
 import gaiaDirecto from "@/assets/galeria/gaia-directo.jpg.asset.json";
 import rickDirecto from "@/assets/galeria/rick-directo.jpg.asset.json";
 import gaiaManuDirecto from "@/assets/galeria/gaia-manu-directo.jpg.asset.json";
+import mf643 from "@/assets/galeria/mangafest/P1430643.jpg.asset.json";
+import mf677 from "@/assets/galeria/mangafest/P1430677.jpg.asset.json";
+import mf684 from "@/assets/galeria/mangafest/P1430684.jpg.asset.json";
+import mf732 from "@/assets/galeria/mangafest/P1430732.jpg.asset.json";
+import mf747 from "@/assets/galeria/mangafest/P1430747.jpg.asset.json";
+import mf764 from "@/assets/galeria/mangafest/P1430764.jpg.asset.json";
+import mf776 from "@/assets/galeria/mangafest/P1430776.jpg.asset.json";
+import mf806 from "@/assets/galeria/mangafest/P1430806.jpg.asset.json";
+import mf865 from "@/assets/galeria/mangafest/P1430865.jpg.asset.json";
 import {
   Carousel,
   CarouselContent,
