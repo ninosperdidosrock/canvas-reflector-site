@@ -161,6 +161,7 @@ function ConcertCard({ concert, onOpen }: { concert: Concert; onOpen: () => void
           src={concert.cover}
           alt={`Concierto ${concert.name}`}
           loading="lazy"
+          style={{ objectPosition: focusOf(concert.cover, concert.coverFocus) }}
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.06]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
