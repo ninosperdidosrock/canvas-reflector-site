@@ -230,6 +230,7 @@ function ConcertLightbox({
                         <img
                           src={p.src}
                           alt={p.alt}
+                          style={{ objectPosition: focusOf(p.src, p.focus) }}
                           className="absolute inset-0 w-full h-full object-cover"
                         />
                       </figure>
