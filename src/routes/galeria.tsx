@@ -39,7 +39,7 @@ export const Route = createFileRoute("/galeria")({
   component: Galeria,
 });
 
-type Photo = { src: string; alt: string };
+type Photo = { src: string; alt: string; focus?: string };
 type Concert = {
   slug: string;
   name: string;
@@ -47,8 +47,23 @@ type Concert = {
   isoDate: string;
   location?: string;
   cover: string;
+  coverFocus?: string;
   photos: Photo[];
 };
+
+// Encuadre guiado por caras: object-position por foto para que la cara del
+// sujeto quede visible dentro del marco, sea cual sea el aspect-ratio.
+const FOCUS: Record<string, string> = {
+  [bandaCompleta.url]: "50% 28%",
+  [gaiaDirecto.url]: "38% 26%",
+  [ridruDirecto.url]: "38% 18%",
+  [hectorDirecto.url]: "45% 32%",
+  [manuDirecto.url]: "55% 28%",
+  [rickDirecto.url]: "45% 34%",
+  [gaiaManuDirecto.url]: "50% 42%",
+  [conPublico.url]: "50% 55%",
+};
+const focusOf = (src: string, override?: string) => override ?? FOCUS[src] ?? "center";
 
 const favorites: Photo[] = [
   { src: bandaCompleta.url, alt: "Niños Perdidos al completo sobre el escenario" },
