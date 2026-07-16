@@ -138,6 +138,7 @@ function FavoritesStrip() {
               alt={p.alt}
               loading="lazy"
               draggable={false}
+              style={{ objectPosition: focusOf(p.src, p.focus) }}
               className="absolute inset-0 w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent" />
