@@ -33,6 +33,16 @@ import cs789 from "@/assets/galeria/cadillac/DSC09789.jpg.asset.json";
 import cs806 from "@/assets/galeria/cadillac/DSC09806.jpg.asset.json";
 import cs811 from "@/assets/galeria/cadillac/DSC09811.jpg.asset.json";
 import cs830 from "@/assets/galeria/cadillac/DSC09830.jpg.asset.json";
+import rv434 from "@/assets/galeria/revi/P1420434.jpg.asset.json";
+import rv451 from "@/assets/galeria/revi/P1420451.jpg.asset.json";
+import rv496 from "@/assets/galeria/revi/P1420496.jpg.asset.json";
+import rv549 from "@/assets/galeria/revi/P1420549.jpg.asset.json";
+import rv603 from "@/assets/galeria/revi/P1420603.jpg.asset.json";
+import rv619 from "@/assets/galeria/revi/P1420619-2.jpg.asset.json";
+import rv631 from "@/assets/galeria/revi/P1420631.jpg.asset.json";
+import rv671 from "@/assets/galeria/revi/P1420671.jpg.asset.json";
+import rv677 from "@/assets/galeria/revi/P1420677.jpg.asset.json";
+import rv679 from "@/assets/galeria/revi/P1420679-2.jpg.asset.json";
 import {
   Carousel,
   CarouselContent,
