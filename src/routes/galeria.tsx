@@ -90,6 +90,16 @@ const FOCUS: Record<string, string> = {
   [mf776.url]: "50% 45%",
   [mf806.url]: "40% 22%",
   [mf865.url]: "50% 45%",
+  [cs498.url]: "55% 55%",
+  [cs500.url]: "50% 42%",
+  [cs709.url]: "42% 32%",
+  [cs711.url]: "42% 22%",
+  [cs728.url]: "48% 38%",
+  [cs758.url]: "50% 42%",
+  [cs789.url]: "48% 22%",
+  [cs806.url]: "38% 45%",
+  [cs811.url]: "50% 32%",
+  [cs830.url]: "55% 55%",
 };
 const focusOf = (src: string, override?: string) => override ?? FOCUS[src] ?? "center";
 
