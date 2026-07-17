@@ -23,6 +23,16 @@ import mf764 from "@/assets/galeria/mangafest/P1430764.jpg.asset.json";
 import mf776 from "@/assets/galeria/mangafest/P1430776.jpg.asset.json";
 import mf806 from "@/assets/galeria/mangafest/P1430806.jpg.asset.json";
 import mf865 from "@/assets/galeria/mangafest/P1430865.jpg.asset.json";
+import cs498 from "@/assets/galeria/cadillac/DSC09498.jpg.asset.json";
+import cs500 from "@/assets/galeria/cadillac/DSC09500.jpg.asset.json";
+import cs709 from "@/assets/galeria/cadillac/DSC09709.jpg.asset.json";
+import cs711 from "@/assets/galeria/cadillac/DSC09711.jpg.asset.json";
+import cs728 from "@/assets/galeria/cadillac/DSC09728.jpg.asset.json";
+import cs758 from "@/assets/galeria/cadillac/DSC09758.jpg.asset.json";
+import cs789 from "@/assets/galeria/cadillac/DSC09789.jpg.asset.json";
+import cs806 from "@/assets/galeria/cadillac/DSC09806.jpg.asset.json";
+import cs811 from "@/assets/galeria/cadillac/DSC09811.jpg.asset.json";
+import cs830 from "@/assets/galeria/cadillac/DSC09830.jpg.asset.json";
 import {
   Carousel,
   CarouselContent,
