@@ -33,6 +33,16 @@ import cs789 from "@/assets/galeria/cadillac/DSC09789.jpg.asset.json";
 import cs806 from "@/assets/galeria/cadillac/DSC09806.jpg.asset.json";
 import cs811 from "@/assets/galeria/cadillac/DSC09811.jpg.asset.json";
 import cs830 from "@/assets/galeria/cadillac/DSC09830.jpg.asset.json";
+import rv434 from "@/assets/galeria/revi/P1420434.jpg.asset.json";
+import rv451 from "@/assets/galeria/revi/P1420451.jpg.asset.json";
+import rv496 from "@/assets/galeria/revi/P1420496.jpg.asset.json";
+import rv549 from "@/assets/galeria/revi/P1420549.jpg.asset.json";
+import rv603 from "@/assets/galeria/revi/P1420603.jpg.asset.json";
+import rv619 from "@/assets/galeria/revi/P1420619-2.jpg.asset.json";
+import rv631 from "@/assets/galeria/revi/P1420631.jpg.asset.json";
+import rv671 from "@/assets/galeria/revi/P1420671.jpg.asset.json";
+import rv677 from "@/assets/galeria/revi/P1420677.jpg.asset.json";
+import rv679 from "@/assets/galeria/revi/P1420679-2.jpg.asset.json";
 import {
   Carousel,
   CarouselContent,
@@ -100,11 +110,22 @@ const FOCUS: Record<string, string> = {
   [cs806.url]: "38% 45%",
   [cs811.url]: "50% 32%",
   [cs830.url]: "55% 55%",
+  [rv434.url]: "45% 32%",
+  [rv451.url]: "45% 40%",
+  [rv496.url]: "35% 32%",
+  [rv549.url]: "50% 55%",
+  [rv603.url]: "40% 32%",
+  [rv619.url]: "50% 42%",
+  [rv631.url]: "55% 30%",
+  [rv671.url]: "45% 55%",
+  [rv677.url]: "55% 38%",
+  [rv679.url]: "55% 45%",
 };
 const focusOf = (src: string, override?: string) => override ?? FOCUS[src] ?? "center";
 
 const favorites: Photo[] = [
   { src: bandaCompleta.url, alt: "Niños Perdidos al completo sobre el escenario" },
+  { src: rv549.url, alt: "Gaia, Manu y Héctor entregados en pleno directo en Revi Live" },
   { src: mf684.url, alt: "Manu y Ridru espalda contra espalda sonriendo en Mangafest Sevilla" },
   { src: cs806.url, alt: "Manu inclinándose hacia atrás con la guitarra bajo el neón de Cadillac Solitario" },
   { src: gaiaDirecto.url, alt: "Gaia cantando en directo" },
@@ -124,8 +145,18 @@ const concerts: Concert[] = [
     isoDate: "2026-02-01",
     cover: bandaCompleta.url,
     photos: [
-      { src: bandaCompleta.url, alt: "Banda completa en Revi Live" },
-      { src: conPublico.url, alt: "Con el público en Revi Live" },
+      { src: bandaCompleta.url, alt: "Banda completa sobre el escenario en Revi Live" },
+      { src: rv549.url, alt: "Gaia levantando el micro con Manu y Héctor entregados en Revi Live" },
+      { src: rv679.url, alt: "Gaia y Manu compartiendo micrófono en Revi Live" },
+      { src: rv671.url, alt: "Gaia riéndose con Manu al fondo tocando la guitarra" },
+      { src: rv677.url, alt: "Manu cantando y tocando la guitarra bajo luz cálida" },
+      { src: rv603.url, alt: "Ridru concentrado tocando la guitarra bajo luz púrpura" },
+      { src: rv451.url, alt: "Héctor primer plano al micrófono bajo luz roja" },
+      { src: rv434.url, alt: "Héctor al bajo bañado en luz azul" },
+      { src: rv496.url, alt: "Héctor de perfil tocando el bajo en Revi Live" },
+      { src: rv631.url, alt: "Rick concentrado a la batería en Revi Live" },
+      { src: rv619.url, alt: "Rick sonriendo entre platos con haces de luz arcoíris" },
+      { src: conPublico.url, alt: "Foto final con el público de Revi Live" },
     ],
   },
   {
