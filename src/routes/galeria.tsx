@@ -23,6 +23,16 @@ import mf764 from "@/assets/galeria/mangafest/P1430764.jpg.asset.json";
 import mf776 from "@/assets/galeria/mangafest/P1430776.jpg.asset.json";
 import mf806 from "@/assets/galeria/mangafest/P1430806.jpg.asset.json";
 import mf865 from "@/assets/galeria/mangafest/P1430865.jpg.asset.json";
+import cs498 from "@/assets/galeria/cadillac/DSC09498.jpg.asset.json";
+import cs500 from "@/assets/galeria/cadillac/DSC09500.jpg.asset.json";
+import cs709 from "@/assets/galeria/cadillac/DSC09709.jpg.asset.json";
+import cs711 from "@/assets/galeria/cadillac/DSC09711.jpg.asset.json";
+import cs728 from "@/assets/galeria/cadillac/DSC09728.jpg.asset.json";
+import cs758 from "@/assets/galeria/cadillac/DSC09758.jpg.asset.json";
+import cs789 from "@/assets/galeria/cadillac/DSC09789.jpg.asset.json";
+import cs806 from "@/assets/galeria/cadillac/DSC09806.jpg.asset.json";
+import cs811 from "@/assets/galeria/cadillac/DSC09811.jpg.asset.json";
+import cs830 from "@/assets/galeria/cadillac/DSC09830.jpg.asset.json";
 import {
   Carousel,
   CarouselContent,
@@ -80,12 +90,23 @@ const FOCUS: Record<string, string> = {
   [mf776.url]: "50% 45%",
   [mf806.url]: "40% 22%",
   [mf865.url]: "50% 45%",
+  [cs498.url]: "55% 55%",
+  [cs500.url]: "50% 42%",
+  [cs709.url]: "42% 32%",
+  [cs711.url]: "42% 22%",
+  [cs728.url]: "48% 38%",
+  [cs758.url]: "50% 42%",
+  [cs789.url]: "48% 22%",
+  [cs806.url]: "38% 45%",
+  [cs811.url]: "50% 32%",
+  [cs830.url]: "55% 55%",
 };
 const focusOf = (src: string, override?: string) => override ?? FOCUS[src] ?? "center";
 
 const favorites: Photo[] = [
   { src: bandaCompleta.url, alt: "Niños Perdidos al completo sobre el escenario" },
   { src: mf684.url, alt: "Manu y Ridru espalda contra espalda sonriendo en Mangafest Sevilla" },
+  { src: cs806.url, alt: "Manu inclinándose hacia atrás con la guitarra bajo el neón de Cadillac Solitario" },
   { src: gaiaDirecto.url, alt: "Gaia cantando en directo" },
   { src: ridruDirecto.url, alt: "Ridru tocando la guitarra en directo" },
   { src: hectorDirecto.url, alt: "Héctor cantando al bajo en directo" },
@@ -112,11 +133,19 @@ const concerts: Concert[] = [
     name: "Cadillac Solitario",
     date: "18 · 04 · 2026",
     isoDate: "2026-04-18",
-    cover: manuDirecto.url,
+    cover: cs811.url,
+    coverFocus: "50% 32%",
     photos: [
-      { src: manuDirecto.url, alt: "Manu en Cadillac Solitario" },
-      { src: ridruDirecto.url, alt: "Ridru en Cadillac Solitario" },
-      { src: hectorDirecto.url, alt: "Héctor en Cadillac Solitario" },
+      { src: cs811.url, alt: "Niños Perdidos al completo bajo el neón de Cadillac Solitario" },
+      { src: cs806.url, alt: "Manu tirándose hacia atrás con la guitarra mientras canta al micro" },
+      { src: cs709.url, alt: "Héctor gritando al micrófono con el bajo bajo luz roja" },
+      { src: cs758.url, alt: "La banda en pleno directo con Rick a la batería al fondo" },
+      { src: cs711.url, alt: "Manu concentrado tocando la guitarra bajo luz azul" },
+      { src: cs789.url, alt: "Rick a la guitarra bajo luz turquesa" },
+      { src: cs500.url, alt: "Rick sonriendo a la batería frente al cartel de Cadillac Solitario" },
+      { src: cs498.url, alt: "Rick tocando la batería en Cadillac Solitario" },
+      { src: cs728.url, alt: "Gaia gritando entre el público antes de subir al escenario" },
+      { src: cs830.url, alt: "Firmando autógrafos al público tras el concierto" },
     ],
   },
   {
