@@ -106,6 +106,7 @@ const focusOf = (src: string, override?: string) => override ?? FOCUS[src] ?? "c
 const favorites: Photo[] = [
   { src: bandaCompleta.url, alt: "Niños Perdidos al completo sobre el escenario" },
   { src: mf684.url, alt: "Manu y Ridru espalda contra espalda sonriendo en Mangafest Sevilla" },
+  { src: cs806.url, alt: "Manu inclinándose hacia atrás con la guitarra bajo el neón de Cadillac Solitario" },
   { src: gaiaDirecto.url, alt: "Gaia cantando en directo" },
   { src: ridruDirecto.url, alt: "Ridru tocando la guitarra en directo" },
   { src: hectorDirecto.url, alt: "Héctor cantando al bajo en directo" },
