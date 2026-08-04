@@ -312,12 +312,17 @@ function ConcertLightbox({
                 <CarouselContent>
                   {concert.photos.map((p, i) => (
                     <CarouselItem key={i}>
-                      <figure className="relative w-full aspect-[16/10] md:aspect-[16/9] bg-card border border-border overflow-hidden">
+                      <figure className="relative w-full h-[60vh] md:h-[70vh] bg-card border border-border overflow-hidden">
+                        <img
+                          src={p.src}
+                          alt=""
+                          aria-hidden="true"
+                          className="absolute inset-0 w-full h-full object-cover blur-2xl scale-110 opacity-30"
+                        />
                         <img
                           src={p.src}
                           alt={p.alt}
-                          style={{ objectPosition: focusOf(p.src, p.focus) }}
-                          className="absolute inset-0 w-full h-full object-cover"
+                          className="absolute inset-0 w-full h-full object-contain"
                         />
                       </figure>
                     </CarouselItem>
