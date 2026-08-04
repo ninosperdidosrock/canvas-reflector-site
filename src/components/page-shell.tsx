@@ -1,6 +1,9 @@
 import { ReactNode } from "react";
+import { motion } from "motion/react";
 import { SiteHeader, SiteFooter } from "./site-chrome";
 import { WhatsAppFab } from "./whatsapp-fab";
+import { Reveal } from "./motion/reveal";
+import { SplitText } from "./motion/split-text";
 import logoIso from "@/assets/logo-iso.png";
 
 export function PageShell({
@@ -51,24 +54,31 @@ export function PageHero({
   return (
     <section className="relative pt-36 pb-16 overflow-hidden">
       <div className="container-page text-center">
-        <img
+        <motion.img
           src={logoIso}
           alt=""
           className="mx-auto h-32 md:h-40 w-auto object-contain mb-6 drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)]"
+          initial={{ opacity: 0, y: -18, scale: 0.92 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         />
         <h1 className="font-display italic text-6xl md:text-8xl text-foreground text-glow-orange">
-          {title}
+          <SplitText text={title} />
         </h1>
 
         {eyebrow && (
-          <p className="mt-4 text-primary text-xs uppercase tracking-[0.4em] font-sans font-semibold not-italic">
-            {eyebrow}
-          </p>
+          <Reveal delay={0.25}>
+            <p className="mt-4 text-primary text-xs uppercase tracking-[0.4em] font-sans font-semibold not-italic">
+              {eyebrow}
+            </p>
+          </Reveal>
         )}
         {subtitle && (
-          <p className="mt-6 max-w-2xl mx-auto text-muted-foreground">
-            {subtitle}
-          </p>
+          <Reveal delay={0.35}>
+            <p className="mt-6 max-w-2xl mx-auto text-muted-foreground">
+              {subtitle}
+            </p>
+          </Reveal>
         )}
         {children}
       </div>
