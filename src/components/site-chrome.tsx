@@ -27,6 +27,16 @@ function TikTokIcon({ className }: { className?: string }) {
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (y) => {
+    const prev = scrollY.getPrevious() ?? 0;
+    setScrolled(y > 40);
+    setHidden(y > 220 && y > prev);
+  });
+
   const nav = [
     { to: "/", label: "Inicio" },
     { to: "/banda", label: "Banda" },
@@ -37,13 +47,28 @@ export function SiteHeader() {
     { to: "/contacto", label: "Contacto" },
   ];
   return (
-    <header className="absolute top-0 left-0 right-0 z-30">
-      <div className="container-page flex items-center justify-between gap-4 py-5 md:py-7">
+    <motion.header
+      className={`fixed top-0 left-0 right-0 z-30 transition-colors duration-500 ${
+        scrolled ? "bg-background/70 backdrop-blur-md border-b border-border/40" : ""
+      }`}
+      initial={{ y: -40, opacity: 0 }}
+      animate={{ y: hidden ? "-110%" : 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+    >
+      <div
+        className={`container-page flex items-center justify-between gap-4 transition-all duration-500 ${
+          scrolled ? "py-2 md:py-3" : "py-5 md:py-7"
+        }`}
+      >
         <Link to="/" className="flex items-center gap-3 shrink-0">
           <img
             src={logoText}
             alt="Niños Perdidos"
-            className="h-12 sm:h-16 md:h-20 lg:h-24 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
+            className={`object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] transition-all duration-500 ${
+              scrolled
+                ? "h-10 sm:h-12 md:h-14"
+                : "h-12 sm:h-16 md:h-20 lg:h-24"
+            }`}
           />
         </Link>
         <nav className="hidden lg:flex items-center gap-10 xl:gap-12">
@@ -51,11 +76,23 @@ export function SiteHeader() {
             <Link
               key={n.to}
               to={n.to}
-              className="text-base xl:text-lg uppercase tracking-[0.18em] text-foreground/85 hover:text-primary transition-colors drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]"
+              className="group relative text-base xl:text-lg uppercase tracking-[0.18em] text-foreground/85 hover:text-primary transition-colors drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] overflow-hidden"
               activeProps={{ className: "text-primary" }}
               activeOptions={{ exact: n.to === "/" }}
             >
-              {n.label}
+              <span className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">
+                {n.label}
+              </span>
+              <span
+                aria-hidden
+                className="absolute inset-0 block translate-y-full text-primary transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0"
+              >
+                {n.label}
+              </span>
+              <span
+                aria-hidden
+                className="pointer-events-none absolute bottom-0 left-0 h-px w-full origin-right scale-x-0 bg-primary transition-transform duration-500 group-hover:origin-left group-hover:scale-x-100"
+              />
             </Link>
           ))}
         </nav>
