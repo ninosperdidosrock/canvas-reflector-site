@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { Instagram, Youtube, Menu } from "lucide-react";
+import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import { useState } from "react";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import logoText from "@/assets/logo-text.png";
