@@ -127,7 +127,7 @@ export function SiteHeader() {
           </SheetContent>
         </Sheet>
       </div>
-    </header>
+    </motion.header>
   );
 }
 
