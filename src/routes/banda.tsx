@@ -1,5 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell, PageHero } from "@/components/page-shell";
+import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion/reveal";
+import { SplitText } from "@/components/motion/split-text";
+import { Magnetic } from "@/components/motion/magnetic";
+import { MarqueeText } from "@/components/motion/marquee-text";
+import { ParallaxImage } from "@/components/motion/parallax-image";
 import gaiaImg from "@/assets/banda-gaia.jpg";
 import rickImg from "@/assets/banda-rick.jpg";
 import manuImg from "@/assets/banda-manu.jpg";
