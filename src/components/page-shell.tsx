@@ -1,6 +1,9 @@
 import { ReactNode } from "react";
+import { motion } from "motion/react";
 import { SiteHeader, SiteFooter } from "./site-chrome";
 import { WhatsAppFab } from "./whatsapp-fab";
+import { Reveal } from "./motion/reveal";
+import { SplitText } from "./motion/split-text";
 import logoIso from "@/assets/logo-iso.png";
 
 export function PageShell({
