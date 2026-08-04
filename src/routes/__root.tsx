@@ -10,6 +10,10 @@ import {
 
 import appCss from "../styles.css?url";
 import { Toaster } from "@/components/ui/sonner";
+import { Preloader } from "@/components/motion/preloader";
+import { ScrollProgress } from "@/components/motion/scroll-progress";
+import { CustomCursor } from "@/components/motion/custom-cursor";
+import { PageTransition } from "@/components/motion/page-transition";
 
 function NotFoundComponent() {
   return (
