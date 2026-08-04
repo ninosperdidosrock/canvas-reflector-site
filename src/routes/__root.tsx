@@ -140,7 +140,12 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <Preloader />
+      <ScrollProgress />
+      <CustomCursor />
+      <PageTransition>
+        <Outlet />
+      </PageTransition>
       <Toaster position="top-center" richColors />
     </QueryClientProvider>
   );
