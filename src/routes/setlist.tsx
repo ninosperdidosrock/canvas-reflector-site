@@ -4,7 +4,6 @@ import { PageShell, PageHero } from "@/components/page-shell";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion/reveal";
 import { SplitText } from "@/components/motion/split-text";
 import { MarqueeText } from "@/components/motion/marquee-text";
-import { EasterEgg } from "@/components/easter-egg";
 
 import bgSetlist from "@/assets/bg-setlist.png";
 import carteAsset from "@/assets/se-busca-garfio.jpg.asset.json";
@@ -92,7 +91,7 @@ export default function Setlist() {
 
             <Reveal delay={0.1}>
               <p className="mt-12 max-w-2xl text-base text-muted-foreground leading-relaxed">
-                Los temas de las películas de animación más reconocidas con el "filtro rockero" que las transforman en más épicas, si cabe.<EasterEgg />
+                Los temas de las películas de animación más reconocidas con el "filtro rockero" que las transforman en más épicas, si cabe.
               </p>
             </Reveal>
 
