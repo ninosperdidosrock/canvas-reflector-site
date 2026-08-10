@@ -2,24 +2,35 @@ import { useState } from "react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 const INSTAGRAM_PROFILE = "https://instagram.com/ninosperdidos.rock";
-const INSTAGRAM_STORY = "https://instagram.com/stories/create/";
+const INSTAGRAM_APP_STORY = "instagram://story-camera";
 
 export function EasterEgg() {
   const [open, setOpen] = useState(false);
 
   const handleStory = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    // Fallback: si el deep link no abre la cámara de Stories, ir al perfil.
-    const start = Date.now();
-    const timer = window.setTimeout(() => {
-      if (Date.now() - start < 2500 && document.visibilityState === "visible") {
-        window.open(INSTAGRAM_PROFILE, "_blank", "noopener,noreferrer");
-      }
-    }, 1200);
-    const cancel = () => {
-      if (document.visibilityState === "hidden") window.clearTimeout(timer);
+    e.preventDefault();
+    const isMobile = /android|iphone|ipad|ipod/i.test(navigator.userAgent);
+
+    if (!isMobile) {
+      window.open(INSTAGRAM_PROFILE, "_blank", "noopener,noreferrer");
+      return;
+    }
+
+    let left = false;
+    const onHide = () => {
+      if (document.visibilityState === "hidden") left = true;
     };
-    document.addEventListener("visibilitychange", cancel, { once: true });
-    void e;
+    document.addEventListener("visibilitychange", onHide);
+
+    // Intento de abrir la app en la cámara de Stories.
+    window.location.href = INSTAGRAM_APP_STORY;
+
+    window.setTimeout(() => {
+      document.removeEventListener("visibilitychange", onHide);
+      if (!left && document.visibilityState === "visible") {
+        window.location.href = INSTAGRAM_PROFILE;
+      }
+    }, 1500);
   };
 
   return (
@@ -64,7 +75,7 @@ export function EasterEgg() {
           </ol>
 
           <a
-            href={INSTAGRAM_STORY}
+            href={INSTAGRAM_PROFILE}
             target="_blank"
             rel="noopener noreferrer"
             onClick={handleStory}
