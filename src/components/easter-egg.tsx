@@ -75,7 +75,7 @@ export function EasterEgg() {
           </ol>
 
           <a
-            href={INSTAGRAM_STORY}
+            href={INSTAGRAM_PROFILE}
             target="_blank"
             rel="noopener noreferrer"
             onClick={handleStory}
