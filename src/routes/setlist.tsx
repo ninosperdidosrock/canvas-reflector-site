@@ -90,9 +90,10 @@ export default function Setlist() {
 
             <Reveal delay={0.1}>
               <p className="mt-12 max-w-2xl text-base text-muted-foreground leading-relaxed">
-                Los temas de las películas de animación más reconocidas con el "filtro rockero" que las transforman en más épicas, si cabe.
+                Los temas de las películas de animación más reconocidas con el "filtro rockero" que las transforman en más épicas, si cabe.<EasterEgg />
               </p>
             </Reveal>
+
           </div>
 
           <aside className="flex justify-center lg:justify-end lg:sticky lg:top-28">
