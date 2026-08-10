@@ -105,7 +105,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@context": "https://schema.org",
           "@type": "MusicGroup",
           name: "Niños Perdidos",
-          url: "https://canvas-reflector-site.lovable.app",
+          url: "https://xn--niosperdidos-bhb.es",
           genre: ["Rock", "Disney Covers"],
           description:
             "Banda madrileña que versiona al rock las canciones más míticas de Disney y la animación de los 90 y 2000.",

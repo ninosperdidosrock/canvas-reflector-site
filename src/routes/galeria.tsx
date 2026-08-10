@@ -59,10 +59,10 @@ export const Route = createFileRoute("/galeria")({
       { name: "description", content: "Momentos del escenario y vídeos en directo de Niños Perdidos." },
       { property: "og:title", content: "Galería · Niños Perdidos" },
       { property: "og:description", content: "Fotos en directo y vídeos en YouTube de los conciertos de Niños Perdidos." },
-      { property: "og:url", content: "https://canvas-reflector-site.lovable.app/galeria" },
+      { property: "og:url", content: "https://xn--niosperdidos-bhb.es/galeria" },
     ],
     links: [
-      { rel: "canonical", href: "https://canvas-reflector-site.lovable.app/galeria" },
+      { rel: "canonical", href: "https://xn--niosperdidos-bhb.es/galeria" },
     ],
   }),
   component: Galeria,

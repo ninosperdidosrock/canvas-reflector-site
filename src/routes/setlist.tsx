@@ -24,10 +24,10 @@ export const Route = createFileRoute("/setlist")({
       { name: "description", content: "El setlist de los Niños Perdidos: canciones de Disney pasadas por el filtro del rock." },
       { property: "og:title", content: "Setlist · Niños Perdidos" },
       { property: "og:description", content: "Los himnos de Disney y la animación de los 90 y 2000 que tocamos en directo, pasados por el filtro del rock." },
-      { property: "og:url", content: "https://canvas-reflector-site.lovable.app/setlist" },
+      { property: "og:url", content: "https://xn--niosperdidos-bhb.es/setlist" },
     ],
     links: [
-      { rel: "canonical", href: "https://canvas-reflector-site.lovable.app/setlist" },
+      { rel: "canonical", href: "https://xn--niosperdidos-bhb.es/setlist" },
     ],
   }),
   component: Setlist,
