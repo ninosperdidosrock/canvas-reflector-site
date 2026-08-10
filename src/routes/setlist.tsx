@@ -4,6 +4,8 @@ import { PageShell, PageHero } from "@/components/page-shell";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion/reveal";
 import { SplitText } from "@/components/motion/split-text";
 import { MarqueeText } from "@/components/motion/marquee-text";
+import { EasterEgg } from "@/components/easter-egg";
+
 import bgSetlist from "@/assets/bg-setlist.png";
 import carteAsset from "@/assets/se-busca-garfio.jpg.asset.json";
 import iconReyLeon from "@/assets/setlist-icons/rey-leon.png.asset.json";
