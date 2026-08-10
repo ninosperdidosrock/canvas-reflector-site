@@ -10,10 +10,10 @@ export const Route = createFileRoute("/contacto")({
       { name: "description", content: "Contrataciones y prensa para Niños Perdidos. Bodas, fiestas patronales, festivales y salas." },
       { property: "og:title", content: "Contacto · Niños Perdidos" },
       { property: "og:description", content: "Contrata a Niños Perdidos para tu boda, fiesta patronal, festival o sala. WhatsApp directo." },
-      { property: "og:url", content: "https://canvas-reflector-site.lovable.app/contacto" },
+      { property: "og:url", content: "https://xn--niosperdidos-bhb.es/contacto" },
     ],
     links: [
-      { rel: "canonical", href: "https://canvas-reflector-site.lovable.app/contacto" },
+      { rel: "canonical", href: "https://xn--niosperdidos-bhb.es/contacto" },
     ],
   }),
   component: Contacto,

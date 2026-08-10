@@ -31,10 +31,10 @@ export const Route = createFileRoute("/gira")({
         { name: "description", content: "Próximos conciertos y gira de Niños Perdidos por Nunca Jamás." },
         { property: "og:title", content: "Gira · Niños Perdidos" },
         { property: "og:description", content: "Próximos conciertos y fechas pasadas de Niños Perdidos." },
-        { property: "og:url", content: "https://canvas-reflector-site.lovable.app/gira" },
+        { property: "og:url", content: "https://xn--niosperdidos-bhb.es/gira" },
       ],
       links: [
-        { rel: "canonical", href: "https://canvas-reflector-site.lovable.app/gira" },
+        { rel: "canonical", href: "https://xn--niosperdidos-bhb.es/gira" },
       ],
       scripts: events.length
         ? [{ type: "application/ld+json", children: JSON.stringify(events) }]

@@ -19,10 +19,10 @@ export const Route = createFileRoute("/banda")({
       { name: "description", content: "Conoce a Niños Perdidos, la banda madrileña que convierte canciones míticas de la infancia en himnos de rock para toda la familia." },
       { property: "og:title", content: "La Banda · Niños Perdidos" },
       { property: "og:description", content: "Conoce a los cinco Niños Perdidos: la banda madrileña que convierte canciones míticas de la infancia en himnos de rock." },
-      { property: "og:url", content: "https://canvas-reflector-site.lovable.app/banda" },
+      { property: "og:url", content: "https://xn--niosperdidos-bhb.es/banda" },
     ],
     links: [
-      { rel: "canonical", href: "https://canvas-reflector-site.lovable.app/banda" },
+      { rel: "canonical", href: "https://xn--niosperdidos-bhb.es/banda" },
     ],
   }),
   component: Banda,
