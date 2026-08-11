@@ -165,6 +165,14 @@
   }
 }
 
+@media (max-width: 768px) {
+  .bg-ambient {
+    animation-name: none;
+    transform: scale(1.02);
+  }
+}
+
+
 @keyframes marquee-x {
   0% { transform: translate3d(0, 0, 0); }
   100% { transform: translate3d(-50%, 0, 0); }
