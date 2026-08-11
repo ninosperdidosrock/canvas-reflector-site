@@ -1,9 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { PageShell } from "@/components/page-shell";
 import { TestimonialsCarousel } from "@/components/testimonials-carousel";
 import { Reveal } from "@/components/motion/reveal";
-import { MaskLine } from "@/components/motion/split-text";
 import { Magnetic } from "@/components/motion/magnetic";
 import { MarqueeText } from "@/components/motion/marquee-text";
 import { ArrowRight } from "lucide-react";
