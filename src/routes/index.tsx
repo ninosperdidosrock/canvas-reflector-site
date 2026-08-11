@@ -48,7 +48,7 @@ function Home() {
             animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
             transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
           />
-          <h1 className="font-display italic text-7xl md:text-9xl lg:text-[10rem] leading-[0.95] text-foreground text-glow-orange">
+          <h1 className="font-display italic text-[clamp(3rem,15vw,10rem)] leading-[0.95] text-foreground text-glow-orange">
             <MaskLine delay={0.15}>BIENVENIDO A</MaskLine>
             <MaskLine delay={0.3}>
               <span className="text-primary">NUNCA JAMÁS</span>
