@@ -114,6 +114,19 @@
   text-shadow: 0 0 30px oklch(0.9 0.05 80 / 0.5);
 }
 
+@utility text-title-hero {
+  font-size: clamp(2.6rem, 12vw, 6rem);
+  line-height: 1;
+  overflow-wrap: anywhere;
+}
+
+@utility text-title-section {
+  font-size: clamp(1.9rem, 7.5vw, 3rem);
+  line-height: 1.05;
+  overflow-wrap: anywhere;
+}
+
+
 @utility bg-night {
   background-color: var(--color-background);
   background-image:
