@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { PageShell, PageHero } from "@/components/page-shell";
 import { Sparkles, Send, Loader2 } from "lucide-react";
-import bgMagiaAsset from "@/assets/bg-magia.png.asset.json";
+import bgMagiaAsset from "@/assets/bg-magia.webp.asset.json";
 const bgMagia = bgMagiaAsset.url;
 import {
   bautizarNinoPerdido,
