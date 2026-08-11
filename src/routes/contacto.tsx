@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, PageHero } from "@/components/page-shell";
 import { Mail, Instagram, Youtube } from "lucide-react";
-import bgContacto from "@/assets/bg-banda.png";
+import bgContactoAsset from "@/assets/bg-banda.webp.asset.json";
+const bgContacto = bgContactoAsset.url;
 
 export const Route = createFileRoute("/contacto")({
   head: () => ({

@@ -10,7 +10,8 @@ import rickImg from "@/assets/banda-rick.jpg";
 import manuImg from "@/assets/banda-manu.jpg";
 import ridruImg from "@/assets/banda-ridru.jpg";
 import hectorImg from "@/assets/banda-hector.jpg";
-import bgBanda from "@/assets/bg-contacto.png";
+import bgBandaAsset from "@/assets/bg-contacto.webp.asset.json";
+const bgBanda = bgBandaAsset.url;
 
 export const Route = createFileRoute("/banda")({
   head: () => ({

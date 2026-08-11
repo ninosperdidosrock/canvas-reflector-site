@@ -8,7 +8,8 @@ import { Magnetic } from "@/components/motion/magnetic";
 import { MarqueeText } from "@/components/motion/marquee-text";
 import { ArrowRight } from "lucide-react";
 import logoFull from "@/assets/logo-full.png";
-import bgInicio from "@/assets/bg-inicio.png";
+import bgInicioAsset from "@/assets/bg-inicio.webp.asset.json";
+const bgInicio = bgInicioAsset.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({

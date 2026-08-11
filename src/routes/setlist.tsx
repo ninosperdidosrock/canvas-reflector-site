@@ -5,7 +5,8 @@ import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion/reveal";
 import { SplitText } from "@/components/motion/split-text";
 import { MarqueeText } from "@/components/motion/marquee-text";
 
-import bgSetlist from "@/assets/bg-setlist.png";
+import bgSetlistAsset from "@/assets/bg-setlist.webp.asset.json";
+const bgSetlist = bgSetlistAsset.url;
 import carteAsset from "@/assets/se-busca-garfio.jpg.asset.json";
 import iconReyLeon from "@/assets/setlist-icons/rey-leon.png.asset.json";
 import iconFrozen from "@/assets/setlist-icons/frozen.png.asset.json";
