@@ -92,6 +92,9 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    max-width: 100%;
+    overflow-x: hidden;
+    overscroll-behavior-x: none;
   }
   h1, h2, h3, h4, .font-display {
     font-family: var(--font-display);
