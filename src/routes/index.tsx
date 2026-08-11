@@ -87,3 +87,35 @@ function Home() {
     </PageShell>
   );
 }
+
+const CRASH_EASE = [0.16, 1, 0.3, 1] as const;
+
+function TitleCrash({
+  text,
+  delay,
+  highlight,
+}: {
+  text: string;
+  delay: number;
+  highlight?: boolean;
+}) {
+  const reduced = useReducedMotion();
+  return (
+    <span className="block overflow-hidden">
+      <motion.span
+        className={`block ${highlight ? "text-primary" : ""}`}
+        initial={reduced ? { opacity: 0 } : { scale: 2.6, opacity: 0 }}
+        animate={
+          reduced ? { opacity: 1 } : { scale: 1, opacity: 1 }
+        }
+        transition={{
+          delay,
+          duration: reduced ? 0.4 : 1.2,
+          ease: CRASH_EASE,
+        }}
+      >
+        {text}
+      </motion.span>
+    </span>
+  );
+}
