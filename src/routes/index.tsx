@@ -1,9 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { PageShell } from "@/components/page-shell";
 import { TestimonialsCarousel } from "@/components/testimonials-carousel";
 import { Reveal } from "@/components/motion/reveal";
-import { MaskLine } from "@/components/motion/split-text";
 import { Magnetic } from "@/components/motion/magnetic";
 import { MarqueeText } from "@/components/motion/marquee-text";
 import { ArrowRight } from "lucide-react";
@@ -50,10 +49,8 @@ function Home() {
             transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
           />
           <h1 className="font-display italic text-[clamp(3rem,15vw,10rem)] leading-[0.95] text-foreground text-glow-orange">
-            <MaskLine delay={0.15}>BIENVENIDO A</MaskLine>
-            <MaskLine delay={0.3}>
-              <span className="text-primary">NUNCA JAMÁS</span>
-            </MaskLine>
+            <TitleCrash text="BIENVENIDO A" delay={0.95} />
+            <TitleCrash text="NUNCA JAMÁS" delay={1.15} highlight />
           </h1>
           <Reveal delay={0.5}>
             <p className="mt-6 text-primary text-[11px] md:text-xs uppercase tracking-[0.4em] font-sans font-semibold drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
@@ -88,5 +85,37 @@ function Home() {
 
       <MarqueeText text="NIÑOS PERDIDOS · NUNCA JAMÁS · " repeat={4} />
     </PageShell>
+  );
+}
+
+const CRASH_EASE = [0.16, 1, 0.3, 1] as const;
+
+function TitleCrash({
+  text,
+  delay,
+  highlight,
+}: {
+  text: string;
+  delay: number;
+  highlight?: boolean;
+}) {
+  const reduced = useReducedMotion();
+  return (
+    <span className="block overflow-hidden">
+      <motion.span
+        className={`block ${highlight ? "text-primary" : ""}`}
+        initial={reduced ? { opacity: 0 } : { scale: 2.6, opacity: 0 }}
+        animate={
+          reduced ? { opacity: 1 } : { scale: 1, opacity: 1 }
+        }
+        transition={{
+          delay,
+          duration: reduced ? 0.4 : 1.2,
+          ease: CRASH_EASE,
+        }}
+      >
+        {text}
+      </motion.span>
+    </span>
   );
 }
