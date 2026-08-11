@@ -2,7 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { PageShell, PageHero } from "@/components/page-shell";
 import { MapPin, Ticket } from "lucide-react";
-import bgGira from "@/assets/bg-gira.png";
+import bgGiraAsset from "@/assets/bg-gira.webp.asset.json";
+const bgGira = bgGiraAsset.url;
 import { type GigEvent } from "@/lib/calendar.functions";
 import { tourQueryOptions } from "@/lib/tour-query";
 

@@ -92,6 +92,9 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    max-width: 100%;
+    overflow-x: hidden;
+    overscroll-behavior-x: none;
   }
   h1, h2, h3, h4, .font-display {
     font-family: var(--font-display);
@@ -110,6 +113,19 @@
 @utility text-glow-orange {
   text-shadow: 0 0 30px oklch(0.9 0.05 80 / 0.5);
 }
+
+@utility text-title-hero {
+  font-size: clamp(2.6rem, 12vw, 6rem);
+  line-height: 1;
+  overflow-wrap: anywhere;
+}
+
+@utility text-title-section {
+  font-size: clamp(1.9rem, 7.5vw, 3rem);
+  line-height: 1.05;
+  overflow-wrap: anywhere;
+}
+
 
 @utility bg-night {
   background-color: var(--color-background);
@@ -148,6 +164,14 @@
     transform: scale(1.15);
   }
 }
+
+@media (max-width: 768px) {
+  .bg-ambient {
+    animation-name: none;
+    transform: scale(1.02);
+  }
+}
+
 
 @keyframes marquee-x {
   0% { transform: translate3d(0, 0, 0); }

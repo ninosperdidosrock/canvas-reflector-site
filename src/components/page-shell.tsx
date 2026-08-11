@@ -62,7 +62,7 @@ export function PageHero({
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         />
-        <h1 className="font-display italic text-6xl md:text-8xl text-foreground text-glow-orange">
+        <h1 className="font-display italic text-title-hero text-foreground text-glow-orange">
           <SplitText text={title} />
         </h1>
 

@@ -10,7 +10,8 @@ import rickImg from "@/assets/banda-rick.jpg";
 import manuImg from "@/assets/banda-manu.jpg";
 import ridruImg from "@/assets/banda-ridru.jpg";
 import hectorImg from "@/assets/banda-hector.jpg";
-import bgBanda from "@/assets/bg-contacto.png";
+import bgBandaAsset from "@/assets/bg-contacto.webp.asset.json";
+const bgBanda = bgBandaAsset.url;
 
 export const Route = createFileRoute("/banda")({
   head: () => ({
@@ -90,7 +91,7 @@ export default function Banda() {
           <Reveal>
             <p className="text-primary text-xs uppercase tracking-[0.3em] font-semibold mb-2">La banda</p>
           </Reveal>
-          <h2 className="font-display italic text-3xl md:text-5xl mb-12">
+          <h2 className="font-display italic text-title-section mb-12">
             <SplitText text="NIÑOS PERDIDOS" />
           </h2>
           <StaggerGroup className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
