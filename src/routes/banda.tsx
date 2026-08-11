@@ -90,7 +90,7 @@ export default function Banda() {
           <Reveal>
             <p className="text-primary text-xs uppercase tracking-[0.3em] font-semibold mb-2">La banda</p>
           </Reveal>
-          <h2 className="font-display italic text-3xl md:text-5xl mb-12">
+          <h2 className="font-display italic text-title-section mb-12">
             <SplitText text="NIÑOS PERDIDOS" />
           </h2>
           <StaggerGroup className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">

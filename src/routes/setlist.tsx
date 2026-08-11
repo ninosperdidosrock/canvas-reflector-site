@@ -61,7 +61,7 @@ export default function Setlist() {
                   Universos que pisamos
                 </p>
               </Reveal>
-              <h2 className="mt-4 font-display italic text-4xl md:text-5xl text-foreground text-glow-orange">
+              <h2 className="mt-4 font-display italic text-title-section text-foreground text-glow-orange">
                 <SplitText text="LOS SÍMBOLOS" />
               </h2>
             </div>

@@ -77,7 +77,7 @@ export default function Magia() {
       <section className="pb-16">
         <div className="container-page max-w-2xl text-center">
           <Sparkles className="mx-auto h-6 w-6 text-primary mb-4" />
-          <h2 className="font-display italic text-3xl md:text-5xl">BAUTISMO DE NIÑO PERDIDO</h2>
+          <h2 className="font-display italic text-title-section">BAUTISMO DE NIÑO PERDIDO</h2>
           <p className="mt-4 text-base text-muted-foreground leading-relaxed">
             Escribe tu nombre mortal sobre la corteza sagrada y recibe tu identidad
             en Nunca Jamás. El ritual no se puede deshacer.
@@ -116,7 +116,7 @@ export default function Magia() {
       <section className="pb-24">
         <div className="container-page max-w-3xl text-center">
           <p className="text-primary text-2xl mb-3">⚓</p>
-          <h2 className="font-display italic text-3xl md:text-5xl">EL ORÁCULO DEL CAPITÁN GARFIO</h2>
+          <h2 className="font-display italic text-title-section">EL ORÁCULO DEL CAPITÁN GARFIO</h2>
           <p className="mt-4 text-base text-muted-foreground leading-relaxed max-w-xl mx-auto">
             Sugiere canciones de Disney o dibujos de los 90 y deja que el
             Capitán decida si son dignas del repertorio de Nunca Jamás.

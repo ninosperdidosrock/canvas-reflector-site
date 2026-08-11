@@ -104,7 +104,7 @@ export default function Contacto() {
       <section className="pb-24">
         <div className="container-page grid lg:grid-cols-[1fr_1.4fr] gap-12">
           <div>
-            <h2 className="font-display italic text-3xl md:text-5xl mb-4">
+            <h2 className="font-display italic text-title-section mb-4">
               SOMOS EL GRUPO PERFECTO PARA TU EVENTO
             </h2>
             <p className="text-base text-muted-foreground leading-relaxed mb-8">
@@ -164,7 +164,7 @@ export default function Contacto() {
               </svg>
             </div>
             <div>
-              <h3 className="font-display italic text-3xl md:text-4xl text-foreground leading-tight">
+              <h3 className="font-display italic text-title-section text-foreground leading-tight">
                 Hablemos de tu próximo gran evento
               </h3>
               <p className="mt-3 text-sm text-muted-foreground">

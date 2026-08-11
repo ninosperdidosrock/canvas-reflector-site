@@ -297,7 +297,7 @@ function ConcertLightbox({
         {concert && (
           <div className="p-6 md:p-10">
             <DialogTitle asChild>
-              <h2 className="font-display italic text-3xl md:text-5xl text-foreground text-glow-orange">
+              <h2 className="font-display italic text-title-section text-foreground text-glow-orange">
                 {concert.name}
               </h2>
             </DialogTitle>
@@ -312,12 +312,12 @@ function ConcertLightbox({
                 <CarouselContent>
                   {concert.photos.map((p, i) => (
                     <CarouselItem key={i}>
-                      <figure className="relative w-full h-[60vh] md:h-[70vh] bg-card border border-border overflow-hidden">
+                      <figure className="relative w-full h-[62svh] md:h-[72vh] bg-card border border-border overflow-hidden">
                         <img
                           src={p.src}
                           alt=""
                           aria-hidden="true"
-                          className="absolute inset-0 w-full h-full object-cover blur-2xl scale-110 opacity-30"
+                          className="absolute inset-0 w-full h-full object-cover blur-3xl scale-125 opacity-45"
                         />
                         <img
                           src={p.src}
@@ -366,7 +366,7 @@ export default function Galeria() {
       <section className="pt-12 pb-20">
         <div className="container-page">
           <div className="mb-8">
-            <h2 className="font-display italic text-3xl md:text-5xl text-foreground">CONCIERTOS</h2>
+            <h2 className="font-display italic text-title-section text-foreground">CONCIERTOS</h2>
             <p className="mt-2 text-sm text-muted-foreground max-w-xl">
               Cada marco recoge las fotos de un directo. Iremos añadiendo más poco a poco.
             </p>
@@ -424,7 +424,7 @@ export default function Galeria() {
                   {rest.length > 0 && (
                     <div>
                       <div className="flex items-end justify-between flex-wrap gap-4 mb-6">
-                        <h2 className="font-display italic text-3xl md:text-5xl">ÚLTIMOS VÍDEOS</h2>
+                        <h2 className="font-display italic text-title-section">ÚLTIMOS VÍDEOS</h2>
                         {data.channelUrl && (
                           <a
                             href={data.channelUrl}
