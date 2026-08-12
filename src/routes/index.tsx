@@ -48,9 +48,9 @@ function Home() {
             animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
             transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
           />
-          <h1 className="font-display italic text-[clamp(3rem,15vw,10rem)] leading-[0.95] text-foreground text-glow-orange">
-            <TitleCrash text="BIENVENIDO A" delay={0.95} />
-            <TitleCrash text="NUNCA JAMÁS" delay={1.15} highlight />
+          <h1 className="font-display italic text-[clamp(3rem,15vw,10rem)] leading-[1.05] text-foreground text-glow-orange">
+            <TitleCrash text="BIENVENIDO A" delay={1.0} />
+            <TitleCrash text="NUNCA JAMÁS" delay={1.2} highlight />
           </h1>
           <Reveal delay={0.5}>
             <p className="mt-6 text-primary text-[11px] md:text-xs uppercase tracking-[0.4em] font-sans font-semibold drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
@@ -88,7 +88,7 @@ function Home() {
   );
 }
 
-const CRASH_EASE = [0.16, 1, 0.3, 1] as const;
+const EASE = [0.16, 1, 0.3, 1] as const;
 
 function TitleCrash({
   text,
@@ -101,21 +101,25 @@ function TitleCrash({
 }) {
   const reduced = useReducedMotion();
   return (
-    <span className="block overflow-hidden">
-      <motion.span
-        className={`block ${highlight ? "text-primary" : ""}`}
-        initial={reduced ? { opacity: 0 } : { scale: 2.6, opacity: 0 }}
-        animate={
-          reduced ? { opacity: 1 } : { scale: 1, opacity: 1 }
-        }
-        transition={{
-          delay,
-          duration: reduced ? 0.4 : 1.2,
-          ease: CRASH_EASE,
-        }}
-      >
-        {text}
-      </motion.span>
-    </span>
+    <motion.span
+      className={`block ${highlight ? "text-primary" : ""}`}
+      initial={
+        reduced
+          ? { opacity: 0 }
+          : { opacity: 0, y: "0.35em", filter: "blur(12px)" }
+      }
+      animate={
+        reduced
+          ? { opacity: 1 }
+          : { opacity: 1, y: 0, filter: "blur(0px)" }
+      }
+      transition={{
+        delay,
+        duration: reduced ? 0.4 : 1.0,
+        ease: EASE,
+      }}
+    >
+      {text}
+    </motion.span>
   );
 }
