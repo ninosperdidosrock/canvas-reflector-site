@@ -1,5 +1,5 @@
-import { motion, useReducedMotion } from "motion/react";
-import type { ReactNode } from "react";
+import { motion } from "motion/react";
+import { useEffect, useState, type ReactNode } from "react";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -19,17 +19,13 @@ export function SplitText({
   stagger?: number;
   once?: boolean;
 }) {
-  const reduced = useReducedMotion();
+  const reduced = useStableReducedMotion();
   const words = text.split(" ");
-
-  if (reduced) {
-    return <span className={className}>{text}</span>;
-  }
 
   return (
     <motion.span
       className={className}
-      initial="hidden"
+      initial={reduced ? false : "hidden"}
       whileInView="show"
       viewport={{ once, amount: 0.4 }}
       variants={{
@@ -74,7 +70,7 @@ export function MaskLine({
   className?: string;
   once?: boolean;
 }) {
-  const reduced = useReducedMotion();
+  const reduced = useStableReducedMotion();
   if (reduced) return <span className={className}>{children}</span>;
 
   return (
@@ -90,4 +86,18 @@ export function MaskLine({
       </motion.span>
     </span>
   );
+}
+
+function useStableReducedMotion() {
+  const [reduced, setReduced] = useState(false);
+
+  useEffect(() => {
+    const query = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduced(query.matches);
+    const update = (event: MediaQueryListEvent) => setReduced(event.matches);
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
+  }, []);
+
+  return reduced;
 }
