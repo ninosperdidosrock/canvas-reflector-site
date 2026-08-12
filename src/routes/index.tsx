@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import { PageShell } from "@/components/page-shell";
 import { TestimonialsCarousel } from "@/components/testimonials-carousel";
 import { Reveal } from "@/components/motion/reveal";
@@ -49,8 +49,8 @@ function Home() {
             transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
           />
           <h1 className="font-display italic text-[clamp(3rem,15vw,10rem)] leading-[1.05] text-foreground text-glow-orange">
-            <TitleCrash text="BIENVENIDO A" delay={1.0} />
-            <TitleCrash text="NUNCA JAMÁS" delay={1.2} highlight />
+            <TitleCrash text="BIENVENIDO A" timing="first" />
+            <TitleCrash text="NUNCA JAMÁS" timing="second" highlight />
           </h1>
           <Reveal delay={0.5}>
             <p className="mt-6 text-primary text-[11px] md:text-xs uppercase tracking-[0.4em] font-sans font-semibold drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
@@ -88,38 +88,20 @@ function Home() {
   );
 }
 
-const EASE = [0.16, 1, 0.3, 1] as const;
-
 function TitleCrash({
   text,
-  delay,
+  timing,
   highlight,
 }: {
   text: string;
-  delay: number;
+  timing: "first" | "second";
   highlight?: boolean;
 }) {
-  const reduced = useReducedMotion();
   return (
-    <motion.span
-      className={`block ${highlight ? "text-primary" : ""}`}
-      initial={
-        reduced
-          ? { opacity: 0 }
-          : { opacity: 0, y: "0.35em", filter: "blur(12px)" }
-      }
-      animate={
-        reduced
-          ? { opacity: 1 }
-          : { opacity: 1, y: 0, filter: "blur(0px)" }
-      }
-      transition={{
-        delay,
-        duration: reduced ? 0.4 : 1.0,
-        ease: EASE,
-      }}
+    <span
+      className={`title-fade-in block ${timing === "second" ? "title-fade-in-second" : ""} ${highlight ? "text-primary" : ""}`}
     >
       {text}
-    </motion.span>
+    </span>
   );
 }
