@@ -48,9 +48,9 @@ function Home() {
             animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
             transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
           />
-          <h1 className="font-display italic text-[clamp(3rem,15vw,10rem)] leading-[0.95] text-foreground text-glow-orange">
-            <TitleCrash text="BIENVENIDO A" delay={0.95} />
-            <TitleCrash text="NUNCA JAMÁS" delay={1.15} highlight />
+          <h1 className="font-display italic text-[clamp(3rem,15vw,10rem)] leading-[1.05] text-foreground text-glow-orange">
+            <TitleCrash text="BIENVENIDO A" delay={1.0} />
+            <TitleCrash text="NUNCA JAMÁS" delay={1.2} highlight />
           </h1>
           <Reveal delay={0.5}>
             <p className="mt-6 text-primary text-[11px] md:text-xs uppercase tracking-[0.4em] font-sans font-semibold drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
