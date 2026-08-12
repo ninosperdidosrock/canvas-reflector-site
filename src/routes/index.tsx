@@ -88,7 +88,7 @@ function Home() {
   );
 }
 
-const CRASH_EASE = [0.16, 1, 0.3, 1] as const;
+const EASE = [0.16, 1, 0.3, 1] as const;
 
 function TitleCrash({
   text,
@@ -101,21 +101,25 @@ function TitleCrash({
 }) {
   const reduced = useReducedMotion();
   return (
-    <span className="block overflow-hidden">
-      <motion.span
-        className={`block ${highlight ? "text-primary" : ""}`}
-        initial={reduced ? { opacity: 0 } : { scale: 2.6, opacity: 0 }}
-        animate={
-          reduced ? { opacity: 1 } : { scale: 1, opacity: 1 }
-        }
-        transition={{
-          delay,
-          duration: reduced ? 0.4 : 1.2,
-          ease: CRASH_EASE,
-        }}
-      >
-        {text}
-      </motion.span>
-    </span>
+    <motion.span
+      className={`block ${highlight ? "text-primary" : ""}`}
+      initial={
+        reduced
+          ? { opacity: 0 }
+          : { opacity: 0, y: "0.35em", filter: "blur(12px)" }
+      }
+      animate={
+        reduced
+          ? { opacity: 1 }
+          : { opacity: 1, y: 0, filter: "blur(0px)" }
+      }
+      transition={{
+        delay,
+        duration: reduced ? 0.4 : 1.0,
+        ease: EASE,
+      }}
+    >
+      {text}
+    </motion.span>
   );
 }
