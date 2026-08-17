@@ -37,7 +37,7 @@ export function SplitText({
       {words.map((w, i) => (
         <span
           key={`${w}-${i}`}
-          className="inline-block overflow-hidden align-bottom pb-[0.12em]"
+          className="inline-block overflow-hidden align-bottom pb-[0.12em] pr-[0.14em] -mr-[0.14em]"
           aria-hidden="true"
         >
           <motion.span
