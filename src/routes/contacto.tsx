@@ -44,7 +44,7 @@ export default function Contacto() {
 
   return (
     <PageShell backgroundImage={bgContacto}>
-      <PageHero title="CONTACTO" eyebrow="Contrataciones & Prensa" />
+      <PageHero title="CONTACTO" srTitle="Contratación y contacto de Niños Perdidos" eyebrow="Contrataciones & Prensa" />
 
       <section className="pb-12">
         <div className="container-page">

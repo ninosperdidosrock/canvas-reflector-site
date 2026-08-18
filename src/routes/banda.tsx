@@ -41,7 +41,7 @@ const members = [
 export default function Banda() {
   return (
     <PageShell backgroundImage={bgBanda}>
-      <PageHero title="LA BANDA" eyebrow="Disney · Animación · Nostalgia · Rock" />
+      <PageHero title="LA BANDA" srTitle="Niños Perdidos: integrantes de la banda de rock Disney" eyebrow="Disney · Animación · Nostalgia · Rock" />
       <section className="pb-16">
         <div className="container-page max-w-3xl text-center">
           <Reveal>
