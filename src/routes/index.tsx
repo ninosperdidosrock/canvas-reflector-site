@@ -51,6 +51,7 @@ function Home() {
           <h1 className="font-display italic text-[clamp(3rem,15vw,10rem)] leading-[1.05] text-foreground text-glow-orange">
             <TitleCrash text="BIENVENIDO A" timing="first" />
             <TitleCrash text="NUNCA JAMÁS" timing="second" highlight />
+            <span className="sr-only"> con Niños Perdidos: banda de rock y Disney en Madrid</span>
           </h1>
           <Reveal delay={0.5}>
             <p className="mt-6 text-primary text-[11px] md:text-xs uppercase tracking-[0.4em] font-sans font-semibold drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">

@@ -43,11 +43,14 @@ export function PageShell({
 export function PageHero({
   eyebrow,
   title,
+  srTitle,
   subtitle,
   children,
 }: {
   eyebrow?: string;
   title: string;
+  /** Extra descriptive text appended to the H1 for search engines and screen readers. */
+  srTitle?: string;
   subtitle?: string;
   children?: ReactNode;
 }) {
@@ -64,6 +67,7 @@ export function PageHero({
         />
         <h1 className="font-display italic text-title-hero text-foreground text-glow-orange">
           <SplitText text={title} />
+          {srTitle && <span className="sr-only"> {srTitle}</span>}
         </h1>
 
         {eyebrow && (

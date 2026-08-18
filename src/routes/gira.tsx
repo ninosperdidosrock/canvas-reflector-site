@@ -82,7 +82,7 @@ function Gira() {
 
   return (
     <PageShell backgroundImage={bgGira}>
-      <PageHero title="GIRA" eyebrow="Rumbo a Nunca Jamás" />
+      <PageHero title="GIRA" srTitle="y próximos conciertos de Niños Perdidos" eyebrow="Rumbo a Nunca Jamás" />
       <section className="pb-16">
         <div className="container-page max-w-4xl">
           <p className="text-base text-muted-foreground leading-relaxed max-w-2xl mb-10">
@@ -154,7 +154,7 @@ function Gira() {
 
           {past.length > 0 && (
             <div className="mt-16">
-              <p className="text-primary text-xs uppercase tracking-[0.3em] font-semibold mb-4">CONCIERTOS ANTERIORES</p>
+              <h2 className="font-display italic text-primary text-xs uppercase tracking-[0.3em] font-semibold mb-4 not-italic">CONCIERTOS ANTERIORES</h2>
               <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-2">
                 {past.map((p) => {
                   const city = p.location?.split(",")[0]?.trim();
