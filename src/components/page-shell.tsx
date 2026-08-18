@@ -67,6 +67,7 @@ export function PageHero({
         />
         <h1 className="font-display italic text-title-hero text-foreground text-glow-orange">
           <SplitText text={title} />
+          {srTitle && <span className="sr-only"> {srTitle}</span>}
         </h1>
 
         {eyebrow && (
