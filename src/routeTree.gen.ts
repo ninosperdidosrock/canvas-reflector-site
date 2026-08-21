@@ -14,6 +14,7 @@ import { Route as SetlistRouteImport } from './routes/setlist'
 import { Route as MagiaRouteImport } from './routes/magia'
 import { Route as GiraRouteImport } from './routes/gira'
 import { Route as GaleriaRouteImport } from './routes/galeria'
+import { Route as ContratacionRouteImport } from './routes/contratacion'
 import { Route as ContactoRouteImport } from './routes/contacto'
 import { Route as BandaRouteImport } from './routes/banda'
 import { Route as IndexRouteImport } from './routes/index'
@@ -43,6 +44,11 @@ const GaleriaRoute = GaleriaRouteImport.update({
   path: '/galeria',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContratacionRoute = ContratacionRouteImport.update({
+  id: '/contratacion',
+  path: '/contratacion',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactoRoute = ContactoRouteImport.update({
   id: '/contacto',
   path: '/contacto',
@@ -63,6 +69,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/banda': typeof BandaRoute
   '/contacto': typeof ContactoRoute
+  '/contratacion': typeof ContratacionRoute
   '/galeria': typeof GaleriaRoute
   '/gira': typeof GiraRoute
   '/magia': typeof MagiaRoute
@@ -73,6 +80,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/banda': typeof BandaRoute
   '/contacto': typeof ContactoRoute
+  '/contratacion': typeof ContratacionRoute
   '/galeria': typeof GaleriaRoute
   '/gira': typeof GiraRoute
   '/magia': typeof MagiaRoute
@@ -84,6 +92,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/banda': typeof BandaRoute
   '/contacto': typeof ContactoRoute
+  '/contratacion': typeof ContratacionRoute
   '/galeria': typeof GaleriaRoute
   '/gira': typeof GiraRoute
   '/magia': typeof MagiaRoute
@@ -96,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/banda'
     | '/contacto'
+    | '/contratacion'
     | '/galeria'
     | '/gira'
     | '/magia'
@@ -106,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/banda'
     | '/contacto'
+    | '/contratacion'
     | '/galeria'
     | '/gira'
     | '/magia'
@@ -116,6 +127,7 @@ export interface FileRouteTypes {
     | '/'
     | '/banda'
     | '/contacto'
+    | '/contratacion'
     | '/galeria'
     | '/gira'
     | '/magia'
@@ -127,6 +139,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BandaRoute: typeof BandaRoute
   ContactoRoute: typeof ContactoRoute
+  ContratacionRoute: typeof ContratacionRoute
   GaleriaRoute: typeof GaleriaRoute
   GiraRoute: typeof GiraRoute
   MagiaRoute: typeof MagiaRoute
@@ -171,6 +184,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GaleriaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contratacion': {
+      id: '/contratacion'
+      path: '/contratacion'
+      fullPath: '/contratacion'
+      preLoaderRoute: typeof ContratacionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contacto': {
       id: '/contacto'
       path: '/contacto'
@@ -199,6 +219,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BandaRoute: BandaRoute,
   ContactoRoute: ContactoRoute,
+  ContratacionRoute: ContratacionRoute,
   GaleriaRoute: GaleriaRoute,
   GiraRoute: GiraRoute,
   MagiaRoute: MagiaRoute,
