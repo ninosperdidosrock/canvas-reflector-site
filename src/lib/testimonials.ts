@@ -38,4 +38,10 @@ export const testimonials: Testimonial[] = [
     platform: "tiktok",
     url: "https://www.tiktok.com/@ninosperdidos.rock",
   },
+  {
+    text: "Os hemos visto en Enguera y sois un grupo de 10, hemos disfrutado un montón el concierto. Muchas gracias 😍",
+    author: "@sara_xya_",
+    platform: "instagram",
+    url: "https://www.instagram.com/p/DcwiC38Nled?comment_id=17957907674999329",
+  },
 ];
