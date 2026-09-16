@@ -15,16 +15,16 @@ export const testimonials: Testimonial[] = [
     url: "https://www.instagram.com/p/DPEBGAyDzY7/?igsh=MTV5aXpsZW9leWJ2Yw==",
   },
   {
-    text: "Espero veros otra vez así como en el manga fest (j**** cómo les quedó la intro de Attack on Titan)",
-    author: "@samux011",
+    text: "🙌🙌🙌 acabamos de disfrutar con vosotros hoy, en los Molinos",
+    author: "@yen_crespo",
     platform: "instagram",
-    url: "https://www.instagram.com/p/DPEBGAyDzY7/?igsh=MTV5aXpsZW9leWJ2Yw==",
+    url: "https://www.instagram.com/p/DdD56Tgtnr5?comment_id=17911145049527077",
   },
   {
-    text: "Pero pero, qué maravilla, necesito esto en estudio Spoty y maravilloso sería una maqueta / CD. ¡Bravo!",
-    author: "@seruvk",
-    platform: "tiktok",
-    url: "https://www.tiktok.com/@ninosperdidos.rock/video/pQPN-eDBsE",
+    text: "Qué bien habéis estado, lo habéis dado todo como siempre, pero hoy el público lo ha petado, gracias a los Molinos de Getafe 👏👏👏👏💕💕💕 y desde luego a NIÑOS PERDIDOS ROCK que sois muy GRANDES!!!!",
+    author: "@mazoila65",
+    platform: "instagram",
+    url: "https://www.instagram.com/p/DdD56Tgtnr5?comment_id=17972814170938415",
   },
   {
     text: "Cantáis versiones rock de canciones Disney + vuestro nombre 🥰 me habéis llegado al corazón",
