@@ -29,9 +29,9 @@ export const Route = createFileRoute("/contratacion")({
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:url", content: "https://xn--niosperdidos-bhb.es/contratacion" },
+      { property: "og:url", content: "https://canvas-reflector-site.lovable.app/contratacion" },
     ],
-    links: [{ rel: "canonical", href: "https://xn--niosperdidos-bhb.es/contratacion" }],
+    links: [{ rel: "canonical", href: "https://canvas-reflector-site.lovable.app/contratacion" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -40,7 +40,7 @@ export const Route = createFileRoute("/contratacion")({
           "@type": "MusicGroup",
           name: "Niños Perdidos",
           genre: ["Rock", "Versiones", "Música Disney"],
-          url: "https://xn--niosperdidos-bhb.es",
+          url: "https://canvas-reflector-site.lovable.app",
           foundingLocation: { "@type": "Place", name: "Madrid, España" },
           areaServed: { "@type": "Country", name: "España" },
           email: CONTACT_EMAIL,

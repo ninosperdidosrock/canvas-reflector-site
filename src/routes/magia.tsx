@@ -17,10 +17,10 @@ export const Route = createFileRoute("/magia")({
       { name: "description", content: "La magia de Nunca Jamás: bautismo de niño perdido y el oráculo del Capitán Garfio." },
       { property: "og:title", content: "Magia · Niños Perdidos" },
       { property: "og:description", content: "Recibe tu nombre de niño perdido y consulta al oráculo del Capitán Garfio." },
-      { property: "og:url", content: "https://xn--niosperdidos-bhb.es/magia" },
+      { property: "og:url", content: "https://canvas-reflector-site.lovable.app/magia" },
     ],
     links: [
-      { rel: "canonical", href: "https://xn--niosperdidos-bhb.es/magia" },
+      { rel: "canonical", href: "https://canvas-reflector-site.lovable.app/magia" },
     ],
   }),
   component: Magia,
