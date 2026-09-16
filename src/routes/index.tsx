@@ -17,10 +17,10 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Disney · Animación · Rock · Madrid. La banda que convierte tu infancia en himnos del rock." },
       { property: "og:title", content: "Niños Perdidos · Bienvenido a Nunca Jamás" },
       { property: "og:description", content: "Disney · Animación · Rock · Madrid. La banda que convierte tu infancia en himnos del rock." },
-      { property: "og:url", content: "https://canvas-reflector-site.lovable.app/" },
+      { property: "og:url", content: "https://xn--niosperdidos-bhb.es/" },
     ],
     links: [
-      { rel: "canonical", href: "https://canvas-reflector-site.lovable.app/" },
+      { rel: "canonical", href: "https://xn--niosperdidos-bhb.es/" },
       { rel: "preload", as: "image", href: bgInicio, fetchpriority: "high" },
       { rel: "preload", as: "image", href: logoFull, fetchpriority: "high" },
     ],
