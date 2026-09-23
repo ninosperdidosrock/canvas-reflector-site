@@ -165,6 +165,23 @@
   }
 }
 
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .fairy-cursor-enabled,
+  .fairy-cursor-enabled body,
+  .fairy-cursor-enabled a,
+  .fairy-cursor-enabled button,
+  .fairy-cursor-enabled [role="button"] {
+    cursor: none;
+  }
+
+  .fairy-cursor-core {
+    box-shadow:
+      0 0 5px var(--color-primary),
+      0 0 14px color-mix(in oklab, var(--color-primary) 82%, transparent),
+      0 0 28px color-mix(in oklab, var(--color-primary) 45%, transparent);
+  }
+}
+
 @media (max-width: 768px) {
   .bg-ambient {
     animation-name: none;
