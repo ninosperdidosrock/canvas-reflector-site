@@ -18,7 +18,6 @@ type FairyParticle = {
  */
 export function CustomCursor() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [enabled, setEnabled] = useState(false);
   const [active, setActive] = useState(false);
   const [label, setLabel] = useState<string | null>(null);
   const x = useMotionValue(-100);
@@ -31,7 +30,6 @@ export function CustomCursor() {
       window.matchMedia("(pointer: fine)").matches &&
       !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (!fine) return;
-    setEnabled(true);
     document.documentElement.classList.add("fairy-cursor-enabled");
 
     const canvas = canvasRef.current;
@@ -140,8 +138,6 @@ export function CustomCursor() {
       document.documentElement.classList.remove("fairy-cursor-enabled");
     };
   }, [x, y]);
-
-  if (!enabled) return null;
 
   return (
     <div aria-hidden className="pointer-events-none fixed inset-0 z-[100] hidden lg:block">
