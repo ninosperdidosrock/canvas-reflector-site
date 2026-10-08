@@ -22,7 +22,7 @@ export const Route = createFileRoute("/")({
     ],
     links: [
       { rel: "canonical", href: "https://xn--niosperdidos-bhb.es/" },
-      { rel: "preload", as: "image", href: bgInicio, fetchpriority: "high" },
+      { rel: "preload", as: "image", href: bgInicio, fetchPriority: "high" },
       { rel: "preload", as: "image", href: logoFull, fetchpriority: "high" },
     ],
   }),
