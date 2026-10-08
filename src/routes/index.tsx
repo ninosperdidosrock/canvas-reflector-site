@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { PageShell } from "@/components/page-shell";
 import { TestimonialsCarousel } from "@/components/testimonials-carousel";
+import { NextGigBubble } from "@/components/next-gig-bubble";
 import { Reveal } from "@/components/motion/reveal";
 import { Magnetic } from "@/components/motion/magnetic";
 import { MarqueeText } from "@/components/motion/marquee-text";
@@ -21,7 +22,7 @@ export const Route = createFileRoute("/")({
     ],
     links: [
       { rel: "canonical", href: "https://xn--niosperdidos-bhb.es/" },
-      { rel: "preload", as: "image", href: bgInicio, fetchpriority: "high" },
+      { rel: "preload", as: "image", href: bgInicio, fetchPriority: "high" },
       { rel: "preload", as: "image", href: logoFull, fetchpriority: "high" },
     ],
   }),
@@ -84,6 +85,7 @@ function Home() {
         </div>
       </section>
 
+      <NextGigBubble />
       <MarqueeText text="NIÑOS PERDIDOS · NUNCA JAMÁS · " repeat={4} />
     </PageShell>
   );
