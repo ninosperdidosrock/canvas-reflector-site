@@ -84,6 +84,7 @@ function Home() {
         </div>
       </section>
 
+      <NextGigBubble />
       <MarqueeText text="NIÑOS PERDIDOS · NUNCA JAMÁS · " repeat={4} />
     </PageShell>
   );
