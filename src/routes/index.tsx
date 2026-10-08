@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { PageShell } from "@/components/page-shell";
 import { TestimonialsCarousel } from "@/components/testimonials-carousel";
+import { NextGigBubble } from "@/components/next-gig-bubble";
 import { Reveal } from "@/components/motion/reveal";
 import { Magnetic } from "@/components/motion/magnetic";
 import { MarqueeText } from "@/components/motion/marquee-text";
