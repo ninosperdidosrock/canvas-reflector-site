@@ -9,49 +9,19 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as BandaRouteImport } from './routes/banda'
-import { Route as ContactoRouteImport } from './routes/contacto'
-import { Route as ContratacionRouteImport } from './routes/contratacion'
-import { Route as GaleriaRouteImport } from './routes/galeria'
-import { Route as GiraRouteImport } from './routes/gira'
-import { Route as MagiaRouteImport } from './routes/magia'
-import { Route as SetlistRouteImport } from './routes/setlist'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SetlistRouteImport } from './routes/setlist'
+import { Route as MagiaRouteImport } from './routes/magia'
+import { Route as GiraRouteImport } from './routes/gira'
+import { Route as GaleriaRouteImport } from './routes/galeria'
+import { Route as ContratacionRouteImport } from './routes/contratacion'
+import { Route as ContactoRouteImport } from './routes/contacto'
+import { Route as BandaRouteImport } from './routes/banda'
+import { Route as IndexRouteImport } from './routes/index'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BandaRoute = BandaRouteImport.update({
-  id: '/banda',
-  path: '/banda',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactoRoute = ContactoRouteImport.update({
-  id: '/contacto',
-  path: '/contacto',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContratacionRoute = ContratacionRouteImport.update({
-  id: '/contratacion',
-  path: '/contratacion',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GaleriaRoute = GaleriaRouteImport.update({
-  id: '/galeria',
-  path: '/galeria',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GiraRoute = GiraRouteImport.update({
-  id: '/gira',
-  path: '/gira',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MagiaRoute = MagiaRouteImport.update({
-  id: '/magia',
-  path: '/magia',
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SetlistRoute = SetlistRouteImport.update({
@@ -59,9 +29,39 @@ const SetlistRoute = SetlistRouteImport.update({
   path: '/setlist',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
+const MagiaRoute = MagiaRouteImport.update({
+  id: '/magia',
+  path: '/magia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GiraRoute = GiraRouteImport.update({
+  id: '/gira',
+  path: '/gira',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GaleriaRoute = GaleriaRouteImport.update({
+  id: '/galeria',
+  path: '/galeria',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContratacionRoute = ContratacionRouteImport.update({
+  id: '/contratacion',
+  path: '/contratacion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactoRoute = ContactoRouteImport.update({
+  id: '/contacto',
+  path: '/contacto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BandaRoute = BandaRouteImport.update({
+  id: '/banda',
+  path: '/banda',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -149,53 +149,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/banda': {
-      id: '/banda'
-      path: '/banda'
-      fullPath: '/banda'
-      preLoaderRoute: typeof BandaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contacto': {
-      id: '/contacto'
-      path: '/contacto'
-      fullPath: '/contacto'
-      preLoaderRoute: typeof ContactoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contratacion': {
-      id: '/contratacion'
-      path: '/contratacion'
-      fullPath: '/contratacion'
-      preLoaderRoute: typeof ContratacionRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/galeria': {
-      id: '/galeria'
-      path: '/galeria'
-      fullPath: '/galeria'
-      preLoaderRoute: typeof GaleriaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/gira': {
-      id: '/gira'
-      path: '/gira'
-      fullPath: '/gira'
-      preLoaderRoute: typeof GiraRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/magia': {
-      id: '/magia'
-      path: '/magia'
-      fullPath: '/magia'
-      preLoaderRoute: typeof MagiaRouteImport
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/setlist': {
@@ -205,11 +163,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SetlistRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
+    '/magia': {
+      id: '/magia'
+      path: '/magia'
+      fullPath: '/magia'
+      preLoaderRoute: typeof MagiaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gira': {
+      id: '/gira'
+      path: '/gira'
+      fullPath: '/gira'
+      preLoaderRoute: typeof GiraRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/galeria': {
+      id: '/galeria'
+      path: '/galeria'
+      fullPath: '/galeria'
+      preLoaderRoute: typeof GaleriaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contratacion': {
+      id: '/contratacion'
+      path: '/contratacion'
+      fullPath: '/contratacion'
+      preLoaderRoute: typeof ContratacionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contacto': {
+      id: '/contacto'
+      path: '/contacto'
+      fullPath: '/contacto'
+      preLoaderRoute: typeof ContactoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/banda': {
+      id: '/banda'
+      path: '/banda'
+      fullPath: '/banda'
+      preLoaderRoute: typeof BandaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
