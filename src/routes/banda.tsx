@@ -84,6 +84,28 @@ export default function Banda() {
               </Magnetic>
             </div>
           </Reveal>
+
+          <Reveal delay={0.28}>
+            <div className="mt-10 border border-primary/40 bg-card/50 backdrop-blur p-6 md:p-8 text-left flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+              <div>
+                <h2 className="font-display italic text-2xl md:text-3xl text-foreground mb-2">
+                  Dossier de presentación
+                </h2>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Prospecto de contratación con el formato del show, el repertorio, la ficha
+                  técnica y las condiciones para fiestas, festivales y eventos.
+                </p>
+              </div>
+              <a
+                href={DOSSIER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 self-start sm:self-auto shrink-0 border border-primary text-primary px-5 py-3 text-xs uppercase tracking-[0.25em] hover:bg-primary hover:text-primary-foreground transition-colors"
+              >
+                <FileText className="h-4 w-4" /> Ver dossier
+              </a>
+            </div>
+          </Reveal>
         </div>
       </section>
 
