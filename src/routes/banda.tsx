@@ -5,6 +5,7 @@ import { SplitText } from "@/components/motion/split-text";
 import { Magnetic } from "@/components/motion/magnetic";
 import { MarqueeText } from "@/components/motion/marquee-text";
 import { ParallaxImage } from "@/components/motion/parallax-image";
+import { FileText } from "lucide-react";
 import gaiaImg from "@/assets/banda-gaia.jpg";
 import rickImg from "@/assets/banda-rick.jpg";
 import manuImg from "@/assets/banda-manu.jpg";
@@ -12,6 +13,8 @@ import ridruImg from "@/assets/banda-ridru.jpg";
 import hectorImg from "@/assets/banda-hector.jpg";
 import bgBandaAsset from "@/assets/bg-contacto.webp.asset.json";
 const bgBanda = bgBandaAsset.url;
+const DOSSIER_URL =
+  "https://docs.google.com/document/d/e/2PACX-1vRwVagPwu_BAsamkVMvZ8cR04yTwJcRosRk_JId5J9N0FwGAegJgybAcXukEwCPeMI-BLXgzG-R3Ab_/pub";
 
 export const Route = createFileRoute("/banda")({
   head: () => ({
