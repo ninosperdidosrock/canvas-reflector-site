@@ -256,9 +256,9 @@ function ConcertCard({ concert, onOpen }: { concert: Concert; onOpen: () => void
           <p className="text-[10px] md:text-xs text-primary uppercase tracking-[0.3em] font-semibold">
             {concert.date}
           </p>
-          <h3 className="mt-2 font-display italic text-2xl md:text-3xl text-foreground text-glow-orange">
+          <h2 className="mt-2 font-display italic text-2xl md:text-3xl text-foreground text-glow-orange">
             {concert.name}
-          </h3>
+          </h2>
           <p className="mt-3 inline-flex items-center gap-2 text-xs text-muted-foreground">
             <Camera className="h-3.5 w-3.5" />
             {concert.photos.length} {concert.photos.length === 1 ? "foto" : "fotos"}
@@ -357,9 +357,9 @@ export default function Galeria() {
 
       <section className="pb-6">
         <div className="mb-6 container-page">
-          <p className="text-primary text-[10px] md:text-xs uppercase tracking-[0.3em] font-semibold">
+          <h2 className="text-primary text-[10px] md:text-xs uppercase tracking-[0.3em] font-semibold">
             Favoritas · en movimiento
-          </p>
+          </h2>
         </div>
         <FavoritesStrip />
       </section>
@@ -385,9 +385,9 @@ export default function Galeria() {
       <section className="pb-24">
         <div className="container-page">
           <div className="mb-10">
-            <p className="text-primary text-xs uppercase tracking-[0.3em] font-semibold mb-2 inline-flex items-center gap-2">
+            <h2 className="text-primary text-xs uppercase tracking-[0.3em] font-semibold mb-2 inline-flex items-center gap-2">
               <Youtube className="h-4 w-4" /> En directo desde YouTube
-            </p>
+            </h2>
           </div>
 
           {isLoading ? (

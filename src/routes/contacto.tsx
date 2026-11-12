@@ -165,9 +165,9 @@ export default function Contacto() {
               </svg>
             </div>
             <div>
-              <h3 className="font-display italic text-title-section text-foreground leading-tight">
+              <h2 className="font-display italic text-title-section text-foreground leading-tight">
                 Hablemos de tu próximo gran evento
-              </h3>
+              </h2>
               <p className="mt-3 text-sm text-muted-foreground">
                 Respondemos a cualquier propuesta
               </p>

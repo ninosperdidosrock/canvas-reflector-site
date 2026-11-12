@@ -158,9 +158,9 @@ export function SiteFooter() {
         </div>
 
         <div>
-          <h4 className="text-primary text-xs uppercase tracking-[0.2em] mb-4 not-italic font-sans font-semibold">
+          <h2 className="text-primary text-xs uppercase tracking-[0.2em] mb-4 not-italic font-sans font-semibold">
             Navegación
-          </h4>
+          </h2>
           <ul className="space-y-2 text-sm text-foreground/80">
             {["Inicio","La Banda","Setlist","Galería","Gira","Magia","Contacto"].map((l,i) => {
               const to = ["/", "/banda","/setlist","/galeria","/gira","/magia","/contacto"][i];
@@ -174,9 +174,9 @@ export function SiteFooter() {
         </div>
 
         <div>
-          <h4 className="text-primary text-xs uppercase tracking-[0.2em] mb-4 not-italic font-sans font-semibold">
+          <h2 className="text-primary text-xs uppercase tracking-[0.2em] mb-4 not-italic font-sans font-semibold">
             Contrátanos
-          </h4>
+          </h2>
           <p className="text-sm text-foreground/80 mb-4">
             Bodas · Fiestas patronales · Festivales · Salas de conciertos
           </p>
