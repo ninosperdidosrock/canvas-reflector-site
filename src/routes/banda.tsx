@@ -24,6 +24,8 @@ export const Route = createFileRoute("/banda")({
       { property: "og:title", content: "La Banda · Niños Perdidos" },
       { property: "og:description", content: "Conoce a los cinco Niños Perdidos: la banda madrileña que convierte canciones míticas de la infancia en himnos de rock." },
       { property: "og:url", content: "https://xn--niosperdidos-bhb.es/banda" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       { rel: "canonical", href: "https://xn--niosperdidos-bhb.es/banda" },

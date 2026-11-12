@@ -18,6 +18,8 @@ export const Route = createFileRoute("/magia")({
       { property: "og:title", content: "Magia · Niños Perdidos" },
       { property: "og:description", content: "Recibe tu nombre de niño perdido y consulta al oráculo del Capitán Garfio." },
       { property: "og:url", content: "https://xn--niosperdidos-bhb.es/magia" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       { rel: "canonical", href: "https://xn--niosperdidos-bhb.es/magia" },

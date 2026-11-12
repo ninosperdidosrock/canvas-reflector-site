@@ -27,6 +27,8 @@ export const Route = createFileRoute("/setlist")({
       { property: "og:title", content: "Setlist · Niños Perdidos" },
       { property: "og:description", content: "Los himnos de Disney y la animación de los 90 y 2000 que tocamos en directo, pasados por el filtro del rock." },
       { property: "og:url", content: "https://xn--niosperdidos-bhb.es/setlist" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       { rel: "canonical", href: "https://xn--niosperdidos-bhb.es/setlist" },

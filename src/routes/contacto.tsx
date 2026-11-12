@@ -12,6 +12,8 @@ export const Route = createFileRoute("/contacto")({
       { property: "og:title", content: "Contacto · Niños Perdidos" },
       { property: "og:description", content: "Contrata a Niños Perdidos para tu boda, fiesta patronal, festival o sala. WhatsApp directo." },
       { property: "og:url", content: "https://xn--niosperdidos-bhb.es/contacto" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       { rel: "canonical", href: "https://xn--niosperdidos-bhb.es/contacto" },

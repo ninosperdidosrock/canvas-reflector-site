@@ -14,10 +14,12 @@ const bgInicio = bgInicioAsset.url;
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Niños Perdidos · Bienvenido a Nunca Jamás" },
-      { name: "description", content: "Disney · Animación · Rock · Madrid. La banda que convierte tu infancia en himnos del rock." },
-      { property: "og:title", content: "Niños Perdidos · Bienvenido a Nunca Jamás" },
-      { property: "og:description", content: "Disney · Animación · Rock · Madrid. La banda que convierte tu infancia en himnos del rock." },
+      { title: "Niños Perdidos · Banda de rock Disney y animación en Madrid" },
+      { name: "description", content: "Niños Perdidos es una banda de Madrid que versiona en rock canciones de Disney y películas de animación de los 90 y 2000. Conciertos para toda la familia." },
+      { property: "og:title", content: "Niños Perdidos · Banda de rock Disney y animación en Madrid" },
+      { property: "og:description", content: "Niños Perdidos es una banda de Madrid que versiona en rock canciones de Disney y películas de animación de los 90 y 2000. Conciertos para toda la familia." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { property: "og:url", content: "https://xn--niosperdidos-bhb.es/" },
     ],
     links: [

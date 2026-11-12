@@ -61,6 +61,8 @@ export const Route = createFileRoute("/galeria")({
       { property: "og:title", content: "Galería · Niños Perdidos" },
       { property: "og:description", content: "Fotos en directo y vídeos en YouTube de los conciertos de Niños Perdidos." },
       { property: "og:url", content: "https://xn--niosperdidos-bhb.es/galeria" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       { rel: "canonical", href: "https://xn--niosperdidos-bhb.es/galeria" },

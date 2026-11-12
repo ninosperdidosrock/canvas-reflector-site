@@ -33,6 +33,8 @@ export const Route = createFileRoute("/gira")({
         { property: "og:title", content: "Gira · Niños Perdidos" },
         { property: "og:description", content: "Próximos conciertos y fechas pasadas de Niños Perdidos." },
         { property: "og:url", content: "https://xn--niosperdidos-bhb.es/gira" },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
       ],
       links: [
         { rel: "canonical", href: "https://xn--niosperdidos-bhb.es/gira" },
